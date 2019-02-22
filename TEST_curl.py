@@ -8,14 +8,15 @@
 
 import requests
 
-url = 'http://planetarium.chrisdemoor.nl'
+url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 planeet = 'venus'
+positiestring_oud = ""
 
-r = requests.get(url)
-positiestring = r.text.decode("utf8")
-
-
-print (positiestring)
-print positiestring[2:5]
-plaats =  int(positiestring[2:5]) + 1
-print plaats
+while True:
+ r = requests.get(url)
+ positiestring = r.text
+ 
+ if (positiestring_oud != positiestring):
+  positiestring_oud = positiestring
+  print (positiestring)
+  print (positiestring[0:3])

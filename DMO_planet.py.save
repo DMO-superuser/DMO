@@ -1,0 +1,111 @@
+# DMO_planet.py
+# 19 feb 2019, python3
+
+# initele variabelen
+
+eerstekeer = True    # na de eerste keer opstarten moet er eerst geijkt worden
+schakelaar = "open"  # de schakelaar staat op open tijdens de eerstekeer
+teller = 1           # stappenteller van de planeet
+
+# welke planeet is dit?
+import socket
+planeet = socket.gethostname()
+if (planeet == "DMO-Saturnus"):
+   stepper = "buiten"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   stappen_per_graad = int(totaal_stappen / 360) # aanstal stappen van de stepper om 1 graad verder te komen 
+   begin_stappen = 154   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
+
+# spullen van de buitenstepper
+from adafruit_motorkit import MotorKit
+from adafruit_motor import stepper
+kit = MotorKit()
+
+# spullen van de reedswitch
+import os
+import wiringpi
+from time import sleep
+os.system('gpio export 26 in')
+sleep(0.5)
+io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
+io.pinMode(26,io.INPUT)
+
+# spullen op de string van de website in te lezen
+# elke planeet heeft 3 posities in de string, de telling gaat van binnen naar buiten. Dus Mercurius eerst en  Uranus en Neptunus als laatste (met de laatste 2 gebeurt niets)
+import requests
+url = 'http://planetarium.chrisdemoor.nl/positions.txt'
+
+# Eerste keer
+# Als deze file voor het eerst opgestart wordt weet het karretje niet waar hij is.
+# Hij rijdt naar zijn beginpositie en wacht op instructie
+
+while eerstekeer and (schakelaar == "open"):
+ kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+ if (io.digitalRead(26)):
+     schakelaar = "open"
+ else:
+     # onder de schakelaar
+     if (teller > 100):
+      schakelaar = "dicht"
+      teller = 1
+ teller += 1
+
+# Karretje staat op beginpositie 
+# Zodra de string veranderd is gaat hij rijden naar de gewenste positie en stopt daar
+teller = 1
+positiestring_oud = ""
+
+while True:
+
+ # karretje rijdt naar zijn beginpositie en wacht op instructie
+
+ while eerstekeer and (schakelaar == "open"):
+  kit.stepphetbegner1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  if (io.digitalRead(26)):
+      schakelaar = "open"
+  else:
+      # onder de schakelaar
+      if (teller > 100):
+       schakelaar = "dicht"
+       teller = 1
+  teller += 1
+
+ # Karretje staat op beginpositie 
+ # Zodra de string veranderd is gaat hij rijden naar de gewenste positie en stopt daar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ r = requests.get(url)
+ positiestring = r.text
+ if (positiestring_oud != positiestring):
+  # er is een nieuwe positie en daar gaan we nu bepalen
+  positiestring_oud = positiestring
+  print (positiestring)
+  print (positiestring[beginpos_string:eindpos_string])
+  nieuwe_positie = int(positiestring[beginpos_string:eindpos_string]) * int(stappen_per_graad)
+  # en naar de nieuwe positie toe rijden.
+  while (teller <  nieuwe_positie):
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+    teller += 1
+  # hierna bedenken wat we na de tweede positie gaan doen
+
+

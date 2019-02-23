@@ -31,13 +31,82 @@ if (planeet == "DMO-Mars"):
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
-   
+if (planeet == "DMO-Aarde"):
+   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
+if (planeet == "DMO-Venus"):
+   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet      
+if (planeet == "DMO-Mercurius"):
+   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
    
 # spullen van de buitenstepper
 if stepper == "buiten":
  from adafruit_motorkit import MotorKit
  from adafruit_motor import stepper
  kit = MotorKit()
+
+#spullen van de binnenstepper
+if stepper == "binnen":
+ # importeer de GPIO bibliotheek.
+ import RPi.GPIO as GPIO
+ # Importeer de time biblotheek voor tijdfuncties.
+ from time import sleep
+
+ # Zet de pinmode op Broadcom SOC.
+ GPIO.setmode(GPIO.BCM)
+ # Zet waarschuwingen uit.
+ GPIO.setwarnings(False)
+ # Stel de GPIO pinnen in voor de stappenmotor:
+ StepPins = [4,17,27,22]
+
+ # Set alle pinnen als uitgang.
+ for pin in StepPins:
+   # print "Setup pins"
+   GPIO.setup(pin,GPIO.OUT)
+   GPIO.output(pin, False)
+
+ # Definieer variabelen.
+ StepCounter = 0
+
+ # Definieer simpele volgorde
+ StepCount1 = 4
+ Seq1 = []
+ Seq1 = range(0, StepCount1)
+ Seq1[0] = [1,0,0,0]
+ Seq1[1] = [0,1,0,0]
+ Seq1[2] = [0,0,1,0]
+ Seq1[3] = [0,0,0,1]
+
+ # Definieer geadvanceerde volgorde (volgens de datasheet)
+ StepCount2 = 8
+ Seq2 = []
+ Seq2 = range(0, StepCount2)
+ Seq2[0] = [1,0,0,0]
+ Seq2[1] = [1,1,0,0]
+ Seq2[2] = [0,1,0,0]
+ Seq2[3] = [0,1,1,0]
+ Seq2[4] = [0,0,1,0]
+ Seq2[5] = [0,0,1,1]
+ Seq2[6] = [0,0,0,1]
+ Seq2[7] = [1,0,0,1]
+
+ # Welke stappenvolgorde gaan we hanteren?
+ Seq = Seq1
+ StepCount = StepCount1
 
 # spullen van de reedswitch
 import os

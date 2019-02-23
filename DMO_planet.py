@@ -194,7 +194,7 @@ while True:
         # Wacht voor de volgende stap (lager = snellere draaisnelheid)
         sleep(.001)         
 
-         teller += 1
+        teller += 1
   
   # telkens de string opvragen en zolang er geen nieuwe string is hier blijven
   while positiestring == positiestring_oud:

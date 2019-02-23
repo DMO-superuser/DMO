@@ -3,8 +3,9 @@
 
 # initele variabelen
 
-schakelaar = "open"  # de positie van de magneetschakelaar
-teller = 1           # stappenteller van de planeet
+stepper    = "buiten"  # er zijn binnen en buitensteppers
+schakelaar = "open"    # de positie van de magneetschakelaar
+teller = 1             # stappenteller van de planeet
 
 # welke planeet is dit?
 import socket
@@ -16,11 +17,19 @@ if (planeet == "DMO-Saturnus"):
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
-
+if (planeet == "DMO-Jupiter"):
+   stepper = "buiten"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 3383 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   begin_stappen = 144   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
+   
 # spullen van de buitenstepper
-from adafruit_motorkit import MotorKit
-from adafruit_motor import stepper
-kit = MotorKit()
+if stepper == "buiten":
+ from adafruit_motorkit import MotorKit
+ from adafruit_motor import stepper
+ kit = MotorKit()
 
 # spullen van de reedswitch
 import os

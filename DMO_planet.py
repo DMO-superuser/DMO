@@ -149,7 +149,7 @@ while True:
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
       sleep(.001)
       
-   if (io.digitalRead(26)):
+  if (io.digitalRead(26)):
       schakelaar = "open"
   else:
       # onder de schakelaar

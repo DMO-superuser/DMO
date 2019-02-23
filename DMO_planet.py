@@ -19,7 +19,7 @@ if (planeet == "DMO-Saturnus"):
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Jupiter"):
    stepper = "buiten"    # er bestaan binnen- en buitensteppers 
-   totaal_stappen = 3383 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 144   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet

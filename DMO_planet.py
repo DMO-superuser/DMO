@@ -53,59 +53,61 @@ if (planeet == "DMO-Mercurius"):
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
    
-# spullen van de buitenstepper
-from adafruit_motorkit import MotorKit
-from adafruit_motor import stepper
-kit = MotorKit()
 
-#spullen van de binnenstepper
+if stepper == "buiten":   
+ # spullen van de buitenstepper
+ from adafruit_motorkit import MotorKit
+ from adafruit_motor import stepper
+ kit = MotorKit()
+else:
+ #spullen van de binnenstepper
 
-# importeer de GPIO bibliotheek.
-import RPi.GPIO as GPIO
-# Importeer de time biblotheek voor tijdfuncties.
-from time import sleep
+ # importeer de GPIO bibliotheek.
+ import RPi.GPIO as GPIO
+ # Importeer de time biblotheek voor tijdfuncties.
+ from time import sleep
 
-# Zet de pinmode op Broadcom SOC.
-GPIO.setmode(GPIO.BCM)
-# Zet waarschuwingen uit.
-GPIO.setwarnings(False)
-# Stel de GPIO pinnen in voor de stappenmotor:
-StepPins = [4,17,27,22]
+ # Zet de pinmode op Broadcom SOC.
+ GPIO.setmode(GPIO.BCM)
+ # Zet waarschuwingen uit.
+ GPIO.setwarnings(False)
+ # Stel de GPIO pinnen in voor de stappenmotor:
+ StepPins = [4,17,27,22]
 
-# Set alle pinnen als uitgang.
-for pin in StepPins:
-  # print "Setup pins"
-  GPIO.setup(pin,GPIO.OUT)
-  GPIO.output(pin, False)
+ # Set alle pinnen als uitgang.
+ for pin in StepPins:
+   # print "Setup pins"
+   GPIO.setup(pin,GPIO.OUT)
+   GPIO.output(pin, False)
 
-# Definieer variabelen.
-StepCounter = 0
+ # Definieer variabelen.
+ StepCounter = 0
 
-# Definieer simpele volgorde
-StepCount1 = 4
-Seq1 = []
-Seq1 = list(range(0, StepCount1))
-Seq1[0] = [1,0,0,0]
-Seq1[1] = [0,1,0,0]
-Seq1[2] = [0,0,1,0]
-Seq1[3] = [0,0,0,1]
+ # Definieer simpele volgorde
+ StepCount1 = 4
+ Seq1 = []
+ Seq1 = list(range(0, StepCount1))
+ Seq1[0] = [1,0,0,0]
+ Seq1[1] = [0,1,0,0]
+ Seq1[2] = [0,0,1,0]
+ Seq1[3] = [0,0,0,1]
 
-# Definieer geadvanceerde volgorde (volgens de datasheet)
-StepCount2 = 8
-Seq2 = []
-Seq2 = list(range(0, StepCount2))
-Seq2[0] = [1,0,0,0]
-Seq2[1] = [1,1,0,0]
-Seq2[2] = [0,1,0,0]
-Seq2[3] = [0,1,1,0]
-Seq2[4] = [0,0,1,0]
-Seq2[5] = [0,0,1,1]
-Seq2[6] = [0,0,0,1]
-Seq2[7] = [1,0,0,1]
+ # Definieer geadvanceerde volgorde (volgens de datasheet)
+ StepCount2 = 8
+ Seq2 = []
+ Seq2 = list(range(0, StepCount2))
+ Seq2[0] = [1,0,0,0]
+ Seq2[1] = [1,1,0,0]
+ Seq2[2] = [0,1,0,0]
+ Seq2[3] = [0,1,1,0]
+ Seq2[4] = [0,0,1,0]
+ Seq2[5] = [0,0,1,1]
+ Seq2[6] = [0,0,0,1]
+ Seq2[7] = [1,0,0,1]
 
  # Welke stappenvolgorde gaan we hanteren?
-Seq = Seq1
-StepCount = StepCount1
+ Seq = Seq1
+ StepCount = StepCount1
 
 # spullen van de reedswitch
 import os

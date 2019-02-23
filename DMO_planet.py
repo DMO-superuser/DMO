@@ -129,8 +129,27 @@ while True:
 
  # naar het begin rijden, gebeurt elke keer bij een nieuwe positie
  while schakelaar == "open":
-  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-  if (io.digitalRead(26)):
+  if stepper == "buiten":
+    # buitenstepper in actie
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  else:
+    # binnenstepper in actie
+    while True:
+      for pin in range(0, 4):
+        xpin = StepPins[pin]
+        if Seq[StepCounter][pin]!=0:
+          # print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
+          GPIO.output(xpin, True)
+        else:
+          GPIO.output(xpin, False)
+      StepCounter += 1
+      # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
+      if (StepCounter==StepCount): StepCounter = 0
+      if (StepCounter<0): StepCounter = StepCount
+      # Wacht voor de volgende stap (lager = snellere draaisnelheid)
+      sleep(.001)
+      
+   if (io.digitalRead(26)):
       schakelaar = "open"
   else:
       # onder de schakelaar
@@ -155,9 +174,28 @@ while True:
 
   # en naar de nieuwe positie toe rijden.
   while (teller <  nieuwe_positie):
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    teller += 1
+    if stepper == "buiten":
+       # buitensteppers in actie
+       kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+    else:
+       # binnenstepper in actie
+       while True:
+        for pin in range(0, 4):
+          xpin = StepPins[pin]
+          if Seq[StepCounter][pin]!=0:
+            # print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
+            GPIO.output(xpin, True)
+          else:
+            GPIO.output(xpin, False)
+        StepCounter += 1
+        # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
+        if (StepCounter==StepCount): StepCounter = 0
+        if (StepCounter<0): StepCounter = StepCount
+        # Wacht voor de volgende stap (lager = snellere draaisnelheid)
+        sleep(.001)         
 
+         teller += 1
+  
   # telkens de string opvragen en zolang er geen nieuwe string is hier blijven
   while positiestring == positiestring_oud:
     r = requests.get(url)

@@ -3,7 +3,7 @@
 
 # initele variabelen
 
-stepper    = "buiten"  # er zijn binnen en buitensteppers
+steppersoort    = "buiten"  # er zijn binnen en buitensteppers
 schakelaar = "open"    # de positie van de magneetschakelaar
 teller = 1             # stappenteller van de planeet
 
@@ -11,42 +11,42 @@ teller = 1             # stappenteller van de planeet
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
-   stepper = "buiten"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 154   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Jupiter"):
-   stepper = "buiten"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 144   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mars"):
-   stepper = "buiten"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 2596 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Aarde"):
-   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Venus"):
-   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet      
 if (planeet == "DMO-Mercurius"):
-   stepper = "binnen"    # er bestaan binnen- en buitensteppers 
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 2000 # aantal stappen om een rondje te maken, 1% afwijking per keer
    begin_stappen = 14   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
@@ -54,7 +54,7 @@ if (planeet == "DMO-Mercurius"):
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
    
 
-if stepper == "buiten":   
+if steppersoort == "buiten":   
  # spullen van de buitenstepper
  from adafruit_motorkit import MotorKit
  from adafruit_motor import stepper
@@ -132,7 +132,7 @@ while True:
 
  # naar het begin rijden, gebeurt elke keer bij een nieuwe positie
  while schakelaar == "open":
-  if stepper == "buiten":
+  if steppersoort == "buiten":
     # buitenstepper in actie
     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
   else:
@@ -177,7 +177,7 @@ while True:
 
   # en naar de nieuwe positie toe rijden.
   while (teller <  nieuwe_positie):
-    if stepper == "buiten":
+    if steppersoort == "buiten":
        # buitensteppers in actie
        kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
     else:

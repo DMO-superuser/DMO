@@ -123,6 +123,7 @@ io.pinMode(26,io.INPUT)
 import requests
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
+print ("hallo")
 print (stepper)
 
 while True: 

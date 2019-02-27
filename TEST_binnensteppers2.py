@@ -71,6 +71,11 @@ try:
     teller += 1
     StepCounter += 1
 
+    if (io.digitalRead(26)):
+      print ("open")
+    else:
+      # onder de schakelaar
+      print ("dicht")
 
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
     if (StepCounter==StepCount): StepCounter = 0

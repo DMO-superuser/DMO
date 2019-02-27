@@ -54,60 +54,10 @@ if (planeet == "DMO-Mercurius"):
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet
    
 
-if steppersoort == "buiten":   
- # spullen van de buitenstepper
- from adafruit_motorkit import MotorKit
- from adafruit_motor import stepper
- kit = MotorKit()
-else:
- #spullen van de binnenstepper
-
- # importeer de GPIO bibliotheek.
- import RPi.GPIO as GPIO
- # Importeer de time biblotheek voor tijdfuncties.
- from time import sleep
-
- # Zet de pinmode op Broadcom SOC.
- GPIO.setmode(GPIO.BCM)
- # Zet waarschuwingen uit.
- GPIO.setwarnings(False)
- # Stel de GPIO pinnen in voor de stappenmotor:
- StepPins = [4,17,27,22]
-
- # Set alle pinnen als uitgang.
- for pin in StepPins:
-   # print "Setup pins"
-   GPIO.setup(pin,GPIO.OUT)
-   GPIO.output(pin, False)
-
- # Definieer variabelen.
- StepCounter = 0
-
- # Definieer simpele volgorde
- StepCount1 = 4
- Seq1 = []
- Seq1 = list(range(0, StepCount1))
- Seq1[0] = [1,0,0,0]
- Seq1[1] = [0,1,0,0]
- Seq1[2] = [0,0,1,0]
- Seq1[3] = [0,0,0,1]
-
- # Definieer geadvanceerde volgorde (volgens de datasheet)
- StepCount2 = 8
- Seq2 = []
- Seq2 = list(range(0, StepCount2))
- Seq2[0] = [1,0,0,0]
- Seq2[1] = [1,1,0,0]
- Seq2[2] = [0,1,0,0]
- Seq2[3] = [0,1,1,0]
- Seq2[4] = [0,0,1,0]
- Seq2[5] = [0,0,1,1]
- Seq2[6] = [0,0,0,1]
- Seq2[7] = [1,0,0,1]
-
- # Welke stappenvolgorde gaan we hanteren?
- Seq = Seq1
- StepCount = StepCount1
+# spullen van de buitenstepper
+from adafruit_motorkit import MotorKit
+from adafruit_motor import stepper
+kit = MotorKit()
 
 # spullen van de reedswitch
 import os
@@ -129,26 +79,9 @@ while True:
 
  # naar het begin rijden, gebeurt elke keer bij een nieuwe positie
  while schakelaar == "open":
-  if steppersoort == "buiten":
-    # buitenstepper in actie
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-  else:
-    # binnenstepper in actie
-    while True:
-      for pin in range(0, 4):
-        xpin = StepPins[pin]
-        if Seq[StepCounter][pin]!=0:
-          # print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-          GPIO.output(xpin, True)
-        else:
-          GPIO.output(xpin, False)
-      StepCounter += 1
-      # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-      if (StepCounter==StepCount): StepCounter = 0
-      if (StepCounter<0): StepCounter = StepCount
-      # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-      sleep(.001)
-      
+  # buitenstepper in actie
+  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+
   if (io.digitalRead(26)):
       schakelaar = "open"
   else:
@@ -174,27 +107,9 @@ while True:
 
   # en naar de nieuwe positie toe rijden.
   while (teller <  nieuwe_positie):
-    if steppersoort == "buiten":
-       # buitensteppers in actie
-       kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    else:
-       # binnenstepper in actie
-       while True:
-        for pin in range(0, 4):
-          xpin = StepPins[pin]
-          if Seq[StepCounter][pin]!=0:
-            # print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-            GPIO.output(xpin, True)
-          else:
-            GPIO.output(xpin, False)
-        StepCounter += 1
-        # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-        if (StepCounter==StepCount): StepCounter = 0
-        if (StepCounter<0): StepCounter = StepCount
-        # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-        sleep(.001)         
-
-        teller += 1
+   # buitensteppers in actie
+   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+   teller += 1
   
   # telkens de string opvragen en zolang er geen nieuwe string is hier blijven
   while positiestring == positiestring_oud:

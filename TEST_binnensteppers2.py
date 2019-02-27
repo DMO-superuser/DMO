@@ -45,6 +45,9 @@ Seq2[7] = [1,0,0,1]
 Seq = Seq2
 StepCount = StepCount2
 
+teller = 1
+
+
 try:
   while True:
     for pin in list(range(0, 4)):
@@ -55,6 +58,7 @@ try:
       else:
         GPIO.output(xpin, False)
 
+    print (teller) 
     StepCounter += 1
 
 

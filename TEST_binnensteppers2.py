@@ -47,6 +47,15 @@ StepCount = StepCount2
 
 teller = 1
 
+# spullen reedswitch
+import os
+import wiringpi
+from time import sleep
+os.system('gpio export 26 in')
+sleep(0.5)
+io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
+io.pinMode(26,io.INPUT)
+
 
 try:
   while True:
@@ -59,6 +68,7 @@ try:
         GPIO.output(xpin, False)
 
     print (teller) 
+    teller += 1
     StepCounter += 1
 
 

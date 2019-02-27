@@ -12,7 +12,7 @@ StepPins = [4,17,27,22]
 
 # Set alle pinnen als uitgang.
 for pin in StepPins:
-  print "Setup pins"
+  #print "Setup pins"
   GPIO.setup(pin,GPIO.OUT)
   GPIO.output(pin, False)
 
@@ -22,7 +22,7 @@ StepCounter = 0
 # Definieer simpele volgorde
 StepCount1 = 4
 Seq1 = []
-Seq1 = range(0, StepCount1)
+Seq1 = list(range(0, StepCount1))
 Seq1[0] = [1,0,0,0]
 Seq1[1] = [0,1,0,0]
 Seq1[2] = [0,0,1,0]
@@ -31,7 +31,7 @@ Seq1[3] = [0,0,0,1]
 # Definieer geadvanceerde volgorde (volgens de datasheet)
 StepCount2 = 8
 Seq2 = []
-Seq2 = range(0, StepCount2)
+Seq2 = list(range(0, StepCount2))
 Seq2[0] = [1,0,0,0]
 Seq2[1] = [1,1,0,0]
 Seq2[2] = [0,1,0,0]
@@ -47,10 +47,10 @@ StepCount = StepCount2
 
 try:
   while True:
-    for pin in range(0, 4):
+    for pin in list(range(0, 4)):
       xpin = StepPins[pin]
       if Seq[StepCounter][pin]!=0:
-        print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
+        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
         GPIO.output(xpin, True)
       else:
         GPIO.output(xpin, False)

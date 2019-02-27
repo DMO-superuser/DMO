@@ -67,7 +67,7 @@ try:
       else:
         GPIO.output(xpin, False)
 
-    print (teller) 
+    #print (teller) 
     teller += 1
     StepCounter += 1
 

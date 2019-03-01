@@ -46,6 +46,8 @@ Seq = Seq2
 StepCount = StepCount2
 
 teller = 1
+schakelaar = "open"
+eerstekeer = True
 
 # spullen reedswitch
 import os
@@ -58,7 +60,7 @@ io.pinMode(26,io.INPUT)
 
 
 try:
-  while True:
+  while (schakelaar == "open")
     for pin in list(range(0, 4)):
       xpin = StepPins[pin]
       if Seq[StepCounter][pin]!=0:
@@ -77,6 +79,9 @@ try:
       # onder de schakelaar
       print ("dicht")
       print (teller)
+      if teller > 100:
+        teller =1 
+      
 
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
     if (StepCounter==StepCount): StepCounter = 0

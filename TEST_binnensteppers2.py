@@ -47,7 +47,7 @@ StepCount = StepCount2
 
 teller = 1
 schakelaar = "open"
-eerstekeer = True
+
 
 # spullen reedswitch
 import os

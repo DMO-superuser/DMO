@@ -79,7 +79,8 @@ try:
       # onder de schakelaar
       print ("dicht")
       print (teller)
-      schakelaar = "dicht"
+      if teller > 500:
+        schakelaar = "dicht"
 
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
     if (StepCounter==StepCount): StepCounter = 0

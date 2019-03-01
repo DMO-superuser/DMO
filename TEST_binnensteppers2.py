@@ -76,6 +76,7 @@ try:
     else:
       # onder de schakelaar
       print ("dicht")
+      print (teller)
 
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
     if (StepCounter==StepCount): StepCounter = 0

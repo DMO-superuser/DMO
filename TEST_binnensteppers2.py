@@ -60,7 +60,7 @@ io.pinMode(26,io.INPUT)
 
 
 try:
-  while (schakelaar == "open")
+  while (schakelaar == "open"):
     for pin in list(range(0, 4)):
       xpin = StepPins[pin]
       if Seq[StepCounter][pin]!=0:

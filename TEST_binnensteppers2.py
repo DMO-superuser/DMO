@@ -93,10 +93,10 @@ try:
     
     
  # hij staat nu in het dichte vlak
- schakelaar = "open"
- teller = 1
+schakelaar = "open"
+teller = 1
 
- try:
+try:
   while (schakelaar == "open"):
     for pin in list(range(0, 4)):
       xpin = StepPins[pin]

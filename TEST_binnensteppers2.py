@@ -92,7 +92,7 @@ try:
     
     
     
- # hij staat nu in het dichte vlak
+# hij staat nu in het dichte vlak
 schakelaar = "open"
 teller = 1
 

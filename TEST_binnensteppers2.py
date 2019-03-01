@@ -87,50 +87,6 @@ try:
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
-
-    
-    
-    
-    
-# hij staat nu in het dichte vlak
-schakelaar = "open"
-teller = 1
-
-try:
-  while (schakelaar == "open"):
-    for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      if Seq[StepCounter][pin]!=0:
-        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-        GPIO.output(xpin, True)
-      else:
-        GPIO.output(xpin, False)
-
-    #print (teller) 
-    teller += 1
-    StepCounter += 1
-
-    if (io.digitalRead(26)):
-      print ("open")
-    else:
-      # onder de schakelaar
-      print ("dicht")
-      print (teller)
-      if teller > 1000:
-        schakelaar = "dicht"
-        print (teller)
-
-    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-    if (StepCounter==StepCount): StepCounter = 0
-    if (StepCounter<0): StepCounter = StepCount
-
-    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
-
-    
-    
-    
-    
     
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

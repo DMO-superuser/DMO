@@ -79,7 +79,7 @@ try:
       # onder de schakelaar
       print ("dicht")
       print (teller)
-      if teller > 500:
+      if teller > 1000:
         schakelaar = "dicht"
 
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw

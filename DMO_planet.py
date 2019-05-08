@@ -112,7 +112,7 @@ while True:
   print (positiestring)
   print (positiestring[beginpos_string:eindpos_string])
   stappen_per_graad = totaal_stappen / 360
-  nieuwe_positie = (int( 360 - positiestring[beginpos_string:eindpos_string]) * int(stappen_per_graad))
+  nieuwe_positie = ( 360 - int(positiestring[beginpos_string:eindpos_string])) * int(stappen_per_graad))
   print (nieuwe_positie)
 
   # en naar de nieuwe positie toe rijden.

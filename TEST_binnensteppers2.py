@@ -104,6 +104,6 @@ print aantal_stappen_te_lopen
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten
-  GPIO.cleanup()
+  # GPIO.cleanup()
 
 

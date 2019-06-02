@@ -99,6 +99,7 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
 
+print ("aantal stappen te lopen")
 print aantal_stappen_te_lopen 
 
 except KeyboardInterrupt:

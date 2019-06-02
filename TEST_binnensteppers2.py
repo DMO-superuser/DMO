@@ -44,7 +44,6 @@ Seq2[7] = [1,0,0,1]
 # Welke stappenvolgorde gaan we hanteren?
 Seq = Seq2
 StepCount = StepCount2
-
 teller = 1
 schakelaar = "open"
 
@@ -58,15 +57,6 @@ sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
 io.pinMode(26,io.INPUT)
 
-# spullen curl
-import requests
-url = 'http://planetarium.chrisdemoor.nl/positions.txt'
-r = requests.get(url)
-positiestring = r.text
-aantal_graden_positiestring = int(positiestring[6:9])
-aantal_graden_nulpunt_aarde = 124 # begin magneet veld = 20 augustus
-aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde 
-aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
 try:
   while (schakelaar == "open"):
@@ -77,7 +67,7 @@ try:
         GPIO.output(xpin, True)
       else:
         GPIO.output(xpin, False)
-
+        
     #print (teller) 
     teller += 1
     StepCounter += 1
@@ -98,7 +88,8 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
 
-
 except KeyboardInterrupt:
   # GPIO netjes afsluiten
-  # GPIO.cleanup()
+  GPIO.cleanup()
+
+

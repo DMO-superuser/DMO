@@ -68,7 +68,6 @@ aantal_graden_nulpunt_aarde = 124 # begin magneet veld = 20 augustus
 aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde 
 aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
-
 try:
   while (schakelaar == "open"):
     for pin in list(range(0, 4)):
@@ -102,5 +101,3 @@ try:
 except KeyboardInterrupt:
   # GPIO netjes afsluiten
   # GPIO.cleanup()
-
-

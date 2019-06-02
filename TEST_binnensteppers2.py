@@ -98,7 +98,7 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
 
-print (aantal_stappen_te_lopen)
+
 except KeyboardInterrupt:
   # GPIO netjes afsluiten
   # GPIO.cleanup()

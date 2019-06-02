@@ -100,7 +100,7 @@ try:
     sleep(.001)
 
 #print ("aantal stappen te lopen")
-print aantal_stappen_te_lopen 
+#print aantal_stappen_te_lopen 
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

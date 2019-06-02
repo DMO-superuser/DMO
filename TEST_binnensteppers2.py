@@ -59,6 +59,7 @@ io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
 io.pinMode(26,io.INPUT)
 
 # spullen curl
+import requests
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 r = requests.get(url)
 positiestring = r.text

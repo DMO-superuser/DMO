@@ -104,30 +104,7 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
     
-# NU NAAR DE POSITIE LOPEN 
-teller = 1
-try:
-  while (teller < aantal_stappen_te_lopen):
-    for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      if Seq[StepCounter][pin]!=0:
-        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-        GPIO.output(xpin, True)
-      else:
-        GPIO.output(xpin, False)
-        
-    #print (teller) 
-    teller += 1
-    StepCounter += 1
 
-    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-    if (StepCounter==StepCount): StepCounter = 0
-    if (StepCounter<0): StepCounter = StepCount
-
-    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
-      
-    
     
     
 

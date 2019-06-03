@@ -69,6 +69,7 @@ aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
 print ("aantal stappen te lopen")
 print (aantal_stappen_te_lopen)
+sleep (5)
 
 try:
   while (schakelaar == "open"):

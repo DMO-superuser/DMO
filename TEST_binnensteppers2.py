@@ -76,11 +76,11 @@ while (schakelaar == "open"):
       GPIO.output(xpin, True)
     else:
       GPIO.output(xpin, False)
-        
+   
   #print (teller) 
   teller += 1  
   StepCounter += 1
-
+  
   if (io.digitalRead(26)):
     #print ("open")
   else:

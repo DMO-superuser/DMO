@@ -83,6 +83,7 @@ while (schakelaar == "open"):
   
   if (io.digitalRead(26)):
     #print ("open")
+    schakelaar = "open"
   else:
     # onder de schakelaar
     #print ("dicht")

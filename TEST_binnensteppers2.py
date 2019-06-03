@@ -44,7 +44,6 @@ Seq2[7] = [1,0,0,1]
 # Welke stappenvolgorde gaan we hanteren?
 Seq = Seq2
 StepCount = StepCount2
-teller = 1
 schakelaar = "open"
 
 
@@ -73,6 +72,8 @@ print ("aantal stappen te lopen")
 print (aantal_stappen_te_lopen)
 sleep (5)
 
+# EERST RONDJE AFMAKEN EN NAAR HET BEGIN LOPEN
+teller = 1
 try:
   while (schakelaar == "open"):
     for pin in list(range(0, 4)):
@@ -102,6 +103,33 @@ try:
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.001)
+    
+# NU NAAR DE POSITIE LOPEN 
+teller = 1
+try:
+  while (teller < aantal_stappen_te_lopen):
+    for pin in list(range(0, 4)):
+      xpin = StepPins[pin]
+      if Seq[StepCounter][pin]!=0:
+        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
+        GPIO.output(xpin, True)
+      else:
+        GPIO.output(xpin, False)
+        
+    #print (teller) 
+    teller += 1
+    StepCounter += 1
+
+    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
+    if (StepCounter==StepCount): StepCounter = 0
+    if (StepCounter<0): StepCounter = StepCount
+
+    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
+    sleep(.001)
+      
+    
+    
+    
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

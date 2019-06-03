@@ -105,8 +105,6 @@ try:
     sleep(.001)
     
 print ("hallo!")
-    
-    
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

@@ -67,6 +67,8 @@ aantal_graden_nulpunt_aarde = 124 # begin magneet veld = 20 augustus
 aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde 
 aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
+print ("aantal_graden_te_lopen")
+print (aantal_graden_te_lopen)
 print ("aantal stappen te lopen")
 print (aantal_stappen_te_lopen)
 sleep (5)

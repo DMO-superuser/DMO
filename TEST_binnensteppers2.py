@@ -62,7 +62,7 @@ url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 positiestring     = ""
 positiestring_oud = "leeg"
 
-while True:
+while (positiestring_oud != positiestring):
   r = requests.get(url)
   positiestring = r.text
 
@@ -134,7 +134,7 @@ while True:
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
       sleep(.001)
 
-    positiestring_oud = "RTYU<>"
+    positiestring_oud = positiestring
     
 print ("WE ZIJN ER!")
 print ("de positiestring")

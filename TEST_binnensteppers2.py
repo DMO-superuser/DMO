@@ -77,60 +77,65 @@ while True:
     aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring
   aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
-  # EERST RONDJE AFMAKEN EN NAAR HET BEGIN LOPEN
-  teller = 1
-  while (schakelaar == "open"):
-    for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      if Seq[StepCounter][pin]!=0:
-        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin
-        GPIO.output(xpin, True)
-      else:
-        GPIO.output(xpin, False)
-   
-    #print (teller) 
-    teller += 1  
-    StepCounter += 1
+  # als er een nieuwe positie is ingegeven op de website
+  if (positiestring != positiestring_oud):
   
-    if (io.digitalRead(26)):
-      #print ("open")
-      schakelaar = "open"
-    else:
-      # onder de schakelaar
-      #print ("dicht")
-      #print (teller)
-      if teller > 1500:
-        schakelaar = "dicht"
-
-    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-    if (StepCounter==StepCount): StepCounter = 0
-    if (StepCounter<0): StepCounter = StepCount
-
-    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.0005)
-
-  # DAARNA NAAR DE POSITIE LOPEN
-  teller = 1
-  while (teller < aantal_stappen_te_lopen):
-    for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      if Seq[StepCounter][pin]!=0:
-        #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-        GPIO.output(xpin, True)
+    # EERST RONDJE AFMAKEN EN NAAR HET BEGIN LOPEN
+    teller = 1
+    while (schakelaar == "open"):
+      for pin in list(range(0, 4)):
+        xpin = StepPins[pin]
+        if Seq[StepCounter][pin]!=0:
+          #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin
+          GPIO.output(xpin, True)
+        else:
+          GPIO.output(xpin, False)
+   
+      #print (teller) 
+      teller += 1  
+      StepCounter += 1
+  
+      if (io.digitalRead(26)):
+        #print ("open")
+        schakelaar = "open"
       else:
-        GPIO.output(xpin, False)
+        # onder de schakelaar
+        #print ("dicht")
+        #print (teller)
+        if teller > 1500:
+          schakelaar = "dicht"
+
+      # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
+      if (StepCounter==StepCount): StepCounter = 0
+      if (StepCounter<0): StepCounter = StepCount
+
+      # Wacht voor de volgende stap (lager = snellere draaisnelheid)
+      sleep(.0005)
+
+    # DAARNA NAAR DE POSITIE LOPEN
+    teller = 1
+    while (teller < aantal_stappen_te_lopen):
+      for pin in list(range(0, 4)):
+        xpin = StepPins[pin]
+        if Seq[StepCounter][pin]!=0:
+          #print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
+          GPIO.output(xpin, True)
+        else:
+          GPIO.output(xpin, False)
         
-    #print (teller) 
-    teller += 1
-    StepCounter += 1
+      #print (teller) 
+      teller += 1
+      StepCounter += 1
 
-    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-    if (StepCounter==StepCount): StepCounter = 0
-    if (StepCounter<0): StepCounter = StepCount
+      # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
+      if (StepCounter==StepCount): StepCounter = 0
+      if (StepCounter<0): StepCounter = StepCount
     
-    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.0005)
+      # Wacht voor de volgende stap (lager = snellere draaisnelheid)
+      sleep(.0005)
 
+    positiestring_oud = positiestring
+    
 print ("WE ZIJN ER!")
 print ("de positiestring")
 print (positiestring)

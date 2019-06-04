@@ -62,7 +62,7 @@ url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 positiestring     = ""
 positiestring_oud = "leeg"
 
-try:
+while True:
   r = requests.get(url)
   positiestring = r.text
 

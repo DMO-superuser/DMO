@@ -110,7 +110,7 @@ while True:
       if (StepCounter<0): StepCounter = StepCount
 
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-      sleep(.0005)
+      sleep(.001)
 
     # DAARNA NAAR DE POSITIE LOPEN
     teller = 1
@@ -132,9 +132,9 @@ while True:
       if (StepCounter<0): StepCounter = StepCount
     
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-      sleep(.0005)
+      sleep(.001)
 
-    positiestring_oud = positiestring
+#    positiestring_oud = positiestring
     
 print ("WE ZIJN ER!")
 print ("de positiestring")

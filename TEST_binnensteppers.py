@@ -22,7 +22,7 @@ StepCounter = 0
 # Definieer simpele volgorde
 StepCount1 = 4
 Seq1 = []
-Seq1 = range(0, StepCount1)
+Seq1 = list(range(0, StepCount1))
 Seq1[0] = [1,0,0,0]
 Seq1[1] = [0,1,0,0]
 Seq1[2] = [0,0,1,0]
@@ -31,7 +31,7 @@ Seq1[3] = [0,0,0,1]
 # Definieer geadvanceerde volgorde (volgens de datasheet)
 StepCount2 = 8
 Seq2 = []
-Seq2 = range(0, StepCount2)
+Seq2 = list(range(0, StepCount2))
 Seq2[0] = [1,0,0,0]
 Seq2[1] = [1,1,0,0]
 Seq2[2] = [0,1,0,0]

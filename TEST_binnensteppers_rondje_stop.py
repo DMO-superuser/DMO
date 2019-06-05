@@ -87,6 +87,8 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.0005)
 
+print (teller)
+    
 except KeyboardInterrupt:
   # GPIO netjes afsluiten
   GPIO.cleanup()

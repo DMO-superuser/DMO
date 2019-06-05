@@ -133,5 +133,6 @@ while True:
     
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
       sleep(.001)
-
+    print (positiestring)
+    print (positiestring_oud)
     positiestring_oud = positiestring

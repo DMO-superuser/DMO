@@ -128,9 +128,9 @@ while (positiestring_oud != positiestring):
    
   # EERST NAAR SCHAKELAAR RIJDEN 
   teller = 1
-  while (teller < aantal_stappen_te_lopen):
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    teller +=1
+ # while (teller < aantal_stappen_te_lopen):
+ #   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+ #   teller +=1
    
   
 

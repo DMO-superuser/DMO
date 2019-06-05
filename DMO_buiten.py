@@ -10,7 +10,8 @@ if (planeet == "DMO-Saturnus"):
 if (planeet == "DMO-Jupiter"):
    steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   begin_stappen = totaal_stappen - 3438   # aantal stappen van 20 augustus (nulpunt Aarde) naar magneet plane
+   begin_stappen = totaal_stappen - 3438   # aantal stappen van 20 augustus (nulpunt Aarde) naar magneet planeet
+   stappen_per_graad = totaal_stappen / 360
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
@@ -72,7 +73,7 @@ kit = MotorKit()
 import requests
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
-schakelaar = "@#$%^&"
+schakelaar = "open"
 teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
@@ -96,8 +97,31 @@ while (positiestring_oud != positiestring):
     teller +=1
 
   # BEREKENING AANTAL STAPPEN VANAF MAGNEET
-  aantal_graden_positiestring = 360 - int(positiestring[beginpos_string:eindpos_string])
-  print (positiestring)
-  print (aantal_graden_positiestring)
+  # procentueel verschil met de aarde 
+  aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
+  aantal_graden_aarde = 360 - int(positiestring[6:9])
+  verhouding_tot_aarde = aantal_graden_planeet / aantal_graden_aarde
+  # bepaal aantal graden dat de Aarde te lopen heeft vanaf nulpunt Aarde (20 augustus)
+  aantal_graden_positiestring = 360 - int(positiestring[6:9])
+  aantal_graden_nulpunt_aarde = 236 # begin magneet veld = 20 augustus
+  aantal_graden_tot_23_dec = 360 - aantal_graden_nulpunt_aarde
+  if (aantal_graden_positiestring > aantal_graden_nulpunt_aarde):
+    # de datum ligt voor 23 december
+    aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde   
+  else:  
+    aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring   
+  # voeg verhouding toe
+  aantal_graden_te_lopen = aantal_graden_te_lopen * verhouding_tot_aarde
+  # bereken aantal stappen
+  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) - begin_stappen
+   
+  # EERST NAAR SCHAKELAAR RIJDEN 
+  teller = 1
+  while (teller < aantal_stappen_te_lopen):
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+    teller +=1
+   
+  
+
     
 

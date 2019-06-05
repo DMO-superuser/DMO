@@ -10,9 +10,8 @@ if (planeet == "DMO-Saturnus"):
 if (planeet == "DMO-Jupiter"):
    steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   begin_stappen = totaal_stappen - 3438   # aantal stappen van 20 augustus (nulpunt Aarde) naar magneet planeet
+   planeet_magneet = 321 # begin van het magneetveld van de planeet
    stappen_per_graad = totaal_stappen / 360
-   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mars"):
@@ -91,20 +90,17 @@ while True:
       if (io.digitalRead(26)):  
         schakelaar = "open"
       else:
-        # onder de schakelaar
         if teller > 500:
           schakelaar = "dicht"
       teller +=1
 
     # BEREKENING AANTAL STAPPEN 
-    # magneet Jupiter ligt op 320 graden
-    # Jupiter 12 stappen per graad
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-    if (aantal_graden_planeet > 320):
-      aantal_graden_planeet = aantal_graden_planeet - 320
+    if (aantal_graden_planeet > planeet_magneet):
+      aantal_graden_planeet = aantal_graden_planeet - planeet_magneet
     else:
-      aantal_graden_planeet = (360 - 320) + aantal_graden_planeet
-    aantal_stappen_te_lopen =  aantal_graden_planeet * 12
+      aantal_graden_planeet = (360 - planeet_magneet) + aantal_graden_planeet
+    aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
     # NU NAAR POSITIE RIJDEN 
     teller = 1

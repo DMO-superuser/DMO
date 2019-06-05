@@ -31,6 +31,7 @@ while (schakelaar == "open"):
 
   print (teller)
   teller +=1
+  sleep (0.005)
 
     
 print (teller)

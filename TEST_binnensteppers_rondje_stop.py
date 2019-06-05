@@ -55,6 +55,7 @@ io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
 io.pinMode(26,io.INPUT)
 
 schakelaar = "open"
+teller = 1
 
 try:
   while (schakelaar == "open"):
@@ -67,7 +68,8 @@ try:
         GPIO.output(xpin, False)
 
     StepCounter += 1
-
+    teller += 1
+    
     if (io.digitalRead(26)):
       #print ("open")
       schakelaar = "open"
@@ -83,7 +85,7 @@ try:
     if (StepCounter<0): StepCounter = StepCount
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
+    sleep(.0005)
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

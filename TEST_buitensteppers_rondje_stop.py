@@ -29,6 +29,7 @@ while (schakelaar == "open"):
     if teller > 1500:
       schakelaar = "dicht"
 
+  print (teller)
   teller +=1
 
     

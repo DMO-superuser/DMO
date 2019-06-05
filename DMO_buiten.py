@@ -80,6 +80,10 @@ positiestring_oud = "leeg"
 while True:
   r = requests.get(url)
   positiestring = r.text
+  print ("Aarde " . int(positiestring[6:9]))
+  print ("Mars " . int(positiestring[9:12]))
+  print ("Jupiter " . int(positiestring[12:15]))
+  print ("Saturnus " . int(positiestring[15:18]))
 
  # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud):   

@@ -10,7 +10,7 @@ if (planeet == "DMO-Saturnus"):
 if (planeet == "DMO-Jupiter"):
    steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   begin_stappen = 144   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
+   begin_stappen = totaal_stappen - 3438   # aantal stappen van 20 augustus (nulpunt Aarde) naar magneet plane
    # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
@@ -72,7 +72,7 @@ kit = MotorKit()
 import requests
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
-schakelaar = "open"
+schakelaar = "@#$%^&"
 teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
@@ -80,7 +80,7 @@ positiestring_oud = "leeg"
 while (positiestring_oud != positiestring):
   r = requests.get(url)
   positiestring = r.text
-
+   
   # EERST NAAR SCHAKELAAR RIJDEN 
   while (schakelaar == "open"):
     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
@@ -95,6 +95,9 @@ while (positiestring_oud != positiestring):
         schakelaar = "dicht"
     teller +=1
 
-
+  # BEREKENING AANTAL STAPPEN VANAF MAGNEET
+  aantal_graden_positiestring = 360 - int(positiestring[beginpos_string:beginpos_string])
+  print (positiestring)
+  print (aantal_graden_positiestring)
     
-print (teller)
+

@@ -97,7 +97,7 @@ while (positiestring_oud != positiestring):
     teller +=1
 
   # BEREKENING AANTAL STAPPEN VANAF MAGNEET
-  # procentueel verschil met de aarde 
+  # relatieve positie van de planeet tot de aarde 
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
   aantal_graden_aarde = 360 - int(positiestring[6:9])
   verhouding_tot_aarde = aantal_graden_planeet / aantal_graden_aarde
@@ -119,7 +119,7 @@ while (positiestring_oud != positiestring):
   # voeg verhouding toe
   aantal_graden_te_lopen = aantal_graden_te_lopen * verhouding_tot_aarde
   # bereken aantal stappen
-  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) - begin_stappen
+  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) 
 
   print ("aantal graden Jupiter")
   print (aantal_graden_planeet)

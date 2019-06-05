@@ -78,45 +78,43 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
 
-while (positiestring_oud != positiestring):
+while True:
   r = requests.get(url)
   positiestring = r.text
-   
-  # EERST NAAR SCHAKELAAR RIJDEN 
-  while (schakelaar == "open"):
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    if (io.digitalRead(26)):
-      #print ("open")
-      schakelaar = "open"
-    else:
-      # onder de schakelaar
-      #print ("dicht")
-      #print (teller)
-      if teller > 500:
-        schakelaar = "dicht"
-    teller +=1
 
-  # BEREKENING AANTAL STAPPEN 
-  # magneet Jupiter ligt op 320 graden
-  # Jupiter 12 stappen per graad
-  aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-  print (aantal_graden_planeet) 
-  if (aantal_graden_planeet > 320):
-    aantal_graden_planeet = aantal_graden_planeet - 320
-  else:
-    aantal_graden_planeet = (360 - 320) + aantal_graden_planeet
-  print (aantal_graden_planeet) 
-  aantal_stappen_te_lopen =  aantal_graden_planeet * 12
-  print (aantal_stappen_te_lopen) 
-  # NU NAAR POSITIE RIJDEN 
-  teller = 1
-  while (teller < aantal_stappen_te_lopen):
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    teller +=1
+ # als er een nieuwe positie is ingegeven op de website
+  if (positiestring != positiestring_oud):   
+      
+    # EERST NAAR SCHAKELAAR RIJDEN 
+    while (schakelaar == "open"):
+      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      if (io.digitalRead(26)):  
+        schakelaar = "open"
+      else:
+        # onder de schakelaar
+        if teller > 500:
+          schakelaar = "dicht"
+      teller +=1
+
+    # BEREKENING AANTAL STAPPEN 
+    # magneet Jupiter ligt op 320 graden
+    # Jupiter 12 stappen per graad
+    aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
+    if (aantal_graden_planeet > 320):
+      aantal_graden_planeet = aantal_graden_planeet - 320
+    else:
+      aantal_graden_planeet = (360 - 320) + aantal_graden_planeet
+    aantal_stappen_te_lopen =  aantal_graden_planeet * 12
+
+    # NU NAAR POSITIE RIJDEN 
+    teller = 1
+    while (teller < aantal_stappen_te_lopen):
+      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      teller +=1
    
-  positiestring_oud = positiestring
-  schakelaar = "open"
-  teller =1
+    positiestring_oud = positiestring
+    schakelaar = "open"
+    teller = 1
 
     
 

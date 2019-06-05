@@ -92,45 +92,22 @@ while (positiestring_oud != positiestring):
       # onder de schakelaar
       #print ("dicht")
       #print (teller)
-      if teller > 1500:
+      if teller > 500:
         schakelaar = "dicht"
     teller +=1
 
-  # BEREKENING AANTAL STAPPEN VANAF MAGNEET
-  # relatieve positie van de planeet tot de aarde 
+  # BEREKENING AANTAL STAPPEN 
+  # magneet Jupiter ligt op 201 graden
+  # Jupiter 12 stappen per graad
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-  aantal_graden_aarde = 360 - int(positiestring[6:9])
-  verhouding_tot_aarde = aantal_graden_planeet / aantal_graden_aarde
-
-  print (positiestring)
-  print ("verhouding tot aarde")
-  print (verhouding_tot_aarde)   
    
-
-  # bepaal aantal graden dat de Aarde te lopen heeft vanaf nulpunt Aarde (20 augustus)
-  aantal_graden_positiestring = 360 - int(positiestring[6:9])
-  aantal_graden_nulpunt_aarde = 236 # begin magneet veld = 20 augustus
-  aantal_graden_tot_23_dec = 360 - aantal_graden_nulpunt_aarde
-  if (aantal_graden_positiestring > aantal_graden_nulpunt_aarde):
-    # de datum ligt voor 23 december
-    aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde   
-  else:  
-    aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring   
-  # voeg verhouding toe
-  aantal_graden_te_lopen = aantal_graden_te_lopen * verhouding_tot_aarde
-  # bereken aantal stappen
-  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) 
-
-  print ("aantal graden Jupiter")
-  print (aantal_graden_planeet)
-  print ("aantal graden Aarde")
-  print (aantal_graden_aarde)   
-  print ("aantal graden te lopen")
-  print (aantal_graden_te_lopen)
-  print ("aantal stappen te lopen")
-  print (aantal_stappen_te_lopen)
-   
-   
+  if (aantal_graden_planeet > 201):
+    aantal_graden_planeet = aantal_graden_planeet - 201
+  else:
+    aantal_graden_planeet = (360 - 201) + aantal_graden_planeet
+  
+  aantal_stappen_te_lopen =  aantal_graden_planeet * 12
+ 
   # NU NAAR POSITIE RIJDEN 
   teller = 1
   while (teller < aantal_stappen_te_lopen):

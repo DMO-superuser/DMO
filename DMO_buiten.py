@@ -100,14 +100,14 @@ while (positiestring_oud != positiestring):
   # magneet Jupiter ligt op 201 graden
   # Jupiter 12 stappen per graad
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-   
+  print (aantal_graden_planeet) 
   if (aantal_graden_planeet > 201):
     aantal_graden_planeet = aantal_graden_planeet - 201
   else:
     aantal_graden_planeet = (360 - 201) + aantal_graden_planeet
-  
+  print (aantal_graden_planeet) 
   aantal_stappen_te_lopen =  aantal_graden_planeet * 12
- 
+  print (aantal_stappen_te_lopen) 
   # NU NAAR POSITIE RIJDEN 
   teller = 1
   while (teller < aantal_stappen_te_lopen):

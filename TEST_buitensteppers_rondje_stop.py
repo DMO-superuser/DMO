@@ -30,5 +30,6 @@ while (schakelaar == "open"):
       schakelaar = "dicht"
 
     teller +=1
+    print (teller)
     
 print (teller)

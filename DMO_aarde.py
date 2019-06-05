@@ -111,7 +111,7 @@ while True:
 
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
       sleep(.001)
-
+    
     # DAARNA NAAR DE POSITIE LOPEN
     teller = 1
     while (teller < aantal_stappen_te_lopen):
@@ -134,7 +134,8 @@ while True:
       # Wacht voor de volgende stap (lager = snellere draaisnelheid)
       sleep(.001)
   
-      positiestring_oud = positiestring
-  
+    positiestring_oud = positiestring
+    schakelaar = "open"
+    teller = 1
 
  

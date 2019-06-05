@@ -93,9 +93,7 @@ while (positiestring_oud != positiestring):
       #print (teller)
       if teller > 1500:
         schakelaar = "dicht"
-
-
-  teller +=1
+    teller +=1
 
 
     

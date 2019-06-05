@@ -19,4 +19,7 @@ while True:
  if (positiestring_oud != positiestring):
   positiestring_oud = positiestring
   print (positiestring)
-  print (positiestring[0:3])
+  print ("Aarde " + positiestring[6:9])
+  print ("Mars " +  positiestring[9:12])
+  print ("Jupiter " + positiestring[12:15])
+  print ("Saturnus " + positiestring[15:18])

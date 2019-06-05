@@ -3,8 +3,8 @@ planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
    steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   begin_stappen = 154   # het magneetje ligt op een willekeurige plek in het planetarium, dat is niet noodzakelijkerwijs het begin van de graden-berekening
-   # Mercurius 0 en 3, Venus 3 en 6, Aarde 6 en 9, Mars 9 en 12, Jupiter 12 en 15, Saturnus 15 en 18
+   planeet_magneet = 346 # begin van het magneetveld van de planeet
+   stappen_per_graad = totaal_stappen / 360
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Jupiter"):

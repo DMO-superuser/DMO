@@ -132,7 +132,7 @@ while (positiestring_oud != positiestring):
     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
     teller +=1
    
-  
+  positiestring_oud = positiestring
 
     
 

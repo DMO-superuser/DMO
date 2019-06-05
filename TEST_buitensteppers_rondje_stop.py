@@ -26,12 +26,12 @@ while (schakelaar == "open"):
     # onder de schakelaar
     #print ("dicht")
     #print (teller)
-    if teller > 1500:
+    if teller > 100:
       schakelaar = "dicht"
 
   print (teller)
   teller +=1
-  sleep (0.01)
+  sleep (0.001)
 
     
 print (teller)

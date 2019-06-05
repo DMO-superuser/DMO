@@ -101,6 +101,11 @@ while (positiestring_oud != positiestring):
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
   aantal_graden_aarde = 360 - int(positiestring[6:9])
   verhouding_tot_aarde = aantal_graden_planeet / aantal_graden_aarde
+
+  print (positiestring)
+  print ("verhouding tot aarde")
+  print (verhouding_tot_aarde)   
+
   # bepaal aantal graden dat de Aarde te lopen heeft vanaf nulpunt Aarde (20 augustus)
   aantal_graden_positiestring = 360 - int(positiestring[6:9])
   aantal_graden_nulpunt_aarde = 236 # begin magneet veld = 20 augustus
@@ -114,6 +119,12 @@ while (positiestring_oud != positiestring):
   aantal_graden_te_lopen = aantal_graden_te_lopen * verhouding_tot_aarde
   # bereken aantal stappen
   aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) - begin_stappen
+
+  print ("aantal graden te lopen")
+  print (aantal_graden_te_lopen)
+  print ("aantal stappen te lopen")
+  print (aantal_stappen_te_lopen)
+   
    
   # EERST NAAR SCHAKELAAR RIJDEN 
   teller = 1

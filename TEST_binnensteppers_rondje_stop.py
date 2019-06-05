@@ -87,7 +87,7 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.0005)
 
-print (teller)
+  print (teller)
     
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

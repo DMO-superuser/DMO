@@ -97,14 +97,14 @@ while (positiestring_oud != positiestring):
     teller +=1
 
   # BEREKENING AANTAL STAPPEN 
-  # magneet Jupiter ligt op 201 graden
+  # magneet Jupiter ligt op 320 graden
   # Jupiter 12 stappen per graad
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
   print (aantal_graden_planeet) 
-  if (aantal_graden_planeet > 201):
-    aantal_graden_planeet = aantal_graden_planeet - 201
+  if (aantal_graden_planeet > 320):
+    aantal_graden_planeet = aantal_graden_planeet - 320
   else:
-    aantal_graden_planeet = (360 - 201) + aantal_graden_planeet
+    aantal_graden_planeet = (360 - 320) + aantal_graden_planeet
   print (aantal_graden_planeet) 
   aantal_stappen_te_lopen =  aantal_graden_planeet * 12
   print (aantal_stappen_te_lopen) 
@@ -115,6 +115,8 @@ while (positiestring_oud != positiestring):
     teller +=1
    
   positiestring_oud = positiestring
+  schakelaar = "open"
+  teller =1
 
     
 

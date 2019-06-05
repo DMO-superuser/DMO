@@ -96,7 +96,7 @@ while (positiestring_oud != positiestring):
     teller +=1
 
   # BEREKENING AANTAL STAPPEN VANAF MAGNEET
-  aantal_graden_positiestring = 360 - int(positiestring[beginpos_string:beginpos_string])
+  aantal_graden_positiestring = 360 - int(positiestring[beginpos_string:eindpos_string])
   print (positiestring)
   print (aantal_graden_positiestring)
     

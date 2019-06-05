@@ -105,6 +105,7 @@ while (positiestring_oud != positiestring):
   print (positiestring)
   print ("verhouding tot aarde")
   print (verhouding_tot_aarde)   
+   
 
   # bepaal aantal graden dat de Aarde te lopen heeft vanaf nulpunt Aarde (20 augustus)
   aantal_graden_positiestring = 360 - int(positiestring[6:9])
@@ -120,6 +121,10 @@ while (positiestring_oud != positiestring):
   # bereken aantal stappen
   aantal_stappen_te_lopen = int(aantal_graden_te_lopen * stappen_per_graad) - begin_stappen
 
+  print ("aantal graden Jupiter")
+  print (aantal_graden_planeet)
+  print ("aantal graden Aarde")
+  print (aantal_graden_aarde)   
   print ("aantal graden te lopen")
   print (aantal_graden_te_lopen)
   print ("aantal stappen te lopen")

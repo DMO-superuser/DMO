@@ -54,13 +54,7 @@ if (planeet == "DMO-Aarde"):
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet      
 
 # spullen reedswitch
-import os
-import wiringpi
-from time import sleep
-os.system('gpio export 26 in')
-sleep(0.5)
-io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
-io.pinMode(26,io.INPUT)
+
 
 # spullen Adafruit
 from adafruit_motorkit import MotorKit
@@ -81,6 +75,6 @@ positiestring_oud = "leeg"
 kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 
 # motoren loslaten
-stepper1.release()
+kit.stepper1.release()
    
    

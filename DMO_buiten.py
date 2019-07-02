@@ -118,7 +118,7 @@ while True:
     sleep (5)
    
     # motoren loslaten
-    # release()
+    release()
    
     positiestring_oud = positiestring
     schakelaar = "open"

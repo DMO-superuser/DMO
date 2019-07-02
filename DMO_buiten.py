@@ -117,6 +117,9 @@ while True:
     # 5 seconden wachten omdat anders de CURL de boel verstopt
     sleep (5)
    
+    # motoren loslaten
+    release()
+   
     positiestring_oud = positiestring
     schakelaar = "open"
     teller = 1

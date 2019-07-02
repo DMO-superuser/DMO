@@ -118,7 +118,7 @@ while True:
     sleep (5)
    
     # motoren loslaten
-    stepper1.release()
+    stepper1.release(stepper1)
    
     positiestring_oud = positiestring
     schakelaar = "open"

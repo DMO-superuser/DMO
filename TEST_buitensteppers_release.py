@@ -81,6 +81,6 @@ positiestring_oud = "leeg"
 kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 
 # motoren loslaten
-kit.stepper1.release()
+kit.stepper.release()
    
    

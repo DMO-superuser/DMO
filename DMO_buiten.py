@@ -118,7 +118,7 @@ while True:
     sleep (5)
    
     # motoren loslaten
-    kit.stepper.release()
+    kit.stepper1.release()
    
     positiestring_oud = positiestring
     schakelaar = "open"

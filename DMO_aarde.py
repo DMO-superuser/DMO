@@ -138,5 +138,6 @@ while True:
     positiestring_oud = positiestring
     schakelaar = "open"
     teller = 1
+    GPIO.cleanup()
 
  

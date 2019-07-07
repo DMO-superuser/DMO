@@ -1,5 +1,3 @@
-!/bin/python
- 
 # importeer de GPIO bibliotheek.
 import RPi.GPIO as GPIO
 # Importeer de time biblotheek voor tijdfuncties.

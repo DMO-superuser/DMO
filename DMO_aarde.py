@@ -79,8 +79,13 @@ while True:
     aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring
   aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 57.34)
 
-  print ("positiestring " + positiestring)
-  print ("aantal graden te lopen " + aantal_graden_te_lopen)
+  print ("aantal graden te lopen " + str(aantal_graden_te_lopen))
+  print ("Aarde " + positiestring[6:9])
+  print ("positiestring     " + positiestring)
+  print ("positiestring_oud " + positiestring_oud)
+  
+  
+  
   
   # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud):

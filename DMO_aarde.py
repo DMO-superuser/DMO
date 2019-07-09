@@ -77,7 +77,7 @@ while True:
     aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde   
   else:  
     aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring
-  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 51,9)
+  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 51.9)
 
   print ("aantal graden te lopen " + str(aantal_graden_te_lopen))
   print ("Aarde " + positiestring[6:9])

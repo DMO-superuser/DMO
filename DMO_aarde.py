@@ -82,6 +82,7 @@ while True:
   print ("aantal graden in positiestring " + str(aantal_graden_positiestring))
   print ("aantal graden te lopen vanaf nulpunt" + str(aantal_graden_te_lopen))
   print ("aantal stappen te lopen vanaf nulpunt" + str(aantal_stappen_te_lopen))
+  print ("aantal graden te lopen tot nulpunt" + str(aantal_graden_tot_23_dec))
   print ("----")
   print ("Aarde in positiestring" + positiestring[6:9])
   print ("positiestring     " + positiestring)

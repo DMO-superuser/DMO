@@ -70,7 +70,7 @@ while True:
   aantal_graden_positiestring = 360 - int(positiestring[6:9])
   #aantal_graden_nulpunt_aarde = 236 # begin magneet veld = 20 augustus
   #aantal_graden_nulpunt_aarde = 336 # begin magneet veld = 28 november
-  aantal_graden_nulpunt_aarde = 360 - 10 # begin magneet veld = 11 december
+  aantal_graden_nulpunt_aarde = 360 - 353 # begin magneet veld = 27 december
   aantal_graden_tot_23_dec = 360 - aantal_graden_nulpunt_aarde
   if (aantal_graden_positiestring > aantal_graden_nulpunt_aarde):
     # de datum ligt voor 23 december

@@ -88,7 +88,7 @@ while True:
   # bepalen aantal stappen
   # BEREKENING AANTAL STAPPEN 
   aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-  if (aantal_graden_planeet > planeet_magneet)
+  if (aantal_graden_planeet > planeet_magneet):
    aantal_graden_planeet = aantal_graden_planeet - planeet_magneet
   else:
    aantal_graden_planeet = (360 - planeet_magneet) + aantal_graden_planeet

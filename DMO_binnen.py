@@ -1,3 +1,22 @@
+import socket
+planeet = socket.gethostname()
+if (planeet == "DMO-Venus"):
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 20854 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   planeet_magneet = 346 # begin van het magneetveld van de planeet
+   stappen_per_graad = totaal_stappen / 360
+   beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 6 # de eindpositie in de string bij de Curl van deze planeet
+if (planeet == "DMO-Mercurius"):
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
+   totaal_stappen = 1 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   planeet_magneet = 1 # begin van het magneetveld van de planeet
+   stappen_per_graad = totaal_stappen / 360
+   beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet
+
+
+
 # importeer de GPIO bibliotheek.
 import RPi.GPIO as GPIO
 # Importeer de time biblotheek voor tijdfuncties.
@@ -68,8 +87,6 @@ while True:
 
   # bepalen aantal stappen
   aantal_graden_positiestring = 360 - int(positiestring[6:9])
-  #aantal_graden_nulpunt_aarde = 236 # begin magneet veld = 20 augustus
-  #aantal_graden_nulpunt_aarde = 336 # begin magneet veld = 28 november
   aantal_graden_nulpunt_aarde = 360 - 6 # begin magneet veld = 15 december
   aantal_graden_tot_23_dec = 360 - aantal_graden_nulpunt_aarde
   if (aantal_graden_positiestring > aantal_graden_nulpunt_aarde):

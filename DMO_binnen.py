@@ -96,7 +96,6 @@ while True:
   aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
   print ("++++++++++++++++++")
-  print ("aantal graden te lopen vanaf nulpunt" + str(aantal_graden_te_lopen))
   print ("aantal stappen te lopen vanaf nulpunt" + str(aantal_stappen_te_lopen))
   print ("----")
   print ("Venus in positiestring" + positiestring[3:6])

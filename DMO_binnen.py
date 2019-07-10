@@ -9,8 +9,8 @@ if (planeet == "DMO-Venus"):
    eindpos_string  = 6 # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mercurius"):
    steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
-   totaal_stappen = 1 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   planeet_magneet = 1 # begin van het magneetveld van de planeet
+   totaal_stappen = 4099 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   planeet_magneet = 292 # begin van het magneetveld van de planeet
    stappen_per_graad = totaal_stappen / 360
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet

@@ -3,7 +3,7 @@ planeet = socket.gethostname()
 if (planeet == "DMO-Venus"):
    steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 20854 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   planeet_magneet = 346 # begin van het magneetveld van de planeet
+   planeet_magneet = 213 # begin van het magneetveld van de planeet
    stappen_per_graad = totaal_stappen / 360
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6 # de eindpositie in de string bij de Curl van deze planeet
@@ -86,15 +86,14 @@ while True:
   positiestring = r.text
 
   # bepalen aantal stappen
-  aantal_graden_positiestring = 360 - int(positiestring[6:9])
-  aantal_graden_nulpunt_aarde = 360 - 6 # begin magneet veld = 15 december
-  aantal_graden_tot_23_dec = 360 - aantal_graden_nulpunt_aarde
-  if (aantal_graden_positiestring > aantal_graden_nulpunt_aarde):
-    # de datum ligt voor 23 december
-    aantal_graden_te_lopen = aantal_graden_positiestring - aantal_graden_nulpunt_aarde   
-  else:  
-    aantal_graden_te_lopen = aantal_graden_tot_23_dec + aantal_graden_positiestring
-  aantal_stappen_te_lopen = int(aantal_graden_te_lopen * 51.9)
+  # BEREKENING AANTAL STAPPEN 
+  aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
+  if (aantal_graden_planeet > planeet_magneet)
+   aantal_graden_planeet = aantal_graden_planeet - planeet_magneet
+  else:
+   aantal_graden_planeet = (360 - planeet_magneet) + aantal_graden_planeet
+ 
+  aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
   print ("++++++++++++++++++")
   print ("aantal graden in positiestring " + str(aantal_graden_positiestring))

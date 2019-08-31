@@ -1,7 +1,12 @@
 import socket
 planeet = socket.gethostname()
+if (planeet == "DMO-Mercurius"):
+   wachttijd = .001   # wachttijd per stap Venus
 if (planeet == "DMO-Venus"):
-   wachttijd = .0005   # er bestaan binnen- en buitensteppers 
+   wachttijd = .0005   # wachttijd per stap planeet
+if (planeet == "DMO-Aarde"):
+   wachttijd = .0008   # wachttijd per stap planeet
+   
 
 
 

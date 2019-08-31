@@ -5,7 +5,7 @@ if (planeet == "DMO-Mercurius"):
 if (planeet == "DMO-Venus"):
    wachttijd = .0005   # wachttijd per stap planeet
 if (planeet == "DMO-Aarde"):
-   wachttijd = .0008   # wachttijd per stap planeet
+   wachttijd = .001   # wachttijd per stap planeet
    
 
 

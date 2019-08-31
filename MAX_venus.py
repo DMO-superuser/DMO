@@ -1,3 +1,10 @@
+import socket
+planeet = socket.gethostname()
+if (planeet == "DMO-Venus"):
+   wachttijd = .0005   # er bestaan binnen- en buitensteppers 
+
+
+
 # importeer de GPIO bibliotheek.
 import RPi.GPIO as GPIO
 # Importeer de time biblotheek voor tijdfuncties.
@@ -63,7 +70,7 @@ try:
     if (StepCounter<0): StepCounter = StepCount
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.0005)
+    sleep(wachttijd)
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

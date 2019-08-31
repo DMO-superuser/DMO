@@ -12,7 +12,7 @@ StepPins = [4,17,27,22]
 
 # Set alle pinnen als uitgang.
 for pin in StepPins:
-  print ("Setup pins")
+  # print ("Setup pins")
   GPIO.setup(pin,GPIO.OUT)
   GPIO.output(pin, False)
 
@@ -50,7 +50,7 @@ try:
     for pin in range(0, 4):
       xpin = StepPins[pin]
       if Seq[StepCounter][pin]!=0:
-        print ("Stap: %i GPIO Actief: %i" %(StepCounter,xpin))
+        # print ("Stap: %i GPIO Actief: %i" %(StepCounter,xpin))
         GPIO.output(xpin, True)
       else:
         GPIO.output(xpin, False)
@@ -63,7 +63,7 @@ try:
     if (StepCounter<0): StepCounter = StepCount
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
+    # sleep(.001)
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

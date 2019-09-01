@@ -1,7 +1,7 @@
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Mars"):
-   wachttijd = 0.05   # wachttijd per stap 
+   wachttijd = 0.005   # wachttijd per stap 
 if (planeet == "DMO-Jupiter"):
    wachttijd = 0.05   # wachttijd per stap 
 if (planeet == "DMO-Saturnus"):

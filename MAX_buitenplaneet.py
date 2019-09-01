@@ -1,11 +1,11 @@
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Mars"):
-   wachttijd = 0.0001   # wachttijd per stap 
+   wachttijd = 0.05   # wachttijd per stap 
 if (planeet == "DMO-Jupiter"):
    wachttijd = 0.05   # wachttijd per stap 
 if (planeet == "DMO-Saturnus"):
-   wachttijd = 0.001   # wachttijd per stap 
+   wachttijd = 0.1   # wachttijd per stap 
 
 
 """Simple test for using adafruit_motorkit with a stepper motor"""

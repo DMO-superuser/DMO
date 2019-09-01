@@ -18,3 +18,4 @@ kit = MotorKit()
 while True:
   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
   sleep (wachttijd)
+  print ("hallo")

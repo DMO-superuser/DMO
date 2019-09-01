@@ -7,4 +7,4 @@ kit = MotorKit()
 
 while True:
   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-  sleep (0.05)
+  sleep (0.005)

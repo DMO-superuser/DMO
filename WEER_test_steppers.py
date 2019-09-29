@@ -4,7 +4,7 @@
 
 from adafruit_motorkit import MotorKit
 
-kit = MotorKit(address=0x60)
+kit = MotorKit(addr=0x60)
 
 for i in range(100):
     kit.stepper1.onestep()

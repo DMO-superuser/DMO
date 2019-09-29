@@ -3,7 +3,7 @@ from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 from time import sleep
 
-kit = MotorKit("addr=1x61")
+kit = MotorKit(1x61)
 
 while True:
   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)

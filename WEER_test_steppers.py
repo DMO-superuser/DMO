@@ -3,8 +3,8 @@ from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 from time import sleep
 
-kit1 = MotorKit(address=0x62)
+kit = MotorKit(address=0x60)
 
-while True:
-  kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-  sleep (wachttijd)
+#while True:
+#  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+#  sleep (wachttijd)

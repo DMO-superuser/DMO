@@ -11,3 +11,6 @@ kit2 = MotorKit(address=0x61)
 while True:
   kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
   kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  

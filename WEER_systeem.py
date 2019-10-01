@@ -19,7 +19,7 @@ apache_indexfile = "/var/www/html/index.html"
 log_regel = open(apache_indexfile, "w")
 
 
-while 
+while True:
 
   ########################
   # BINNENTEMPERATUUR B0M1
@@ -40,7 +40,6 @@ while
   temp = float(sensor[1].split()[-1].strip('t='))
   temp_C = (temp/1000.000)
   temp_C = round(temp_C,1)
-
-log_regel.write("<p> Dit is de eerste regel </p>")
-log_regel.write(temp_C)
+  log_regel.write("<p> Dit is de eerste regel </p>")
+  log_regel.write(temp_C)
 

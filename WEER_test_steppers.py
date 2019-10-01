@@ -9,5 +9,5 @@ kit1 = MotorKit()
 #kit2 = MotorKit(address=0x61)
 
 while True:
-  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
   sleep (wachttijd)

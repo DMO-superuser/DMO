@@ -18,6 +18,8 @@ kit3 = MotorKit(address=0x62)
 apache_indexfile = "/var/www/html/index.html"
 log_regel = open(apache_indexfile, "w")
 
+# binnentemperatuur meter
+import glob
 
 while True:
 

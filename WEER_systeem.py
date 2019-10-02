@@ -32,7 +32,7 @@ while True:
   # stepper: 512 stappen in het rond
     temperature = sensor.get_temperature()
     #print("The temperature is %s celsius" % temperature)
-    log_regel.write("<p> De binnentemperatuur is ",temperature," </p>")
+    log_regel.write("<p> De binnentemperatuur is "+ temperature + " </p>")
 
     
     

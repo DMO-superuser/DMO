@@ -42,7 +42,7 @@ while True:
     log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     binnen_temp = int(binnen_temp)
     if (binnen_temp != binnen_temp_oud):
-       verschil = binnen_temp - binnentemp_oud 
+       verschil = binnen_temp - binnen_temp_oud 
        if (verschil > 0):
           #het is warmer
           for x in range(0, 9): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 

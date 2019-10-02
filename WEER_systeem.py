@@ -24,16 +24,16 @@ from w1thermsensor import W1ThermSensor
 sensor = W1ThermSensor()
 
 
-
+while True:
   ########################
   # BINNENTEMPERATUUR B0M1
   ########################
-
-
-while True:
+  # schaal -10 tot 50 graden
+  # stepper: 512 stappen in het rond
     temperature = sensor.get_temperature()
-    print("The temperature is %s celsius" % temperature)
-    time.sleep(1)
-  #log_regel.write("<p> Dit is de eerste regel </p>")
-  #log_regel.write(temp_C)
+    #print("The temperature is %s celsius" % temperature)
+    log_regel.write("<p> De binnentemperatuur is ",temperature," </p>")
 
+    
+    
+    time.sleep(1)

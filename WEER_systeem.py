@@ -58,9 +58,9 @@ while True:
   # RODE KNOP = GPIO 22 
     if GPIO.input(22):
       # Schakelaar is AAN.
-      print "Schakelaar AAN, GPIO status:", GPIO.input(22)
+      print ("Schakelaar AAN, GPIO status:")
     else:
       # Schakelaar is UIT.
-      print "Schakelaar UIT, GPIO status:", GPIO.input(22)
+      print ("Schakelaar UIT, GPIO status:")
  
     

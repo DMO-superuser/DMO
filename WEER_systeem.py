@@ -51,7 +51,7 @@ for sensor in range(len(sensorids)):
   # De temperatuurwaarde moeten we delen door 1000 voor de juiste waarde.
   temp[sensor] = temperature / 1000
   # print de gegevens naar de console.
-  print "sensor", sensor, "=", temp[sensor], "graden."
+  print ("sensor", sensor, "=", temp[sensor], "graden.")
   #log_regel.write("<p> Dit is de eerste regel </p>")
   #log_regel.write(temp_C)
 

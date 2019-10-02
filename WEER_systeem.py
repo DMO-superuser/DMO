@@ -26,14 +26,17 @@ sensor = W1ThermSensor()
 
 while True:
   ########################
+  # CONFIG FILE INLEZEN
+  ########################
+  
+  ########################
   # BINNENTEMPERATUUR B0M1
   ########################
   # schaal -10 tot 50 graden
   # stepper: 512 stappen in het rond
-    temperature = sensor.get_temperature()
-    #print("The temperature is %s celsius" % temperature)
-    log_regel.write("<p> De binnentemperatuur is " + str(temperature) + " </p>")
-
+    binnen_temp = sensor.get_temperature()
+    log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+    binnen_temp = int(binnen_temp)
     
     
     time.sleep(1)

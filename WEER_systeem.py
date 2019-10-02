@@ -16,7 +16,7 @@ kit3 = MotorKit(address=0x62)
 
 # Apache index.html op http://192.168.178.94/
 apache_indexfile = "/var/www/html/index.html"
-log_regel = open(apache_indexfile, "w")
+log_regel = open(apache_indexfile, "a+")
 
 # binnentemperatuur meter
 import time

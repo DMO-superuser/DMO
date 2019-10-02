@@ -39,7 +39,8 @@ while True:
   # voorlopig 10 stappen per graad
 
     binnen_temp = sensor.get_temperature()
-    log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+    #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+    print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     binnen_temp = int(binnen_temp)
     if (binnen_temp != binnen_temp_oud):
        verschil = binnen_temp - binnen_temp_oud 

@@ -22,21 +22,32 @@ log_regel = open(apache_indexfile, "a+")
 import time
 from w1thermsensor import W1ThermSensor
 sensor = W1ThermSensor()
+binnen_temp = 0
+binnen_temp_oud = 0
 
 
 while True:
   ########################
   # CONFIG FILE INLEZEN
   ########################
+  # stepper = 512 stappen rond
   
   ########################
   # BINNENTEMPERATUUR B0M1
   ########################
   # schaal -10 tot 50 graden
-  # stepper: 512 stappen in het rond
+  # voorlopig 10 stappen per graad
+
     binnen_temp = sensor.get_temperature()
     log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     binnen_temp = int(binnen_temp)
-    
-    
+    if (binnen_temp != binnen_temp_oud):
+       verschil = binnen_temp - binnentemp_oud 
+       if (verschil > 0):
+          #het is warmer
+          for x in range(0, 9): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+       else: 
+          #het is kouder
+          for x in range(0, 9): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+    binnen_temp_oud = binnen_temp
     time.sleep(1)

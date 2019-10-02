@@ -41,14 +41,13 @@ while True:
     binnen_temp = sensor.get_temperature()
     #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-    binnen_temp = int(binnen_temp)
     if (binnen_temp != binnen_temp_oud):
        verschil = binnen_temp - binnen_temp_oud 
        if (verschil > 0):
           #het is warmer
-          for x in range(0, 9): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+          for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
        else: 
           #het is kouder
-          for x in range(0, 9): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+          for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
     binnen_temp_oud = binnen_temp
-    time.sleep(1)
+    

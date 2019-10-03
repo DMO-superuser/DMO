@@ -1,3 +1,11 @@
+import time
+import atexit
+import threading
+import random
+import glob
+import os
+ 
+ 
  ########################
   # BINNENTEMPERATUUR B0M1
   ########################

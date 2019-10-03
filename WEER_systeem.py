@@ -39,7 +39,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
 
-    binnen_temp = round(sensor.get_temperature(),2)
+    binnen_temp = sensor.get_temperature()
     #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
     if (binnen_temp != binnen_temp_oud):

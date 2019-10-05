@@ -64,73 +64,73 @@ while True:
   #############################
   # RESETTEN van meters
   #############################
-    if GPIO.input(22):
+  if GPIO.input(22):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, rood")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, rood")
 
-    if GPIO.input(20):
+  if GPIO.input(20):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset1")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset1")
  
-    if GPIO.input(16):
+  if GPIO.input(16):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset2")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset2")
       
-     if GPIO.input(16):
+  if GPIO.input(16):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset2")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset2")
       
-    if GPIO.input(12):
+  if GPIO.input(12):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset3")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset3")
  
-    if GPIO.input(7):
+  if GPIO.input(7):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset4")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset4")
  
-    if GPIO.input(8):
+  if GPIO.input(8):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset5")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset5")
  
-    if GPIO.input(25):
+  if GPIO.input(25):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset6")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset6")
  
-    if GPIO.input(11):
+  if GPIO.input(11):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset7")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset7")
  
-    if GPIO.input(5):
+  if GPIO.input(5):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset8")
-    else:
+  else:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset8")
  

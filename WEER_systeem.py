@@ -20,11 +20,11 @@ apache_indexfile = "/var/www/html/index.html"
 log_regel = open(apache_indexfile, "a+")
 
 # binnentemperatuur meter
-import time
-from w1thermsensor import W1ThermSensor
-sensor = W1ThermSensor()
-binnen_temp = 0
-binnen_temp_oud = 0
+#import time
+#from w1thermsensor import W1ThermSensor
+#sensor = W1ThermSensor()
+#binnen_temp = 0
+#binnen_temp_oud = 0
 
 
 while True:

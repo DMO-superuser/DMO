@@ -36,6 +36,8 @@ sensor = W1ThermSensor()
 binnen_temp = 0
 binnen_temp_oud = 0
 
+# luchtdruk meten
+from Adafruit_BMP085 import BMP085
 
 while True:
 
@@ -61,7 +63,21 @@ while True:
         #het is kouder
         for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
-    
+
+  ########################
+  # LUCHTDRUK B0M2
+  ########################
+  # schaal 
+  # 512 stappen in een rondje
+  # PSI
+  ########################
+  # eerst wijzer ijken 
+  ########################
+  
+  pressure = bmp.readPressure()
+  print("<p> De luchtdruk is " + str(pressure) + " </p>")
+  
+  
   #############################
   # RESETTEN van meters
   #############################

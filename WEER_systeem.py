@@ -32,13 +32,13 @@ log_regel = open(apache_indexfile, "a+")
 # binnentemperatuur meter
 import time
 from w1thermsensor import W1ThermSensor
-sensor = W1ThermSensor()
+sensor_binnentemp = W1ThermSensor()
 binnen_temp = 0
 binnen_temp_oud = 0
 
 # luchtdruk meten
 import Adafruit_BMP.BMP085 as BMP085
-sensor = BMP085.BMP085()
+sensor_luchtdruk = BMP085.BMP085()
 
 while True:
 
@@ -52,7 +52,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
 
-  binnen_temp = sensor.get_temperature()
+  binnen_temp = sensor_binnentemp.get_temperature()
   # #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):

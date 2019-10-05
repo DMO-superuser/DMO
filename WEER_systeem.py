@@ -37,7 +37,7 @@ binnen_temp = 0
 binnen_temp_oud = 0
 
 # luchtdruk meten
-from Adafruit_BMP085 import BMP085
+import Adafruit_BMP.BMP085 as BMP085
 
 while True:
 

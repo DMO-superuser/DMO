@@ -74,7 +74,7 @@ while True:
   # eerst wijzer ijken 
   ########################
   
-  pressure = BMP085.readPressure()
+  pressure = BMP085.read_pressure()
   print("<p> De luchtdruk is " + str(pressure) + " </p>")
   
   

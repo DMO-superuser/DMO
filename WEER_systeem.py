@@ -12,6 +12,7 @@ GPIO.setup(12, GPIO.IN) # pin32 reset 3
 GPIO.setup(7, GPIO.IN) # pin26 reset 4
 GPIO.setup(8, GPIO.IN) # pin24 reset 5
 GPIO.setup(25, GPIO.IN) # pin22 reset 6
+GPIO.setup(11, GPIO.IN) # pin22 reset 7
 GPIO.setup(5, GPIO.IN) # pin29 reset 8
 
 

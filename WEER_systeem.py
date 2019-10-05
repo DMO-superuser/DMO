@@ -135,7 +135,7 @@ while True:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset8")
  
-
+  sleep(1) 
 
 
 

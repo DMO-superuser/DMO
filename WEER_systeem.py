@@ -30,11 +30,11 @@ apache_indexfile = "/var/www/html/index.html"
 log_regel = open(apache_indexfile, "a+")
 
 # binnentemperatuur meter
-#import time
-#from w1thermsensor import W1ThermSensor
-#sensor = W1ThermSensor()
-#binnen_temp = 0
-#binnen_temp_oud = 0
+import time
+from w1thermsensor import W1ThermSensor
+sensor = W1ThermSensor()
+binnen_temp = 0
+binnen_temp_oud = 0
 
 
 while True:
@@ -49,18 +49,18 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
 
-  #  binnen_temp = sensor.get_temperature()
+  binnen_temp = sensor.get_temperature()
   # #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  #  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  #  if (binnen_temp != binnen_temp_oud):
-  #     verschil = binnen_temp - binnen_temp_oud 
-  #     if (verschil > 0):
-  #        #het is warmer
-  #        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-  #     else: 
-  #        #het is kouder
-  #        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-  #  binnen_temp_oud = binnen_temp
+  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  if (binnen_temp != binnen_temp_oud):
+     verschil = binnen_temp - binnen_temp_oud 
+     if (verschil > 0):
+        #het is warmer
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is kouder
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  binnen_temp_oud = binnen_temp
     
   #############################
   # RESETTEN van meters

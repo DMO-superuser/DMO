@@ -6,6 +6,15 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN) # pin7  binnen temperatuur 
 GPIO.setup(22, GPIO.IN) # pin15 rode knop
+GPIO.setup(20, GPIO.IN) # pin38 reset 1
+GPIO.setup(16, GPIO.IN) # pin36 reset 2
+GPIO.setup(12, GPIO.IN) # pin32 reset 3
+GPIO.setup(7, GPIO.IN) # pin26 reset 4
+GPIO.setup(8, GPIO.IN) # pin24 reset 5
+GPIO.setup(25, GPIO.IN) # pin22 reset 6
+GPIO.setup(5, GPIO.IN) # pin29 reset 8
+
+
 
 # motor HAT stack
 from adafruit_motorkit import MotorKit
@@ -55,12 +64,81 @@ while True:
   #############################
   # RESETTEN van meters
   #############################
-  # RODE KNOP = GPIO 22 
     if GPIO.input(22):
       # Schakelaar is AAN.
-      print ("Schakelaar AAN, GPIO status:")
+      print ("Schakelaar AAN, rood")
     else:
       # Schakelaar is UIT.
-      print ("Schakelaar UIT, GPIO status:")
+      print ("Schakelaar UIT, rood")
+
+    if GPIO.input(20):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset1")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset1")
  
+    if GPIO.input(16):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset2")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset2")
+      
+     if GPIO.input(16):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset2")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset2")
+      
+    if GPIO.input(12):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset3")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset3")
+ 
+    if GPIO.input(7):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset4")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset4")
+ 
+    if GPIO.input(8):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset5")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset5")
+ 
+    if GPIO.input(25):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset6")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset6")
+ 
+    if GPIO.input(11):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset7")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset7")
+ 
+    if GPIO.input(5):
+      # Schakelaar is AAN.
+      print ("Schakelaar AAN, reset8")
+    else:
+      # Schakelaar is UIT.
+      print ("Schakelaar UIT, reset8")
+ 
+
+
+
+
+      
+ 
+
     

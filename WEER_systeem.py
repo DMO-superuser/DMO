@@ -14,7 +14,7 @@ GPIO.setup(8, GPIO.IN) # pin24 reset 5
 GPIO.setup(25, GPIO.IN) # pin22 reset 6
 GPIO.setup(11, GPIO.IN) # pin22 reset 7
 GPIO.setup(5, GPIO.IN) # pin29 reset 8
-
+GPIO.setwarnings(False)
 
 
 # motor HAT stack
@@ -147,7 +147,9 @@ while True:
  
   sleep(1) 
 
-
+except KeyboardInterrupt:  
+  # GPIO netjes afsluiten
+  GPIO.cleanup()
 
       
  

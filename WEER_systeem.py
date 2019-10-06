@@ -146,7 +146,7 @@ while True:
       print ("Schakelaar UIT, reset8")
  
   sleep(1) 
-  GPIO.cleanup()
+
 
       
  

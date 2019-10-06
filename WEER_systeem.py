@@ -103,13 +103,6 @@ while True:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset2")
       
-  if GPIO.input(16):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset2")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset2")
-      
   if GPIO.input(12):
       # Schakelaar is AAN.
       print ("Schakelaar AAN, reset3")

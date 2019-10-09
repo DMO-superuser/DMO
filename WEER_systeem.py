@@ -113,16 +113,16 @@ while True:
   #  schaal = 50 stapjes per 10 km/h
  
 
-  aantal_nullen = 0
-  reed_switch = 0
-  timeout = time.time() + 5
-  while (time.time() < timeout) :
-    if (GPIO.input(23) == 0):
-        if (reed_switch == 0):
-           aantal_nullen = aantal_nullen + 1
-        reed_switch = 1
-    else :
-        if reed_switch == 1 :
-           reed_switch = 0
-  print("<p> De windsnelheid in aantal nullen is" + str(aantal_nullen) + " </p>")
-    
+  #aantal_nullen = 0
+  #reed_switch = 0
+  #timeout = time.time() + 5
+  #while (time.time() < timeout) :
+  #  if (GPIO.input(23) == 0):
+  #      if (reed_switch == 0):
+  #         aantal_nullen = aantal_nullen + 1
+  #      reed_switch = 1
+  #  else :
+  #      if reed_switch == 1 :
+  #         reed_switch = 0
+  #print("<p> De windsnelheid in aantal nullen is" + str(aantal_nullen) + " </p>")
+  print (GPIO.input(23) )

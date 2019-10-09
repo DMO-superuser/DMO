@@ -125,9 +125,9 @@ while True:
   #      if reed_switch == 1 :
   #         reed_switch = 0
   #print("<p> De windsnelheid in aantal nullen is" + str(aantal_nullen) + " </p>")
-  if  (GPIO.input(23) == 0):
+  if  (GPIO.input(20) == 0):
        print ("hij is 0")
-       print (GPIO.input(23))
+       print (GPIO.input(20))
   else :
        print ("hij is 1")
-       print (GPIO.input(23))
+       print (GPIO.input(20))

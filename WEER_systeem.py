@@ -131,3 +131,4 @@ while True:
   else :
        print ("hij is 1")
        print (GPIO.input(20))
+       sleep (1)

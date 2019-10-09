@@ -17,5 +17,5 @@ while True:
   kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.SINGLE)
   kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.SINGLE)
   kit4.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.SINGLE)
-  kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.SINGLE)
  

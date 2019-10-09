@@ -1,5 +1,6 @@
 # diversen
 from time import sleep
+import os
 
 # GPIO
 import RPi.GPIO as GPIO
@@ -111,6 +112,7 @@ while True:
   #  0,9 nul per seconde staat voor 1 kilometer per uur
   #  schaal = 50 stapjes per 10 km/h
  
+  os.system('gpio export 23 in')
   io.pinMode(23,io.INPUT)
   aantal_nullen = 0
   reed_switch = 0

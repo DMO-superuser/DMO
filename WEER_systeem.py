@@ -111,6 +111,7 @@ while True:
   #  0,9 nul per seconde staat voor 1 kilometer per uur
   #  schaal = 50 stapjes per 10 km/h
  
+  io.pinMode(23,io.INPUT)
   aantal_nullen = 0
   reed_switch = 0
   timeout = time.time() + 5

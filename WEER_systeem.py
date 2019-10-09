@@ -52,18 +52,18 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
 
-  binnen_temp = sensor_binnentemp.get_temperature()
-  # #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  if (binnen_temp != binnen_temp_oud):
-     verschil = binnen_temp - binnen_temp_oud 
-     if (verschil > 0):
-        #het is warmer
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is kouder
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-  binnen_temp_oud = binnen_temp
+  #binnen_temp = sensor_binnentemp.get_temperature()
+  ## #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  #print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  #if (binnen_temp != binnen_temp_oud):
+  #   verschil = binnen_temp - binnen_temp_oud 
+  #   if (verschil > 0):
+  #      #het is warmer
+  #      for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+  #   else: 
+  #      #het is kouder
+  #      for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  #binnen_temp_oud = binnen_temp
 
   ########################
   # LUCHTDRUK B0M2
@@ -75,19 +75,11 @@ while True:
   # eerst wijzer ijken 
   ########################
   
-  pressure = sensor_luchtdruk.read_pressure()
-  print("<p> De luchtdruk is " + str(pressure) + " </p>")
+  #pressure = sensor_luchtdruk.read_pressure()
+  #print("<p> De luchtdruk is " + str(pressure) + " </p>")
   
   
-  #############################
-  # RESETTEN van meters
-  #############################
-  if GPIO.input(22):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, rood")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, rood")
+
 
   if GPIO.input(20):
       # Schakelaar is AAN.
@@ -96,57 +88,6 @@ while True:
       # Schakelaar is UIT.
       print ("Schakelaar UIT, reset1")
  
-  if GPIO.input(16):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset2")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset2")
-      
-  if GPIO.input(12):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset3")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset3")
- 
-  if GPIO.input(7):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset4")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset4")
- 
-  if GPIO.input(8):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset5")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset5")
- 
-  if GPIO.input(25):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset6")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset6")
- 
-  if GPIO.input(11):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset7")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset7")
- 
-  if GPIO.input(5):
-      # Schakelaar is AAN.
-      print ("Schakelaar AAN, reset8")
-  else:
-      # Schakelaar is UIT.
-      print ("Schakelaar UIT, reset8")
- 
-  sleep(1) 
-
 
       
  

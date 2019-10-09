@@ -112,13 +112,12 @@ while True:
   #  0,9 nul per seconde staat voor 1 kilometer per uur
   #  schaal = 50 stapjes per 10 km/h
  
-  os.system('gpio export 23 in')
-  io.pinMode(23,io.INPUT)
+
   aantal_nullen = 0
   reed_switch = 0
   timeout = time.time() + 5
   while (time.time() < timeout) :
-    if (io.digitalRead(23) == 0):
+    if (GPIO.digitalRead(23) == 0):
         if (reed_switch == 0):
            aantal_nullen = aantal_nullen + 1
         reed_switch = 1

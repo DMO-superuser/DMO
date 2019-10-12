@@ -25,7 +25,7 @@ GPIO.setwarnings(False)
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 kit1 = MotorKit(address=0x60)
-kit2 = MotorKit(address=0x61)
+kit2 = MotorKit(address=0x61) # meter 3 en 4
 kit3 = MotorKit(address=0x62)
 kit4 = MotorKit(address=0x63)
 
@@ -47,7 +47,7 @@ sensor_luchtdruk = BMP085.BMP085()
 while True:
 
   ########################
-  # BINNENTEMPERATUUR B0M1
+  # BINNENTEMPERATUUR meter 3
   ########################
   # schaal -10 tot 60 graden
   # 512 stappen in een rondje, 225 graden op de schaal worden gebruikt, 2,28 stap per graad op wijzerplaat
@@ -63,16 +63,20 @@ while True:
      verschil = binnen_temp - binnen_temp_oud 
      if (verschil > 0):
         #het is warmer
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, 50): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is kouder
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, 50): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
-  # resetten van meter (rode knop en zwarte knop tegelijkertijd indrukken)
-  while ((GPIO.input(22) == 1) and (GPIO.input(20) == 0)):
-     kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     binnen_temp_oud = -30
+  # resetten van meter (rode knop)
+  while ((GPIO.input(22) == 1):
+        # zwarte knop voor heen en weer
+        if (GPIO.input(12) == 0)):
+           kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else:
+           kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        binnen_temp_oud = -30
 
   ########################
   # LUCHTDRUK B0M2

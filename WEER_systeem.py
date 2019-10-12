@@ -5,7 +5,10 @@ import os
 # GPIO
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(2, GPIO.IN)  # pin3  barometer
+GPIO.setup(3, GPIO.IN)  # pin5  barometer
 GPIO.setup(4, GPIO.IN)  # pin7  binnen temperatuur 
+
 GPIO.setup(22, GPIO.IN) # pin15 rode knop
 GPIO.setup(20, GPIO.IN) # pin38 reset 1
 GPIO.setup(16, GPIO.IN) # pin36 reset 2
@@ -55,18 +58,18 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
 
-  #binnen_temp = sensor_binnentemp.get_temperature()
-  ## #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  #print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
-  #if (binnen_temp != binnen_temp_oud):
-  #   verschil = binnen_temp - binnen_temp_oud 
-  #   if (verschil > 0):
-  #      #het is warmer
-  #      for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-  #   else: 
-  #      #het is kouder
-  #      for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-  #binnen_temp_oud = binnen_temp
+  binnen_temp = sensor_binnentemp.get_temperature()
+  # #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  if (binnen_temp != binnen_temp_oud):
+     verschil = binnen_temp - binnen_temp_oud 
+     if (verschil > 0):
+        #het is warmer
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is kouder
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  binnen_temp_oud = binnen_temp
 
   ########################
   # LUCHTDRUK B0M2
@@ -78,8 +81,8 @@ while True:
   # eerst wijzer ijken 
   ########################
   
-  #pressure = sensor_luchtdruk.read_pressure()
-  #print("<p> De luchtdruk is " + str(pressure) + " </p>")
+  pressure = sensor_luchtdruk.read_pressure()
+  print("<p> De luchtdruk is " + str(pressure) + " </p>")
   
   ###################
   # WINDSNELHEID B2M1

@@ -75,14 +75,14 @@ while True:
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
            kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-           sleep (0.01)
+           sleep (0.02)
         else:
            kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-           sleep (0.01)
+           sleep (0.02)
         binnen_temp_oud = -30
 
   ########################
-  # LUCHTDRUK B0M2
+  # LUCHTDRUK B0M2 meter 4
   ########################
   # schaal 
   # 512 stappen in een rondje
@@ -93,6 +93,21 @@ while True:
   
   pressure = sensor_luchtdruk.read_pressure()
   print("<p> De luchtdruk is " + str(pressure) + " </p>")
+  
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(5) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        binnen_temp_oud = -30
+  
+  
+  
   
   ###################
   # WINDSNELHEID B2M1

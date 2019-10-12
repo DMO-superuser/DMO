@@ -70,9 +70,9 @@ while True:
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (rode knop)
-  while ((GPIO.input(22) == 1):
+  while (GPIO.input(22) == 1):
         # zwarte knop voor heen en weer
-        if (GPIO.input(12) == 0)):
+        if (GPIO.input(12) == 0):
            kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
         else:
            kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 

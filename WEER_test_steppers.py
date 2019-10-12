@@ -9,6 +9,8 @@ kit2 = MotorKit(address=0x61)
 kit3 = MotorKit(address=0x62)
 kit4 = MotorKit(address=0x63)
 
+for x in range(0, 512): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+ 
 #while True:
 #  kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 #  kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)

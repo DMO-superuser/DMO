@@ -68,6 +68,11 @@ while True:
         #het is kouder
         for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
+  
+  # resetten van meter (rode knop en zwarte knop tegelijkertijd indrukken)
+  while (GPIO.input(20) == 1) AND (GPIO.input(22) == 0):
+     kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     binnen_temp_oud = -30
 
   ########################
   # LUCHTDRUK B0M2

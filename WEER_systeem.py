@@ -49,9 +49,8 @@ while True:
   ########################
   # BINNENTEMPERATUUR meter 3
   ########################
-  # schaal -10 tot 60 graden
-  # 512 stappen in een rondje, 225 graden op de schaal worden gebruikt, 2,28 stap per graad op wijzerplaat
-  # graden Celsius op 2 decimalen
+  # schaal -30 tot 60 graden
+  # 512 stappen in een rondje, 90 graden op de schaal worden gebruikt, 75% van de schaal, 4,27 stap per graad
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
@@ -61,12 +60,13 @@ while True:
   print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
+     aantal_stappen = int(verschil * 4.27)
      if (verschil > 0):
         #het is warmer
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, aantal_stappen): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is kouder
-        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, aantal_stappen): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (zwarte knop bij desbetreffende meter)

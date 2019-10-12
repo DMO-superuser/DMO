@@ -75,4 +75,4 @@ while True:
   else:
      print ("24 hour = 1")
 
-      
+  sleep(1)

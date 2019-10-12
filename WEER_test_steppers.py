@@ -11,7 +11,7 @@ kit4 = MotorKit(address=0x63)
 
 for x in range(0, 512): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
 
-for x in range(0, 512): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.SINGLE) 
+for x in range(0, 512): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.MICROSTEP) 
 
  #while True:
 #  kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)

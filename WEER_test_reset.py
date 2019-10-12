@@ -26,44 +26,44 @@ GPIO.setwarnings(False)
 while True:
 
   if (GPIO.input(20) == 0):
-     print ("reset 1 = 0")
+     print ("20-reset 1 = 0")
   else:
-     print ("reset 1 = 1")
+     print ("20-reset 1 = 1")
       
   if (GPIO.input(16) == 0):
-     print ("reset 2 = 0")
+     print ("16-reset 2 = 0")
   else:
-     print ("reset 2 = 1")
+     print ("16-1reset 2 = 1")
 
   if (GPIO.input(12) == 0):
-     print ("reset 3 = 0")
+     print ("12-reset 3 = 0")
   else:
-     print ("reset 3 = 1")
+     print ("12-reset 3 = 1")
 
   if (GPIO.input(7) == 0):
-     print ("reset 4 = 0")
+     print ("7-reset 4 = 0")
   else:
-     print ("reset 4 = 1")
+     print ("7-reset 4 = 1")
 
   if (GPIO.input(8) == 0):
-     print ("reset 5 = 0")
+     print ("5-reset 5 = 0")
   else:
-     print ("reset 5 = 1")
+     print ("5-reset 5 = 1")
 
   if (GPIO.input(25) == 0):
-     print ("reset 6 = 0")
+     print ("25-reset 6 = 0")
   else:
-     print ("reset 6 = 1")
+     print ("25-reset 6 = 1")
 
   if (GPIO.input(11) == 0):
-     print ("reset 7 = 0")
+     print ("11-reset 7 = 0")
   else:
-     print ("reset 7 = 1")
+     print ("11-reset 7 = 1")
 
   if (GPIO.input(5) == 0):
-     print ("reset 8 = 0")
+     print ("5-reset 8 = 0")
   else:
-     print ("reset 8 = 1")
+     print ("5-reset 8 = 1")
 
   if (GPIO.input(22) == 0):
      print ("rood = 0")

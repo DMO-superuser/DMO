@@ -46,9 +46,9 @@ while True:
      print ("7-reset 4 = 1")
 
   if (GPIO.input(8) == 0):
-     print ("5-reset 5 = 0")
+     print ("8-reset 5 = 0")
   else:
-     print ("5-reset 5 = 1")
+     print ("8-reset 5 = 1")
 
   if (GPIO.input(25) == 0):
      print ("25-reset 6 = 0")

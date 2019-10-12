@@ -70,7 +70,7 @@ while True:
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (rode knop en zwarte knop tegelijkertijd indrukken)
-  while ((GPIO.input(20) == 1) and (GPIO.input(22) == 0)):
+  while ((GPIO.input(22) == 1) and (GPIO.input(20) == 0)):
      kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      binnen_temp_oud = -30
 

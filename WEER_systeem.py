@@ -5,8 +5,6 @@ import os
 # GPIO
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2, GPIO.IN)  # pin3  barometer
-GPIO.setup(3, GPIO.IN)  # pin5  barometer
 GPIO.setup(4, GPIO.IN)  # pin7  binnen temperatuur 
 
 GPIO.setup(22, GPIO.IN) # pin15 rode knop

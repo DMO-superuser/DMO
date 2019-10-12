@@ -24,3 +24,9 @@ GPIO.setwarnings(False)
 
 while True:
 
+  if (GPIO.input(20) == 0):
+     print ("reset 1 = 0")
+  else:
+     print ("reset 1 - 1")
+      
+      

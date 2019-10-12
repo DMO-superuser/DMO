@@ -24,8 +24,8 @@ GPIO.setwarnings(False)
 # motor HAT stack
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
-kit1 = MotorKit(address=0x60)
-kit2 = MotorKit(address=0x61) # meter 3 en 4
+kit1 = MotorKit(address=0x60) # meter 3 en 4
+kit2 = MotorKit(address=0x61) 
 kit3 = MotorKit(address=0x62)
 kit4 = MotorKit(address=0x63)
 
@@ -63,10 +63,10 @@ while True:
      verschil = binnen_temp - binnen_temp_oud 
      if (verschil > 0):
         #het is warmer
-        for x in range(0, 50): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is kouder
-        for x in range(0, 50): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, 50): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -74,9 +74,9 @@ while True:
   while (GPIO.input(16) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
         else:
-           kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
         binnen_temp_oud = -30
 
   ########################

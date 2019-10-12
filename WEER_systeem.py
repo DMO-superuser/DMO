@@ -74,9 +74,11 @@ while True:
   while (GPIO.input(16) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.MICROSTEP) 
+           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.01)
         else:
-           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.MICROSTEP) 
+           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.01)
         binnen_temp_oud = -30
 
   ########################

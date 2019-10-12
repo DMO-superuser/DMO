@@ -69,10 +69,11 @@ while True:
         for x in range(0, 50): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
-  # resetten van meter (rode knop)
-  while (GPIO.input(22) == 1):
-        # zwarte knop voor heen en weer
-        if (GPIO.input(12) == 0):
+  # resetten van meter (zwarte knop)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(12) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
            kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
         else:
            kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 

@@ -27,17 +27,19 @@ while True:
      print ("6, windrichting 1 = 1")
      
   if (GPIO.input(13) == 0):
-     print ("13, windrichting 1 = 0")
+     print ("13, windrichting 2 = 0")
   else:
-     print ("13, windrichting 1 = 1")   
+     print ("13, windrichting 2 = 1")   
           
   if (GPIO.input(19) == 0):
-     print ("19, windrichting 1 = 0")
+     print ("19, windrichting 3 = 0")
   else:
-     print ("19, windrichting 1 = 1")     
+     print ("19, windrichting 3 = 1")     
 
           
   if (GPIO.input(26) == 0):
-     print ("26, windrichting 1 = 0")
+     print ("26, windrichting 4 = 0")
   else:
-     print ("26, windrichting 1 = 1")     
+     print ("26, windrichting 4 = 1")     
+
+  sleep (1)

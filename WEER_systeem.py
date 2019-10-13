@@ -211,7 +211,11 @@ while True:
   #  1  0  0  1  NW  192
   #  0  0  1  1  ZW  64       
 
-
+  print (GPIO.input(26))
+  print (GPIO.input(19))
+  print (GPIO.input(13))
+  print (GPIO.input(6))
+  
   if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
     positie = 256
     print("<p> De wind komt uit het Noorden </p>")    

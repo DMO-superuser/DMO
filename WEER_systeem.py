@@ -253,3 +253,4 @@ while True:
       positie_oud = positie
   else:  
     print("<p> Wind te zwak om richting te bepalen </p>") 
+  print("<p> -------------- </p>") 

@@ -243,13 +243,13 @@ while True:
       positie = 64
       print("<p> De wind komt uit het Zuidwesten </p>")  
     if (positie != positie_oud):
-     aantal_stappen = positie - positie_oud 
-     if (verschil > 0):
+      aantal_stappen = positie - positie_oud 
+      if (verschil > 0):
         #naar rechts
         for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
+      else: 
         #naar links
         for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-  positie_oud = positie
+      positie_oud = positie
   else:  
     print("<p> Wind te zwak om richting te bepalen </p>") 

@@ -89,7 +89,7 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
-  luchtdruk = sensor_luchtdruk.read_pressure()
+  luchtdruk = (sensor_luchtdruk.read_pressure() / 100)
   print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 

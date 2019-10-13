@@ -17,6 +17,11 @@ GPIO.setup(7, GPIO.IN) # pin22 reset 6
 GPIO.setup(11, GPIO.IN) # pin22 reset 7
 GPIO.setup(8, GPIO.IN)  # pin29 reset 8
 GPIO.setup(23, GPIO.IN) # pin16 windsnelheid
+GPIO.setup(6, GPIO.IN)  # pin31 windrichting 1
+GPIO.setup(13, GPIO.IN)  # pin31 windrichting 2
+GPIO.setup(19, GPIO.IN)  # pin31 windrichting 3
+GPIO.setup(26, GPIO.IN)  # pin31 windrichting 4
+
 
 GPIO.setwarnings(False)
 
@@ -188,3 +193,19 @@ while True:
            kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         km_per_uur_oud = 0
+        
+  ###################
+  # WINDRICHTING B2M1 meter 6
+  ###################
+  #
+  #windrichting, Oost is rechts
+  #
+  #  26 19 13 6  R   B2M1_teller 
+  #  1  0  0  0  N   256
+  #  0  0  0  1  w   128
+  #  0  0  1  0  Z   0
+  #  0  1  0  0  O   384
+  #  1  1  0  0  NO  320
+  #  0  1  1  0  ZO  448
+  #  1  0  0  1  NW  192
+  #  0  0  1  1  ZW  64       

@@ -246,11 +246,24 @@ while True:
       aantal_stappen = positie - positie_oud 
       if (verschil > 0):
         #naar rechts
-        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
       else: 
         #naar links
-        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
     print("<p> Wind te zwak om richting te bepalen </p>") 
+    
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(26) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        positie_oud = 0    
+    
   print("<p> -------------- </p>") 

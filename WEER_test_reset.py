@@ -75,4 +75,9 @@ while True:
   else:
      print ("24 hour = 1")
 
+      
+  if (GPIO.input(23) == 0):
+     print ("23, windsnelheid = 0")
+  else:
+     print ("23, windsnelheid = 1")
   sleep(1)

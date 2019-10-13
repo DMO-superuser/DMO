@@ -38,11 +38,13 @@ import time
 from w1thermsensor import W1ThermSensor
 sensor_binnentemp = W1ThermSensor()
 binnen_temp = 0
-binnen_temp_oud = 0
+binnen_temp_oud = -30
 
 # luchtdruk meten
 import Adafruit_BMP.BMP085 as BMP085
 sensor_luchtdruk = BMP085.BMP085()
+luchtdruk = 0
+luchtdruk_oud = 950
 
 while True:
 
@@ -50,13 +52,11 @@ while True:
   # BINNENTEMPERATUUR meter 3
   ########################
   # schaal -30 tot 60 graden
-  # 512 stappen in een rondje, 90 graden op de schaal worden gebruikt, 75% van de schaal, 4,27 stap per graad
+  # 512 stappen in een rondje, 90 graden Celcius op de schaal worden gebruikt, 75% van de schaal, 4,27 stap per graad
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
-
   binnen_temp = sensor_binnentemp.get_temperature()
-  # #log_regel.write("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
@@ -84,15 +84,23 @@ while True:
   ########################
   # LUCHTDRUK B0M2 meter 4
   ########################
-  # schaal 
-  # 512 stappen in een rondje
-  # PSI
+  # schaal 950 tot 1050
+  # 512 stappen in een rondje, 100 hPa op de schaal wordt gebruikt, 75% van de schaal, 3,84 stap per graad
   ########################
-  # eerst wijzer ijken 
+  # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
-  
-  pressure = sensor_luchtdruk.read_pressure()
-  print("<p> De luchtdruk is " + str(pressure) + " </p>")
+  luchtdruk = sensor_luchtdruk.read_pressure()
+  print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
+  if (luchtdruk != luchtdruk_oud):
+     verschil = luchtdruk - luchtdruk_oud 
+     aantal_stappen = int(verschil * 3.84)
+     if (verschil > 0):
+        #het is meer
+        for x in range(0, aantal_stappen): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is minder
+        for x in range(0, aantal_stappen): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  luchtdruk_oud = luchtdruk
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
@@ -104,7 +112,7 @@ while True:
         else:
            kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
-        binnen_temp_oud = -30
+        luchtdruk_oud = 950
   
   
   

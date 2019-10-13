@@ -67,10 +67,10 @@ while True:
      aantal_stappen = int(verschil * 4.27)
      if (verschil > 0):
         #het is warmer
-        for x in range(0, aantal_stappen): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is kouder
-        for x in range(0, aantal_stappen): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -100,10 +100,10 @@ while True:
      aantal_stappen = int(verschil * 3.84)
      if (verschil > 0):
         #het is meer
-        for x in range(0, aantal_stappen): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is minder
-        for x in range(0, aantal_stappen): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   luchtdruk_oud = luchtdruk
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -171,10 +171,10 @@ while True:
      aantal_stappen = int(verschil * 3.2)
      if (verschil > 0):
         #het waait harder
-        for x in range(0, aantal_stappen): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het waait minder hard
-        for x in range(0, aantal_stappen): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   km_per_uur_oud = km_per_uur
   
   # resetten van meter (zwarte knop bij desbetreffende meter)

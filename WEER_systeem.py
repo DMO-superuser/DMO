@@ -51,9 +51,14 @@ sensor_luchtdruk = BMP085.BMP085()
 luchtdruk = 0
 luchtdruk_oud = 950
 
-# wind en neerslag
+# windsnelheid
 km_per_uur = 0
 km_per_uur_oud = 0
+
+#windrichting
+positie = 0
+positie_oud = 0
+
 
 while True:
 
@@ -236,6 +241,15 @@ while True:
       print("<p> De wind komt uit het Noordwesten </p>")     
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 1) and (GPIO.input(6) == 1)): 
       positie = 64
-      print("<p> De wind komt uit het Zuidwesten </p>")         
+      print("<p> De wind komt uit het Zuidwesten </p>")  
+    if (positie != positie_oud):
+     aantal_stappen = positie - positie_oud 
+     if (verschil > 0):
+        #naar rechts
+        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #naar links
+        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  positie_oud = positie
   else:  
     print("<p> Wind te zwak om richting te bepalen </p>") 

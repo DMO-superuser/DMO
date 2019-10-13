@@ -153,7 +153,7 @@ while True:
   reed_switch = 0
   timeout = time.time() + 5
   while (time.time() < timeout) :
-    if (GPIO.input(20) == 0):
+    if (GPIO.input(23) == 0):
         if (reed_switch == 0):
            aantal_nullen = aantal_nullen + 1
         reed_switch = 1

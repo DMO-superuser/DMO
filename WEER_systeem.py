@@ -48,7 +48,7 @@ luchtdruk_oud = 950
 
 # wind en neerslag
 km_per_uur = 0
-km_per_uur_oud = 1000
+km_per_uur_oud = 0
 
 while True:
 
@@ -118,11 +118,8 @@ while True:
            sleep (0.02)
         luchtdruk_oud = 950
   
-  
-  
-  
   ###################
-  # WINDSNELHEID B2M1
+  # WINDSNELHEID B2M1 meter 5
   ###################
   # de switch is tijdens 1 rotatie op 2 tegenover elkaar liggende posities 
   # gedurende 1 a 2  cm 0. Verder is hij altijd 1
@@ -167,7 +164,7 @@ while True:
            reed_switch = 0
   km_per_uur = int(0.9 * aantal_nullen)
   
-  print("<p> De windsnelheid in km/h is" + str(aantal_nullen) + " </p>")
+  print("<p> De windsnelheid in km/h is " + str(aantal_nullen) + " </p>")
 
   if (km_per_uur != km_per_uur_oud):
      verschil = km_per_uur - km_per_uur_oud 
@@ -179,3 +176,15 @@ while True:
         #het waait minder hard
         for x in range(0, aantal_stappen): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   km_per_uur_oud = km_per_uur
+  
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(12) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        luchtdruk_oud = 0

@@ -198,9 +198,10 @@ while True:
   # WINDRICHTING B2M1 meter 6
   ###################
   #
-  #windrichting, Oost is rechts
+  # windrichting, Oost is rechts
+  # ijkpunt is op het Zuiden, positie = 0
   #
-  #  26 19 13 6  R   B2M1_teller 
+  #  26 19 13 6  R   
   #  1  0  0  0  N   256
   #  0  0  0  1  w   128
   #  0  0  1  0  Z   0
@@ -209,3 +210,30 @@ while True:
   #  0  1  1  0  ZO  448
   #  1  0  0  1  NW  192
   #  0  0  1  1  ZW  64       
+
+
+  if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
+    positie = 256
+    print("<p> De wind komt uit het Noorden </p>")    
+  if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 1)): 
+    positie = 128
+    print("<p> De wind komt uit het Westen </p>")    
+  if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 1) and (GPIO.input(6) == 0)):
+    positie = 0
+    print("<p> De wind komt uit het Zuiden </p>")    
+  if ((GPIO.input(26) == 0) and (GPIO.input(19) == 2) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
+    positie = 384      
+    print("<p> De wind komt uit het Oosten </p>")    
+  if ((GPIO.input(26) == 1) and (GPIO.input(19) == 1) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)):
+    positie = 320
+    print("<p> De wind komt uit het Noordoosten </p>")       
+  if ((GPIO.input(26) == 0) and (GPIO.input(19) == 1) and (GPIO.input(13) == 1) and (GPIO.input(6) == 0)): 
+    positie = 448
+    print("<p> De wind komt uit het Zuidoosten </p>")     
+  if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 1)): 
+    positie = 192
+    print("<p> De wind komt uit het Noordwesten </p>")     
+  if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 1) and (GPIO.input(6) == 1)): 
+    positie = 64
+    print("<p> De wind komt uit het Zuidwesten </p>")         
+    

@@ -60,6 +60,12 @@ km_per_uur_oud = 0
 positie = 0
 positie_oud = 0
 
+# neerslag
+neerslag = 0
+neerslag_oud = 1
+neerslag_hoeveelheid = 0
+neerslag_aantal = 1
+
 
 while True:
 
@@ -275,9 +281,13 @@ while True:
   # als wipje 12 x omslaat in een uur dan is het:
   # 12 * 2,3 * 10 = 3,45 mm per uur 
   # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
-    
-
-    
-    
+  
+  neerslag = GPIO.input(21)
+  if (neerslag != neerslag_oud):
+     neerslag_hoeveelheid = neerslag_hoeveelheid + 2.3
+     neerslag_aantal = neerslag_aantal + 1
+     neerslag_oud = neerslag
+  print("<p> De neerslaghoeveelheid is " + str(neerslag_hoeveelheid) + " </p>")
+  print("<p> Aantal keer wipje omgegaan " + str(neerslag_aantal) + " </p>")  
     
   print("<p> -------------- </p>") 

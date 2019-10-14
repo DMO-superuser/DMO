@@ -7,20 +7,21 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN)  # pin7  binnen temperatuur 
 
-GPIO.setup(22, GPIO.IN) # pin15 rode knop
-GPIO.setup(20, GPIO.IN) # pin38 reset 1
-GPIO.setup(25, GPIO.IN) # pin36 reset 2
-GPIO.setup(16, GPIO.IN) # pin32 reset 3
-GPIO.setup(5, GPIO.IN)  # pin26 reset 4
+GPIO.setup(22, GPIO.IN)  # pin15 rode knop
+GPIO.setup(20, GPIO.IN)  # pin38 reset 1
+GPIO.setup(25, GPIO.IN)  # pin36 reset 2
+GPIO.setup(16, GPIO.IN)  # pin32 reset 3
+GPIO.setup(5, GPIO.IN)   # pin26 reset 4
 GPIO.setup(12, GPIO.IN)  # pin24 reset 5
-GPIO.setup(7, GPIO.IN) # pin22 reset 6
-GPIO.setup(11, GPIO.IN) # pin22 reset 7
-GPIO.setup(8, GPIO.IN)  # pin29 reset 8
-GPIO.setup(23, GPIO.IN) # pin16 windsnelheid
-GPIO.setup(6, GPIO.IN)  # pin31 windrichting 1
-GPIO.setup(13, GPIO.IN)  # pin31 windrichting 2
-GPIO.setup(19, GPIO.IN)  # pin31 windrichting 3
-GPIO.setup(26, GPIO.IN)  # pin31 windrichting 4
+GPIO.setup(7, GPIO.IN)   # pin22 reset 6
+GPIO.setup(11, GPIO.IN)  # pin22 reset 7
+GPIO.setup(8, GPIO.IN)   # pin29 reset 8
+GPIO.setup(23, GPIO.IN)  # pin16 windsnelheid
+GPIO.setup(6, GPIO.IN)   # pin31 windrichting 1
+GPIO.setup(13, GPIO.IN)  # pin33 windrichting 2
+GPIO.setup(19, GPIO.IN)  # pin35 windrichting 3
+GPIO.setup(26, GPIO.IN)  # pin37 windrichting 4
+GPIO.setup(21, GPIO.IN)  # pin40 neerslag
 
 
 GPIO.setwarnings(False)
@@ -32,7 +33,7 @@ from adafruit_motor import stepper
 kit1 = MotorKit(address=0x60) # meter 3 en 4
 kit2 = MotorKit(address=0x61) 
 kit3 = MotorKit(address=0x62) # meter 5 en 6
-kit4 = MotorKit(address=0x63)
+kit4 = MotorKit(address=0x63) # meter 7 en 8
 
 # Apache index.html op http://192.168.178.94/
 apache_indexfile = "/var/www/html/index.html"
@@ -55,7 +56,7 @@ luchtdruk_oud = 950
 km_per_uur = 0
 km_per_uur_oud = 0
 
-#windrichting
+# windrichting
 positie = 0
 positie_oud = 0
 
@@ -159,7 +160,6 @@ while True:
   # 512 stappen in een rondje, 120 km/h op de schaal wordt gebruikt, 75% van de schaal, 3,2 stap per km/h
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan 0
-  ########################
 
   aantal_nullen = 0
   reed_switch = 0
@@ -265,5 +265,19 @@ while True:
            kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         positie_oud = 0    
+    
+  ##############################################
+  # NEERLSLAG MM per UUR meter 7 en per etmaal meter 8
+  ##############################################
+  # gevallen regen in mm = aantal ml afgetapte neerslag x 10 gedeeld door de oppervlakte in cm2
+  # oppervlakte trechter = 1/2 diameter * 1/2 diameter * Pi = 5 * 5 * Pi = 79,82 cm2
+  # het wipje slaat om per 2,3 ml
+  # als wipje 12 x omslaat in een uur dan is het:
+  # 12 * 2,3 * 10 = 3,45 mm per uur 
+  # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
+    
+  print(time.time())     
+    
+    
     
   print("<p> -------------- </p>") 

@@ -276,7 +276,7 @@ while True:
   # 12 * 2,3 * 10 = 3,45 mm per uur 
   # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
     
-  print(time.time())     
+
     
     
     

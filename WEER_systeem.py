@@ -64,7 +64,7 @@ positie_oud = 0
 neerslag = 0
 neerslag_oud = 1
 neerslag_hoeveelheid = 0
-neerslag_aantal = 1
+neerslag_aantal = 0
 
 
 while True:
@@ -289,5 +289,5 @@ while True:
      neerslag_oud = neerslag
   print("<p> De neerslaghoeveelheid is " + str(neerslag_hoeveelheid) + " </p>")
   print("<p> Aantal keer wipje omgegaan " + str(neerslag_aantal) + " </p>")  
-    
+  print( time.time()) 
   print("<p> -------------- </p>") 

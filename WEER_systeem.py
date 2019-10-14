@@ -65,6 +65,7 @@ neerslag = 0
 neerslag_oud = 1
 neerslag_hoeveelheid = 0
 neerslag_aantal = 0
+neerslag_begin_tijd = time.time() # in seconden
 
 
 while True:
@@ -273,7 +274,7 @@ while True:
         positie_oud = 0    
     
   ##############################################
-  # NEERLSLAG MM per UUR meter 7 en per etmaal meter 8
+  # NEERLSLAG MM per uur meter 7 en per etmaal meter 8
   ##############################################
   # gevallen regen in mm = aantal ml afgetapte neerslag x 10 gedeeld door de oppervlakte in cm2
   # oppervlakte trechter = 1/2 diameter * 1/2 diameter * Pi = 5 * 5 * Pi = 79,82 cm2
@@ -281,6 +282,7 @@ while True:
   # als wipje 12 x omslaat in een uur dan is het:
   # 12 * 2,3 * 10 = 3,45 mm per uur 
   # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
+  # max per uur is 90 mm (record is 79)
   
   neerslag = GPIO.input(21)
   if (neerslag != neerslag_oud):

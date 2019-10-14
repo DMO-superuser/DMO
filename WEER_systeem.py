@@ -262,7 +262,7 @@ while True:
     
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
-  while (GPIO.input(26) == 0):
+  while (GPIO.input(7) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
            kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 

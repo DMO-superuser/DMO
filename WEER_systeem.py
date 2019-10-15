@@ -64,8 +64,7 @@ positie_oud = 0
 # neerslag
 neerslag_wip = 0
 neerslag_wip_oud = 1
-neerslag_hoeveelheid = 0
-neerslag_aantal = 0
+neerslag_lijst = [] # lijst met timestamps dat de wip is omgegaan
 neerslag_begin_tijd = time.time() # in seconden
 
 
@@ -280,15 +279,22 @@ while True:
   # gevallen regen in mm = aantal ml afgetapte neerslag x 10 gedeeld door de oppervlakte in cm2
   # oppervlakte trechter = 1/2 diameter * 1/2 diameter * Pi = 5 * 5 * Pi = 79,82 cm2
   # het wipje slaat om per 2,3 ml
-  # als wipje 12 x omslaat in een uur dan is het:
-  # 12 * 2,3 * 10 = 3,45 mm per uur 
-  # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
-  # max per uur is 90 mm (record is 79)
+  ##############################################
+  # in 1 uur zitten 3600 seconden, gedurende 3600 seconden wordt het aantal keren dat het wipje omslaat geteld
+  # het is een voortschrijdend gemiddelde, dus : 2 wipjes per 9 minuten = (3600 / 540) * 2 * 2,3 = 30,6 ml per uur
+  # de wipjes zitten in een list door middel van het opslaan van de timestamp
+  
   
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
-     neerslag_wip_oud = neerslag_wip     
+     # timestamp toevoegen
+     neerslag_lijst.append(time.time())
+    
      print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
      print("<p> de tijd is  " + str(time.time()) + " </p>")
      print("<p> status wip " + str(neerslag_wip) + " </p>")  
+     print (neerslag_lijst)
      print("<p> -------------- </p>") 
+     
+     neerslag_wip_oud = neerslag_wip  
+     neerslag_aantal = neerslag_aantal + 1 

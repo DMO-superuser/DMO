@@ -55,14 +55,15 @@ luchtdruk_oud = 950
 # windsnelheid
 km_per_uur = 0
 km_per_uur_oud = 0
+km_tijd = 1 # aantal seconden dat de wind gemeten wordt
 
 # windrichting
 positie = 0
 positie_oud = 0
 
 # neerslag
-neerslag = 0
-neerslag_oud = 1
+neerslag_wip = 0
+neerslag_wip_oud = 1
 neerslag_hoeveelheid = 0
 neerslag_aantal = 0
 neerslag_begin_tijd = time.time() # in seconden
@@ -170,7 +171,7 @@ while True:
 
   aantal_nullen = 0
   reed_switch = 0
-  timeout = time.time() + 5
+  timeout = time.time() + km_tijd
   while (time.time() < timeout) :
     if (GPIO.input(23) == 0):
         if (reed_switch == 0):
@@ -284,12 +285,10 @@ while True:
   # in 1 uur zitten 3600 seconden, er zijn 6 containers van 10 minuten om het voortschrijdend gemiddelde we   
   # max per uur is 90 mm (record is 79)
   
-  neerslag = GPIO.input(21)
-  if (neerslag != neerslag_oud):
-     neerslag_hoeveelheid = neerslag_hoeveelheid + 2.3
-     neerslag_aantal = neerslag_aantal + 1
-     neerslag_oud = neerslag
-  print("<p> De neerslaghoeveelheid is " + str(neerslag_hoeveelheid) + " </p>")
-  print("<p> Aantal keer wipje omgegaan " + str(neerslag_aantal) + " </p>")  
-  print( time.time()) 
+  neerslag_wip = GPIO.input(21)
+  if (neerslag_wip != neerslag_wip__oud):
+     neerslag_wip__oud = neerslag_wip
+      
+  print("<p> de tijd is  " + str(time.time()) + " </p>")
+  print("<p> Aantal keer wipje omgegaan " + str(neerslag_wip) + " </p>")  
   print("<p> -------------- </p>") 

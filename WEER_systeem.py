@@ -113,7 +113,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
   luchtdruk = (sensor_luchtdruk.read_pressure() / 100)
-  print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
+  #print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
      aantal_stappen = int(verschil * 3.84)
@@ -260,7 +260,7 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
-    print("<p> Wind te zwak om richting te bepalen </p>") 
+    #print("<p> Wind te zwak om richting te bepalen </p>") 
     
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien

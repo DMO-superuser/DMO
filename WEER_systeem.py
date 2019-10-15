@@ -80,7 +80,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
   binnen_temp = sensor_binnentemp.get_temperature()
-  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  #print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
      aantal_stappen = int(verschil * 4.27)
@@ -182,7 +182,7 @@ while True:
            reed_switch = 0
   km_per_uur = int(0.9 * aantal_nullen)
   
-  print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
+  # print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
 
   if (km_per_uur != km_per_uur_oud):
      verschil = km_per_uur - km_per_uur_oud 

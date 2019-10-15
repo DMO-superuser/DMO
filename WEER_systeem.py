@@ -286,8 +286,8 @@ while True:
   # max per uur is 90 mm (record is 79)
   
   neerslag_wip = GPIO.input(21)
-  if (neerslag_wip != neerslag_wip__oud):
-     neerslag_wip__oud = neerslag_wip
+  if (neerslag_wip != neerslag_wip_oud):
+     neerslag_wip_oud = neerslag_wip
       
   print("<p> de tijd is  " + str(time.time()) + " </p>")
   print("<p> Aantal keer wipje omgegaan " + str(neerslag_wip) + " </p>")  

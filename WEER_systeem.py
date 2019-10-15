@@ -287,8 +287,7 @@ while True:
   
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
-     neerslag_wip_oud = neerslag_wip
-      
-  print("<p> de tijd is  " + str(time.time()) + " </p>")
-  print("<p> Aantal keer wipje omgegaan " + str(neerslag_wip) + " </p>")  
-  print("<p> -------------- </p>") 
+     neerslag_wip_oud = neerslag_wip     
+     print("<p> de tijd is  " + str(time.time()) + " </p>")
+     print("<p> Aantal keer wipje omgegaan " + str(neerslag_wip) + " </p>")  
+     print("<p> -------------- </p>") 

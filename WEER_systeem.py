@@ -288,13 +288,19 @@ while True:
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
      # timestamp toevoegen
-     neerslag_lijst.append(time.time())
+     neerslag_huidige_tijd = time.time()
+     neerslag_lijst.append(neerslag_huidige_tijd)
+     # bereken gemiddelde per uur
+     neerslag_per_uur = 3600 / (max(neerslag_lijst) - neerslag_begin_tijd) * len(neerslag_lijst) * 2.3
     
-     print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
-     print("<p> de tijd is  " + str(time.time()) + " </p>")
-     print("<p> status wip " + str(neerslag_wip) + " </p>")  
-     print (neerslag_lijst)
-     print("<p> -------------- </p>") 
+    
+     #print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
+     #print("<p> de tijd is  " + str(time.time()) + " </p>")
+     #print("<p> status wip " + str(neerslag_wip) + " </p>")  
+     #print (neerslag_lijst)
+     #print("<p> -------------- </p>") 
      
      neerslag_wip_oud = neerslag_wip  
-
+  print (neerslag_lijst)
+  print (neerslag_per_uur)
+  print ("------")

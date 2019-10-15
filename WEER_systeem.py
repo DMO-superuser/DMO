@@ -260,7 +260,7 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
-    #print("<p> Wind te zwak om richting te bepalen </p>") 
+      print("<p> Wind te zwak om richting te bepalen </p>") 
     
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien

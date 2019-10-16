@@ -66,7 +66,8 @@ neerslag_wip = 0
 neerslag_wip_oud = 1
 neerslag_lijst = [0] # lijst met timestamps dat de wip is omgegaan
 neerslag_begin_tijd = time.time() # in seconden
-neerslag_per_uur = 0 # gemiddeld voortschrijdend gemiddelde per uur
+neerslag_per_uur = 0 #  gemiddelde per uur
+neerslag_per_meting = 0 # totale neerslag sinds meter aanstaat
 
 
 while True:
@@ -80,7 +81,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
   binnen_temp = sensor_binnentemp.get_temperature()
-  #print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
      aantal_stappen = int(verschil * 4.27)
@@ -113,7 +114,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
   luchtdruk = (sensor_luchtdruk.read_pressure() / 100)
-  #print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
+  print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
      aantal_stappen = int(verschil * 3.84)
@@ -182,7 +183,7 @@ while True:
            reed_switch = 0
   km_per_uur = int(0.9 * aantal_nullen)
   
-  # print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
+  print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
 
   if (km_per_uur != km_per_uur_oud):
      verschil = km_per_uur - km_per_uur_oud 
@@ -295,6 +296,7 @@ while True:
      # timestamp wipje toevoegen 
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
+     neerslag_per_meting = neerslag_per_meting + 0.28814
      neerslag_wip_oud = neerslag_wip  
      # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
      if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
@@ -303,8 +305,10 @@ while True:
   
   # bereken gemiddelde per uur
   neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814
-  print ("neerslag_per_uur " + str(neerslag_per_uur))
+
+  print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
+  print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")
 
 
-  print ("------")
+
   

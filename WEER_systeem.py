@@ -334,6 +334,17 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   mm_per_uur_oud = mm_per_uur
 
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(11) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        positie_oud = 0    
   
   
   if (mm_per_meting != mm_per_meting_oud):
@@ -347,7 +358,17 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   mm_per_meting_oud = mm_per_meting
  
-  
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(8) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        positie_oud = 0    
   
   
   

@@ -129,7 +129,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan 0%
   ######################## 
   print("<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>")
-  if (luchtvochtigheid != luchtvochtigheid_oud) and (GPIO.input(27) == 0);
+  if (luchtvochtigheid != luchtvochtigheid_oud) and (GPIO.input(27) == 0):
      verschil = luchtvochtigheid - luchtvochtigheid_oud 
      aantal_stappen = int(verschil * 3.84)
      if (verschil > 0):

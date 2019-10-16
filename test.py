@@ -1,7 +1,7 @@
 import time
 
 
-while True:
-
-    print( time.time())
-    time.sleep(1)
+a = ["bee", "moth", "ant"]
+print(a)
+a.remove()
+print(a)

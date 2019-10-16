@@ -68,6 +68,10 @@ neerslag_lijst = [0] # lijst met timestamps dat de wip is omgegaan
 neerslag_begin_tijd = time.time() # in seconden
 neerslag_per_uur = 0 #  gemiddelde per uur
 neerslag_per_meting = 0 # totale neerslag sinds meter aanstaat
+mm_per_uur = 0
+mm_per_uur_oud = 0
+mm_per_meting = 0
+mm_per_meting_oud = 0
 
 
 while True:
@@ -290,6 +294,10 @@ while True:
   # het is een gemiddelde, dus : 2 wipjes per 9 minuten = (3600 / 540) * 2 * 2,3 = 30,6 ml per uur
   # de wipjes zitten in een list door middel van het opslaan van de timestamp
   # na 1 uur wordt de gehele lijst verwijderd en begint het weer opnieuw
+  ##############################################
+  # 512 stappen in een rondje, 
+  # Meter 7: 120 mm op de schaal wordt gebruikt, 75% van de schaal, 3,2 stap per mm
+  # Meter 8: 240 mm op de schaal wordt gebruikt, 75% van de schaal, 1,6 stap per mm 
     
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
@@ -297,6 +305,7 @@ while True:
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
      neerslag_per_meting = neerslag_per_meting + 0.28814
+     mm_per_meting = neerslag_per_meting
      neerslag_wip_oud = neerslag_wip  
      # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
      if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
@@ -305,10 +314,40 @@ while True:
   
   # bereken gemiddelde per uur
   neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814
-
+  mm_per_uur = neerslag_per_uur
   print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
   print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")
 
 
+  
+  
 
+  if (mm_per_uur != mm_per_uur_oud):
+     verschil = mm_per_uur - mm_per_uur_oud 
+     aantal_stappen = int(verschil * 3.2)
+     if (verschil > 0):
+        #het is meer
+        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is minder
+        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  mm_per_uur_oud = mm_per_uur
+
+  
+  
+   if (mm_per_meting != mm_per_meting_oud):
+     verschil = mm_per_meting - mm_per_meting_oud 
+     aantal_stappen = int(verschil * 1.6)
+     if (verschil > 0):
+        #het is meer
+        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is minder
+        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  mm_per_meting_oud = mm_per_meting
+ 
+  
+  
+  
+  
   

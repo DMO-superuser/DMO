@@ -314,13 +314,14 @@ while True:
   
   # bereken gemiddelde per uur
   neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814
-  mm_per_uur = neerslag_per_uur
+
   print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
   print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")
 
 
   
-  
+  mm_per_uur = neerslag_per_uur
+  mm_per_meting = neerslag_per_meting
 
   if (mm_per_uur != mm_per_uur_oud):
      verschil = mm_per_uur - mm_per_uur_oud 

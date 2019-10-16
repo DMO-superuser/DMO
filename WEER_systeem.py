@@ -277,9 +277,13 @@ while True:
   ##############################################
   # NEERLSLAG MM per uur meter 7 en per etmaal meter 8
   ##############################################
-  # gevallen regen in mm = aantal ml afgetapte neerslag x 10 gedeeld door de oppervlakte in cm2
   # oppervlakte trechter = 1/2 diameter * 1/2 diameter * Pi = 5 * 5 * Pi = 79,82 cm2
   # het wipje slaat om per 2,3 ml
+  # KNMI: De hoeveelheid regenwater wordt uitgedrukt in millimeters.
+  # 1 millimeter regen komt overeen met 1 liter water op een oppervlakte van 1 vierkante meter (= 10000 cm2)
+  # 1 mm = 1000 ml op 10.000 cm2
+  # 10.000 / 79,82 = 125,28
+  # als wipje omgaat hebben we 2,3 * 125,28 = 288,14 ml op 10.000 cm2 = 0,28814 mm neerslag per m2
   ##############################################
   # in 1 uur zitten 3600 seconden, gedurende 3600 seconden wordt het aantal keren dat het wipje omslaat geteld
   # het is een gemiddelde, dus : 2 wipjes per 9 minuten = (3600 / 540) * 2 * 2,3 = 30,6 ml per uur
@@ -298,7 +302,7 @@ while True:
         neerslag_begin_tijd = time.time()
   
   # bereken gemiddelde per uur
-  neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 2.3
+  neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814
   print ("neerslag_per_uur " + str(neerslag_per_uur))
 
 

@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN)  # pin7  binnen temperatuur 
 
 GPIO.setup(22, GPIO.IN)  # pin15 rode knop
-GPIO.setup(22, GPIO.IN)  # pin27 24 uur (drukknopje achterin, hiermee worden de steppers afgeschakeld)
+GPIO.setup(27, GPIO.IN)  # pin13 24 uur (drukknopje achterin, hiermee worden de steppers afgeschakeld)
 GPIO.setup(20, GPIO.IN)  # pin38 reset 1
 GPIO.setup(25, GPIO.IN)  # pin36 reset 2
 GPIO.setup(16, GPIO.IN)  # pin32 reset 3

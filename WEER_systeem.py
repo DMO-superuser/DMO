@@ -64,7 +64,7 @@ positie_oud = 0
 # neerslag
 neerslag_wip = 0
 neerslag_wip_oud = 1
-neerslag_lijst = [] # lijst met timestamps dat de wip is omgegaan
+neerslag_lijst = [0] # lijst met timestamps dat de wip is omgegaan
 neerslag_begin_tijd = time.time() # in seconden
 neerslag_per_uur = 0 # gemiddeld voortschrijdend gemiddelde per uur
 

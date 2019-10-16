@@ -112,10 +112,10 @@ while True:
   while (GPIO.input(20) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         else:
-           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         buiten_temp_oud = -30
   
@@ -133,10 +133,10 @@ while True:
      aantal_stappen = int(verschil * 3.84)
      if (verschil > 0):
         #het is vochtiger
-        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is minder vochtig
-        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   luchtvochtigheid_oud = luchtvochtigheid
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -144,10 +144,10 @@ while True:
   while (GPIO.input(25) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         else:
-           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           kit2.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         luchtvochtigheid_oud = 0
   
@@ -406,10 +406,10 @@ while True:
      aantal_stappen = int(verschil * 3.2)
      if (verschil > 0):
         #het is meer
-        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is minder
-        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   mm_per_uur_oud = mm_per_uur
 
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -417,10 +417,10 @@ while True:
   while (GPIO.input(11) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           kit4.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         else:
-           kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           kit4.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         positie_oud = 0    
   
@@ -430,10 +430,10 @@ while True:
      aantal_stappen = int(verschil * 1.6)
      if (verschil > 0):
         #het is meer
-        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is minder
-        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+        for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   mm_per_meting_oud = mm_per_meting
  
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -441,10 +441,10 @@ while True:
   while (GPIO.input(8) == 0):
         # rode knop voor heen en weer
         if (GPIO.input(22) == 1):
-           kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         else:
-           kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           kit4.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         positie_oud = 0    
   

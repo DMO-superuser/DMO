@@ -302,6 +302,13 @@ while True:
      #print("<p> -------------- </p>") 
      
      neerslag_wip_oud = neerslag_wip  
+
+
+  print ("neerslag_begin_tijd  " + str(neerslag_begin_tijd ))
+  print ("neerslag_per_uur " + str(neerslag_per_uur))
+  print ("(max(neerslag_lijst) " + str((max(neerslag_lijst)) )
+  print ("len(neerslag_lijst) " + str(len(neerslag_lijst)) )       
   print (neerslag_lijst)
-  print (neerslag_per_uur)
+
   print ("------")
+  

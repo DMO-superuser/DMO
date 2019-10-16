@@ -335,7 +335,7 @@ while True:
 
   
   
-   if (mm_per_meting != mm_per_meting_oud):
+  if (mm_per_meting != mm_per_meting_oud):
      verschil = mm_per_meting - mm_per_meting_oud 
      aantal_stappen = int(verschil * 1.6)
      if (verschil > 0):

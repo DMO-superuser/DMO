@@ -288,16 +288,17 @@ while True:
     
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
-     # timestamp toevoegen
+     # timestamp wipje toevoegen 
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
-     # bereken gemiddelde per uur
-     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 2.3
      neerslag_wip_oud = neerslag_wip  
      # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
      if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
         neerslag_lijst.clear()
-
+        neerslag_begin_tijd = time.time()
+  
+  # bereken gemiddelde per uur
+  neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 2.3
   print ("neerslag_per_uur " + str(neerslag_per_uur))
 
 

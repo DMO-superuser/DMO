@@ -282,30 +282,21 @@ while True:
   # het wipje slaat om per 2,3 ml
   ##############################################
   # in 1 uur zitten 3600 seconden, gedurende 3600 seconden wordt het aantal keren dat het wipje omslaat geteld
-  # het is een voortschrijdend gemiddelde, dus : 2 wipjes per 9 minuten = (3600 / 540) * 2 * 2,3 = 30,6 ml per uur
+  # het is een gemiddelde, dus : 2 wipjes per 9 minuten = (3600 / 540) * 2 * 2,3 = 30,6 ml per uur
   # de wipjes zitten in een list door middel van het opslaan van de timestamp
-  
-  
+  # na 1 uur wordt de gehele lijst verwijderd en begint het weer opnieuw
+    
   neerslag_wip = GPIO.input(21)
   if (neerslag_wip != neerslag_wip_oud):
      # timestamp toevoegen
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
      # bereken gemiddelde per uur
-     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * (len(neerslag_lijst)-1)
-    
-     print("<p> huidige tijd " + str(neerslag_huidige_tijd) + " </p>")   
-     print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
-     print("<p> het verschil " + str(neerslag_huidige_tijd - neerslag_begin_tijd) + " </p>")
-     print("<p> aantal wipjes per uur " + str(neerslag_per_uur) + " </p>")
-      
-     #print("<p> de tijd is  " + str(time.time()) + " </p>")
-     #print("<p> status wip " + str(neerslag_wip) + " </p>")  
-     #print (neerslag_lijst)
-     #print("<p> -------------- </p>") 
-     
+     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 2.3
      neerslag_wip_oud = neerslag_wip  
-
+  # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
+  if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
+    
 
   print ("neerslag_begin_tijd  " + str(neerslag_begin_tijd ))
   print ("neerslag_per_uur " + str(neerslag_per_uur))

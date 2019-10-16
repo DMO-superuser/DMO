@@ -8,6 +8,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN)  # pin7  binnen temperatuur 
 
 GPIO.setup(22, GPIO.IN)  # pin15 rode knop
+GPIO.setup(22, GPIO.IN)  # pin27 24 uur (drukknopje achterin, hiermee worden de steppers afgeschakeld)
 GPIO.setup(20, GPIO.IN)  # pin38 reset 1
 GPIO.setup(25, GPIO.IN)  # pin36 reset 2
 GPIO.setup(16, GPIO.IN)  # pin32 reset 3
@@ -128,7 +129,7 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan 0%
   ######################## 
   print("<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>")
-  if (luchtvochtigheid != luchtvochtigheid_oud):
+  if (luchtvochtigheid != luchtvochtigheid_oud) and (GPIO.input(27) == 0);
      verschil = luchtvochtigheid - luchtvochtigheid_oud 
      aantal_stappen = int(verschil * 3.84)
      if (verschil > 0):
@@ -167,7 +168,7 @@ while True:
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
      aantal_stappen = int(verschil * 4.27)
-     if (verschil > 0):
+     if (verschil > 0) and (GPIO.input(27) == 0):
         #het is warmer
         for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
@@ -200,7 +201,7 @@ while True:
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
      aantal_stappen = int(verschil * 3.84)
-     if (verschil > 0):
+     if (verschil > 0) and (GPIO.input(27) == 0):
         #het is meer
         for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
@@ -267,7 +268,7 @@ while True:
   
   print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
 
-  if (km_per_uur != km_per_uur_oud):
+  if (km_per_uur != km_per_uur_oud) and (GPIO.input(27) == 0):
      verschil = km_per_uur - km_per_uur_oud 
      aantal_stappen = int(verschil * 3.2)
      if (verschil > 0):
@@ -308,7 +309,7 @@ while True:
   #  1  0  0  1  NW  192
   #  0  0  1  1  ZW  64       
 
-  if (km_per_uur >= 12):
+  if (km_per_uur >= 12) and (GPIO.input(27) == 0):
     if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
       positie = 256
       print("<p> De wind komt uit het Noorden </p>")    
@@ -396,12 +397,10 @@ while True:
   print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
   print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")
 
-
-  
   mm_per_uur = neerslag_per_uur
   mm_per_meting = neerslag_per_meting
 
-  if (mm_per_uur != mm_per_uur_oud):
+  if (mm_per_uur != mm_per_uur_oud) and (GPIO.input(27) == 0):
      verschil = mm_per_uur - mm_per_uur_oud 
      aantal_stappen = int(verschil * 3.2)
      if (verschil > 0):
@@ -424,11 +423,10 @@ while True:
            sleep (0.02)
         positie_oud = 0    
   
-  
   if (mm_per_meting != mm_per_meting_oud):
      verschil = mm_per_meting - mm_per_meting_oud 
      aantal_stappen = int(verschil * 1.6)
-     if (verschil > 0):
+     if (verschil > 0) and (GPIO.input(27) == 0):
         #het is meer
         for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
@@ -448,6 +446,6 @@ while True:
            sleep (0.02)
         positie_oud = 0    
   
-  
+  print ("<p>---------------------</p>")
   
   

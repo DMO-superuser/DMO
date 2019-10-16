@@ -292,7 +292,7 @@ while True:
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
      # bereken gemiddelde per uur
-     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * len(neerslag_lijst) * 2.3
+     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * len(neerslag_lijst) 
     
      print("<p> huidige tijd " + str(neerslag_huidige_tijd) + " </p>")   
      print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")

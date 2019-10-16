@@ -294,8 +294,9 @@ while True:
      # bereken gemiddelde per uur
      neerslag_per_uur = (3600 / (max(neerslag_lijst) - neerslag_begin_tijd)) * len(neerslag_lijst) * 2.3
     
-    
-     #print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
+     print("<p> huidige tijd " + str(neerslag_huidige_tijd) + " </p>")   
+     print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
+     
      #print("<p> de tijd is  " + str(time.time()) + " </p>")
      #print("<p> status wip " + str(neerslag_wip) + " </p>")  
      #print (neerslag_lijst)

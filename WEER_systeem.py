@@ -292,11 +292,12 @@ while True:
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
      # bereken gemiddelde per uur
-     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * len(neerslag_lijst) 
+     neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * (len(neerslag_lijst)-1)
     
      print("<p> huidige tijd " + str(neerslag_huidige_tijd) + " </p>")   
      print("<p> begintijd " + str(neerslag_begin_tijd) + " </p>")
      print("<p> het verschil " + str(neerslag_huidige_tijd - neerslag_begin_tijd) + " </p>")
+     print("<p> aantal wipjes per uur " + str(neerslag_per_uur) + " </p>")
       
      #print("<p> de tijd is  " + str(time.time()) + " </p>")
      #print("<p> status wip " + str(neerslag_wip) + " </p>")  
@@ -309,7 +310,7 @@ while True:
   print ("neerslag_begin_tijd  " + str(neerslag_begin_tijd ))
   print ("neerslag_per_uur " + str(neerslag_per_uur))
   print ("(max(neerslag_lijst)) " + str((max(neerslag_lijst))) )
-  print ("(len(neerslag_lijst)) " + str((len(neerslag_lijst))) )
+  print ("(len(neerslag_lijst)) " + str((len(neerslag_lijst)-1)) )
   print (neerslag_lijst)
 
   print ("------")

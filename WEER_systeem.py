@@ -31,7 +31,7 @@ GPIO.setwarnings(False)
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 kit1 = MotorKit(address=0x60) # meter 3 en 4
-kit2 = MotorKit(address=0x61) 
+kit2 = MotorKit(address=0x61) # meter 1 en 2
 kit3 = MotorKit(address=0x62) # meter 5 en 6
 kit4 = MotorKit(address=0x63) # meter 7 en 8
 
@@ -51,6 +51,15 @@ import Adafruit_BMP.BMP085 as BMP085
 sensor_luchtdruk = BMP085.BMP085()
 luchtdruk = 0
 luchtdruk_oud = 950
+
+# luchtvochtigheid en buitentemperatuur
+import Adafruit_DHT
+DHT_SENSOR = Adafruit_DHT.DHT22
+DHT_PIN = 17
+buiten_temp = 0
+buiten_temp_oud = -30
+luchtvochtigheid = 0
+luchtvochtigheid_oud = 0
 
 # windsnelheid
 km_per_uur = 0
@@ -76,6 +85,19 @@ mm_per_meting_oud = 0
 
 while True:
 
+  ########################
+  # BUITENTEMPERATUUR meter 1
+  ########################
+  # schaal -30 tot 60 graden
+  # 512 stappen in een rondje, 90 graden Celcius op de schaal worden gebruikt, 75% van de schaal, 4,27 stap per graad
+  ########################
+  # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
+  ######################## 
+  
+  luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+  print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
+  print("<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>")
+  
   ########################
   # BINNENTEMPERATUUR meter 3
   ########################

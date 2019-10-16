@@ -294,15 +294,12 @@ while True:
      # bereken gemiddelde per uur
      neerslag_per_uur = (3600 / (neerslag_huidige_tijd - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 2.3
      neerslag_wip_oud = neerslag_wip  
-  # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
-  if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
-     neerslag_lijst.clear()
+     # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
+     if ((neerslag_huidige_tijd - neerslag_begin_tijd) > 3600):
+        neerslag_lijst.clear()
 
-  print ("neerslag_begin_tijd  " + str(neerslag_begin_tijd ))
   print ("neerslag_per_uur " + str(neerslag_per_uur))
-  print ("(max(neerslag_lijst)) " + str((max(neerslag_lijst))) )
-  print ("(len(neerslag_lijst)) " + str((len(neerslag_lijst)-1)) )
-  print (neerslag_lijst)
+
 
   print ("------")
   

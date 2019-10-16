@@ -93,10 +93,66 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ######################## 
-  
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+ 
   print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
+  if (buiten_temp != buiten_temp_oud):
+     verschil = buiten_temp - buiten_temp_oud 
+     aantal_stappen = int(verschil * 4.27)
+     if (verschil > 0):
+        #het is warmer
+        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is kouder
+        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  buiten_temp_oud = buiten_temp
+ 
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(20) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        buiten_temp_oud = -30
+  
+  ########################
+  # LUCHTVOCHTIGHEID meter 2
+  ########################
+  # schaal 0 tot 100 procent
+  # 512 stappen in een rondje, 75% van de schaal, 3,84 stap per procent
+  ########################
+  # eerst wijzer ijken op 0 punt en dat is dan 0%
+  ######################## 
   print("<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>")
+  if (luchtvochtigheid != luchtvochtigheid_oud):
+     verschil = luchtvochtigheid - luchtvochtigheid_oud 
+     aantal_stappen = int(verschil * 3.84)
+     if (verschil > 0):
+        #het is vochtiger
+        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+     else: 
+        #het is minder vochtig
+        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+  luchtvochtigheid_oud = luchtvochtigheid
+  
+  # resetten van meter (zwarte knop bij desbetreffende meter)
+  # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
+  while (GPIO.input(25) == 0):
+        # rode knop voor heen en weer
+        if (GPIO.input(22) == 1):
+           kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        else:
+           kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+           sleep (0.02)
+        luchtvochtigheid_oud = 0
+  
+  
+
   
   ########################
   # BINNENTEMPERATUUR meter 3

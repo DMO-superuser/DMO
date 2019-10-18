@@ -101,6 +101,14 @@ while True:
   print(type(buiten_temp), buiten_temp)
   print(type(luchtvochtigheid), luchtvochtigheid) 
 
+  # als er geen waarde uit de sensor komt
+  if (buiten_temp == ""):
+     buiten_temp = buiten_temp_oud
+  if (luchtvochtigheid == ""):
+     luchtvochtigheid = luchtvochtigheid_oud
+      
+  buiten_temp = round(buiten_temp,2)
+  luchtvochtigheid = round(luchtvochtigheid,2)
   
   print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
   if (buiten_temp != buiten_temp_oud):

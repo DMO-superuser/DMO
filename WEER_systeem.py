@@ -94,6 +94,8 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ######################## 
+  DHT_SENSOR = Adafruit_DHT.DHT22
+  DHT_PIN = 17
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
  
   print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")

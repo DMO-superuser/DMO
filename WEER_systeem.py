@@ -102,9 +102,9 @@ while True:
   print(type(luchtvochtigheid), luchtvochtigheid) 
 
   # als er geen waarde uit de sensor komt
-  if (buiten_temp == ""):
+  if (type(buiten_temp) == "NoneType"):
      buiten_temp = buiten_temp_oud
-  if (luchtvochtigheid == ""):
+  if (type(luchtvochtigheid) == "NoneType"):
      luchtvochtigheid = luchtvochtigheid_oud
       
   buiten_temp = round(buiten_temp,2)

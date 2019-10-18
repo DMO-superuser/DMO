@@ -98,6 +98,9 @@ while True:
   ######################## 
   DHT_SENSOR = Adafruit_DHT.DHT22
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+  print(type(buiten_temp), buiten_temp)
+  print(type(luchtvochtigheid), luchtvochtigheid) 
+  
   buiten_temp = round(float(buiten_temp),2)
   luchtvochtigheid = round(float(luchtvochtigheid),2)
   

@@ -1,6 +1,7 @@
 # diversen
 from time import sleep
 import os
+import datetime
 
 # GPIO
 import RPi.GPIO as GPIO
@@ -85,6 +86,8 @@ mm_per_meting_oud = 0
 
 while True:
 
+  print (datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
+  
   ########################
   # BUITENTEMPERATUUR meter 1
   ########################

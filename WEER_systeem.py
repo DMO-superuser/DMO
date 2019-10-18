@@ -95,7 +95,6 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ######################## 
   DHT_SENSOR = Adafruit_DHT.DHT22
-  DHT_PIN = 17
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
   luchtvochtigheid = round(luchtvochtigheid,2)
   buiten_temp = round(buiten_temp,2)
@@ -155,10 +154,7 @@ while True:
            kit2.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
            sleep (0.02)
         luchtvochtigheid_oud = 0
-  
-  
-
-  
+ 
   ########################
   # BINNENTEMPERATUUR meter 3
   ########################
@@ -167,7 +163,7 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
-  binnen_temp = sensor_binnentemp.get_temperature()
+  binnen_temp = round(sensor_binnentemp.get_temperature(),2)
   print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 

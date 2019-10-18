@@ -100,9 +100,7 @@ while True:
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
   print(type(buiten_temp), buiten_temp)
   print(type(luchtvochtigheid), luchtvochtigheid) 
-  
-  buiten_temp = round(float(buiten_temp),2)
-  luchtvochtigheid = round(float(luchtvochtigheid),2)
+
   
   print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
   if (buiten_temp != buiten_temp_oud):

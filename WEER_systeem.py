@@ -55,7 +55,6 @@ luchtdruk_oud = 950
 
 # luchtvochtigheid en buitentemperatuur
 import Adafruit_DHT
-DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 17
 buiten_temp = 0
 buiten_temp_oud = -30

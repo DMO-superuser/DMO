@@ -198,7 +198,7 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
-  luchtdruk = (sensor_luchtdruk.read_pressure() / 100)
+  luchtdruk =  round((sensor_luchtdruk.read_pressure() / 100),2)
   print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
@@ -266,7 +266,7 @@ while True:
     else :
         if reed_switch == 1 :
            reed_switch = 0
-  km_per_uur = int(0.9 * aantal_nullen)
+  km_per_uur = round(int(0.9 * aantal_nullen),2)
   
   print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
 
@@ -346,7 +346,7 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
-      print("<p> Wind te zwak om richting te bepalen </p>") 
+      print("<p> Wind is te zwak om de richting te bepalen </p>") 
     
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
@@ -385,7 +385,7 @@ while True:
      # timestamp wipje toevoegen 
      neerslag_huidige_tijd = time.time()
      neerslag_lijst.append(neerslag_huidige_tijd)
-     neerslag_per_meting = neerslag_per_meting + 0.28814
+     neerslag_per_meting = round(neerslag_per_meting + 0.28814,2)
      mm_per_meting = neerslag_per_meting
      neerslag_wip_oud = neerslag_wip  
      # na 1 uur wordt de gehele list verwijderd en begint alles opnieuw
@@ -394,7 +394,7 @@ while True:
         neerslag_begin_tijd = time.time()
   
   # bereken gemiddelde per uur
-  neerslag_per_uur = (3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814
+  neerslag_per_uur = round((3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814 ,2)
 
   print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
   print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")

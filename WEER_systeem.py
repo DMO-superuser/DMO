@@ -190,7 +190,7 @@ while True:
   print (regel)
 
   if (binnen_temp != binnen_temp_oud):
-     verschil = binnen_temp - binnen_temp_oud 
+     verschil = binnen_temp_oud - binnen_temp
      aantal_stappen = int(verschil * 4.27)
      if (verschil < 0) and (GPIO.input(27) == 0):
         #het is warmer

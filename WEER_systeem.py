@@ -100,12 +100,11 @@ while True:
   luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
 
   # als er een meetfout uit de sensor komt, huidige sensor buiten geeft fouten
-  if luchtvochtigheid is not None and buiten_temp is not None:
-     buiten_temp = 0
+  if buiten_temp is not None:
+     buiten_temp = 0     
+  if luchtvochtigheid is not None:
      luchtvochtigheid = 0     
-  buiten_temp = round(buiten_temp,2)
-  luchtvochtigheid = round(luchtvochtigheid,2)  
-  
+
   print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
   if (buiten_temp != buiten_temp_oud):
      verschil = buiten_temp - buiten_temp_oud 

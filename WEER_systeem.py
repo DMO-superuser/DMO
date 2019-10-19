@@ -455,5 +455,6 @@ while True:
         positie_oud = 0    
   
   print ("<p>---------------------</p>")
-  
   log_regel.close()
+  sleep (5) # anders geen tijd om de file te lezen
+  

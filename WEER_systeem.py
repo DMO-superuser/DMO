@@ -89,7 +89,14 @@ while True:
   regel = "<p>" + str(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')) + "</p>"
   log_regel.write(regel)
   print (regel)
-    
+  
+  if (GPIO.input(27) == 0):
+     regel = "<p> de wijzerplaten staan UIT </p>"
+  else:
+     regel = "<p> de wijzerplaten staan AAN </p>"    
+  log_regel.write(regel)
+  print (regel)
+  
   ########################
   # BUITENTEMPERATUUR meter 1
   ########################

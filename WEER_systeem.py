@@ -85,7 +85,7 @@ mm_per_meting_oud = 0
 
 while True:
 
-  log_regel = open(apache_indexfile, "x")
+  log_regel = open(apache_indexfile, "w")
   regel = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
   log_regel.write(regel)
   print (regel)

@@ -142,7 +142,10 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan 0%
   ######################## 
-  print("<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>")
+  regel = "<p> De luchtvochtigheid is " + str(luchtvochtigheid) + " </p>"
+  log_regel.write(regel)
+  print (regel)
+
   if (luchtvochtigheid != luchtvochtigheid_oud) and (GPIO.input(27) == 0):
      verschil = luchtvochtigheid - luchtvochtigheid_oud 
      aantal_stappen = int(verschil * 3.84)
@@ -175,7 +178,10 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
   binnen_temp = round(sensor_binnentemp.get_temperature(),2)
-  print("<p> De binnentemperatuur is " + str(binnen_temp) + " </p>")
+  regel = "<p> De binnentemperatuur is " + str(binnen_temp) + " </p>"
+  log_regel.write(regel)
+  print (regel)
+
   if (binnen_temp != binnen_temp_oud):
      verschil = binnen_temp - binnen_temp_oud 
      aantal_stappen = int(verschil * 4.27)
@@ -208,7 +214,10 @@ while True:
   # eerst wijzer ijken op 0 punt en dat is dan 950
   ########################
   luchtdruk =  round((sensor_luchtdruk.read_pressure() / 100),2)
-  print("<p> De luchtdruk is " + str(luchtdruk) + " </p>")
+  regel = "<p> De luchtdruk is " + str(luchtdruk) + " </p>"
+  log_regel.write(regel)
+  print (regel)
+
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
      aantal_stappen = int(verschil * 3.84)
@@ -277,7 +286,10 @@ while True:
            reed_switch = 0
   km_per_uur = round(int(0.9 * aantal_nullen),2)
   
-  print("<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>")
+  regel = "<p> De windsnelheid in km/h is " + str(km_per_uur) + " </p>"
+  log_regel.write(regel)
+  print (regel)
+
 
   if (km_per_uur != km_per_uur_oud) and (GPIO.input(27) == 0):
      verschil = km_per_uur - km_per_uur_oud 
@@ -323,28 +335,28 @@ while True:
   if (km_per_uur >= 12) and (GPIO.input(27) == 0):
     if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
       positie = 256
-      print("<p> De wind komt uit het Noorden </p>")    
+      regel = "<p> De wind komt uit het Noorden </p>"    
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 1)): 
       positie = 128
-      print("<p> De wind komt uit het Westen </p>")    
+      regel = "<p> De wind komt uit het Westen </p>"    
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 1) and (GPIO.input(6) == 0)):
       positie = 0
-      print("<p> De wind komt uit het Zuiden </p>")    
+      regel = "<p> De wind komt uit het Zuiden </p>"    
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 2) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)): 
       positie = 384      
-      print("<p> De wind komt uit het Oosten </p>")    
+      regel = "<p> De wind komt uit het Oosten </p>"    
     if ((GPIO.input(26) == 1) and (GPIO.input(19) == 1) and (GPIO.input(13) == 0) and (GPIO.input(6) == 0)):
       positie = 320
-      print("<p> De wind komt uit het Noordoosten </p>")       
+      regel = "<p> De wind komt uit het Noordoosten </p>"       
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 1) and (GPIO.input(13) == 1) and (GPIO.input(6) == 0)): 
       positie = 448
-      print("<p> De wind komt uit het Zuidoosten </p>")     
+      regel = "<p> De wind komt uit het Zuidoosten </p>"     
     if ((GPIO.input(26) == 1) and (GPIO.input(19) == 0) and (GPIO.input(13) == 0) and (GPIO.input(6) == 1)): 
       positie = 192
-      print("<p> De wind komt uit het Noordwesten </p>")     
+      regel = "<p> De wind komt uit het Noordwesten </p>"     
     if ((GPIO.input(26) == 0) and (GPIO.input(19) == 0) and (GPIO.input(13) == 1) and (GPIO.input(6) == 1)): 
       positie = 64
-      print("<p> De wind komt uit het Zuidwesten </p>")  
+      regel = "<p> De wind komt uit het Zuidwesten </p>"  
     if (positie != positie_oud):
       aantal_stappen = positie - positie_oud 
       if (verschil > 0):
@@ -355,8 +367,11 @@ while True:
         for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
-      print("<p> Wind is te zwak om de richting te bepalen </p>") 
-    
+      regel = "<p> Wind is te zwak om de richting te bepalen </p>"
+
+  log_regel.write(regel)
+  print (regel)
+     
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien
   while (GPIO.input(7) == 0):
@@ -405,9 +420,13 @@ while True:
   # bereken gemiddelde per uur
   neerslag_per_uur = round((3600 / (time.time() - neerslag_begin_tijd)) * (len(neerslag_lijst)-1) * 0.28814 ,2)
 
-  print ("<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>")
-  print ("<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>")
-
+  regel = "<p>neerslag gemiddeld per uur " + str(neerslag_per_uur) + "</p>"
+  log_regel.write(regel)
+  print (regel)  
+  regel = "<p>neerslag sinds meter aanstaat " + str(neerslag_per_meting) + "</p>"
+  log_regel.write(regel)
+  print (regel)
+  
   mm_per_uur = neerslag_per_uur
   mm_per_meting = neerslag_per_meting
 

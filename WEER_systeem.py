@@ -86,7 +86,7 @@ mm_per_meting_oud = 0
 while True:
 
   log_regel = open(apache_indexfile, "w")
-  regel = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+  regel = "<p>" + str(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')) + "</p>"
   log_regel.write(regel)
   print (regel)
     
@@ -107,7 +107,10 @@ while True:
   if luchtvochtigheid is not None:
      luchtvochtigheid = 0     
 
-  print("<p> De buitentemperatuur is " + str(buiten_temp) + " </p>")
+  regel = "<p> De buitentemperatuur is " + str(buiten_temp) + " </p>"
+  log_regel.write(regel)
+  print (regel)
+  
   if (buiten_temp != buiten_temp_oud):
      verschil = buiten_temp - buiten_temp_oud 
      aantal_stappen = int(verschil * 4.27)

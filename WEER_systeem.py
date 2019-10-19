@@ -39,7 +39,6 @@ kit4 = MotorKit(address=0x63) # meter 7 en 8
 
 # Apache index.html op http://192.168.178.94/
 apache_indexfile = "/var/www/html/index.html"
-log_regel = open(apache_indexfile, "a+")
 
 # binnentemperatuur meter
 import time
@@ -86,8 +85,11 @@ mm_per_meting_oud = 0
 
 while True:
 
-  print (datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-  
+  log_regel = open(apache_indexfile, "a+")
+  regel = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+  log_regel.write(regel)
+  print (regel)
+    
   ########################
   # BUITENTEMPERATUUR meter 1
   ########################

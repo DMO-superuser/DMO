@@ -121,7 +121,7 @@ while True:
   if (buiten_temp != buiten_temp_oud):
      verschil = buiten_temp - buiten_temp_oud 
      aantal_stappen = int(verschil * 4.27)
-     if (verschil > 0):
+     if (verschil < 0):
         print ("het is warmer")
         #het is warmer
         for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 

@@ -121,14 +121,13 @@ while True:
   if (buiten_temp != buiten_temp_oud):
      verschil = buiten_temp - buiten_temp_oud 
      aantal_stappen = int(verschil * 4.27)
-     if (verschil < 0):
-        print ("het is warmer")
-        #het is warmer
-        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is kouder
-        print ("het is kouder")
-        for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+        if (verschil > 0):
+           #het is warmer
+           for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else: 
+           #het is kouder
+           for x in range(0, abs(aantal_stappen)): kit2.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   buiten_temp_oud = buiten_temp
  
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -155,15 +154,16 @@ while True:
   log_regel.write(regel)
   print (regel)
 
-  if (luchtvochtigheid != luchtvochtigheid_oud) and (GPIO.input(27) == 0):
+  if (luchtvochtigheid != luchtvochtigheid_oud):
      verschil = luchtvochtigheid - luchtvochtigheid_oud 
      aantal_stappen = int(verschil * 3.84)
-     if (verschil > 0):
-        #het is vochtiger
-        for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is minder vochtig
-        for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+        if (verschil > 0):
+           #het is vochtiger
+           for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else: 
+           #het is minder vochtig
+           for x in range(0, abs(aantal_stappen)): kit2.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   luchtvochtigheid_oud = luchtvochtigheid
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -231,12 +231,13 @@ while True:
   if (luchtdruk != luchtdruk_oud):
      verschil = luchtdruk - luchtdruk_oud 
      aantal_stappen = int(verschil * 3.84)
-     if (verschil > 0) and (GPIO.input(27) == 0):
-        #het is meer
-        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is minder
-        for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+       if (verschil > 0):
+          #het is meer
+          for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+       else: 
+          #het is minder
+          for x in range(0, abs(aantal_stappen)): kit1.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   luchtdruk_oud = luchtdruk
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -301,15 +302,16 @@ while True:
   print (regel)
 
 
-  if (km_per_uur != km_per_uur_oud) and (GPIO.input(27) == 0):
+  if (km_per_uur != km_per_uur_oud):
      verschil = km_per_uur - km_per_uur_oud 
      aantal_stappen = int(verschil * 3.2)
-     if (verschil > 0):
-        #het waait harder
-        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het waait minder hard
-        for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+        if (verschil > 0):
+           #het waait harder
+           for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else: 
+           #het waait minder hard
+           for x in range(0, abs(aantal_stappen)): kit3.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   km_per_uur_oud = km_per_uur
   
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -369,12 +371,13 @@ while True:
       regel = "<p> De wind komt uit het Zuidwesten </p>"  
     if (positie != positie_oud):
       aantal_stappen = positie - positie_oud 
-      if (verschil > 0):
-        #naar rechts
-        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-      else: 
-        #naar links
-        for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+      if (GPIO.input(27) == 1): # meters staan aan
+         if (verschil > 0):
+            #naar rechts
+            for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+         else: 
+            #naar links
+            for x in range(0, abs(aantal_stappen)): kit3.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
       positie_oud = positie
   else:  
       regel = "<p> Wind is te zwak om de richting te bepalen </p>"
@@ -440,15 +443,16 @@ while True:
   mm_per_uur = neerslag_per_uur
   mm_per_meting = neerslag_per_meting
 
-  if (mm_per_uur != mm_per_uur_oud) and (GPIO.input(27) == 0):
+  if (mm_per_uur != mm_per_uur_oud):
      verschil = mm_per_uur - mm_per_uur_oud 
      aantal_stappen = int(verschil * 3.2)
-     if (verschil > 0):
-        #het is meer
-        for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is minder
-        for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+        if (verschil > 0):
+           #het is meer
+           for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else: 
+           #het is minder
+           for x in range(0, abs(aantal_stappen)): kit4.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   mm_per_uur_oud = mm_per_uur
 
   # resetten van meter (zwarte knop bij desbetreffende meter)
@@ -466,13 +470,14 @@ while True:
   if (mm_per_meting != mm_per_meting_oud):
      verschil = mm_per_meting - mm_per_meting_oud 
      aantal_stappen = int(verschil * 1.6)
-     if (verschil > 0) and (GPIO.input(27) == 0):
-        #het is meer
-        for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is minder
-        for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
-  mm_per_meting_oud = mm_per_meting
+     if (GPIO.input(27) == 1): # meters staan aan 
+        if (verschil > 0):
+           #het is meer
+           for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+        else: 
+           #het is minder
+           for x in range(0, abs(aantal_stappen)): kit4.stepper2.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     mm_per_meting_oud = mm_per_meting
  
   # resetten van meter (zwarte knop bij desbetreffende meter)
   # zwarte knop ingedrukt houden, rode knop erbij om meter andere kant op te laten draaien

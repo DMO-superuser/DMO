@@ -203,9 +203,11 @@ while True:
       
      if (verschil < 0) and (GPIO.input(27) == 0):
         #het is warmer
+        print ("het is warmer")
         for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
      else: 
         #het is kouder
+        print ("het is kouder")
         for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   

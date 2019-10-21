@@ -192,23 +192,15 @@ while True:
   print (regel)
 
   if (binnen_temp != binnen_temp_oud):
-     print ("binnen_temp " + str(binnen_temp))
-     print ("binnen_temp_oud " + str(binnen_temp_oud))
-   
      verschil = binnen_temp - binnen_temp_oud
      aantal_stappen = int(verschil * 4.27)
-     print ("verschil " + str(verschil))
-     print ("aantal_stappen " + str(aantal_stappen))
-
-      
-     if (verschil > 0):
-        #het is warmer
-        print ("het is warmer")
-        for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
-     else: 
-        #het is kouder
-        print ("het is kouder")
-        for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
+     if (GPIO.input(27) == 1): # meters staan aan
+       if (verschil > 0):
+          #het is warmer
+          for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+       else: 
+          #het is kouder
+          for x in range(0, abs(aantal_stappen)): kit1.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE) 
   binnen_temp_oud = binnen_temp
   
   # resetten van meter (zwarte knop bij desbetreffende meter)

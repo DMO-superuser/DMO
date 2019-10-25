@@ -40,12 +40,14 @@ kit4 = MotorKit(address=0x63) # meter 7 en 8
 # Apache index.html op http://192.168.178.94/
 apache_indexfile = "/var/www/html/index.html"
 
-# binnentemperatuur meter
+# binnen- en buitentemperatuur meter
 import time
 from w1thermsensor import W1ThermSensor
 sensor_binnentemp = W1ThermSensor()
 binnen_temp = 0
 binnen_temp_oud = -30
+buiten_temp = 0
+buiten_temp_oud = -30
 
 # luchtdruk meten
 import Adafruit_BMP.BMP085 as BMP085
@@ -105,14 +107,15 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ######################## 
-  DHT_SENSOR = Adafruit_DHT.DHT22
-  luchtvochtigheid, buiten_temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
-
-  # als er een meetfout uit de sensor komt, huidige sensor buiten geeft fouten
-  if buiten_temp is not None:
-     buiten_temp = 0     
-  if luchtvochtigheid is not None:
-     luchtvochtigheid = 0     
+  # we halen hier ook meteen de binnentemperatuur op voor meter 3
+  
+  binnen_temp = 0
+  buiten_temp = 0
+  for sensor in W1ThermSensor.get_available_sensors():
+     if (binnen_temp == 0):
+        binnen_temp = round(sensor.get_temperature(),2)
+     else:
+        buiten_temp = round(sensor.get_temperature(),2)
 
   regel = "<p> De buitentemperatuur is " + str(buiten_temp) + " </p>"
   log_regel.write(regel)
@@ -186,7 +189,7 @@ while True:
   ########################
   # eerst wijzer ijken op 0 punt en dat is dan -30 graden Celsius
   ########################
-  binnen_temp = round(sensor_binnentemp.get_temperature(),2)
+ 
   regel = "<p> De binnentemperatuur is " + str(binnen_temp) + " </p>"
   log_regel.write(regel)
   print (regel)

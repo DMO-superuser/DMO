@@ -111,7 +111,7 @@ while True:
   
   binnen_temp = 0
   buiten_temp = 0
-  for sensor in W1ThermSensor.get_available_sensors()
+  for sensor in W1ThermSensor.get_available_sensors():
       if (binnen_temp == 0):
          try:
             binnen_temp = round(sensor.get_temperature(),2)

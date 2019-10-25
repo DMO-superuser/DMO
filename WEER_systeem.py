@@ -115,13 +115,13 @@ while True:
       if (binnen_temp == 0):
          try:
             binnen_temp = round(sensor.get_temperature(),2)
-         except w1thermsensor.core.SensorNotReadyError:
+         except:
             # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
             binnen_temp = binnen_temp_oud
       else:
          try:
             buiten_temp = round(sensor.get_temperature(),2)
-         except w1thermsensor.core.SensorNotReadyError:
+         except:
             # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
             buiten_temp = buiten_temp_oud
 

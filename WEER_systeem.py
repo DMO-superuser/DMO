@@ -111,16 +111,20 @@ while True:
   
   binnen_temp = 0
   buiten_temp = 0
-  for sensor in W1ThermSensor.get_available_sensors():
-     try: 
-        if (binnen_temp == 0):
-           binnen_temp = round(sensor.get_temperature(),2)
-        else:
-           buiten_temp = round(sensor.get_temperature(),2)
-     except w1thermsensor.core.SensorNotReadyError:
-        # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
-        binnen_temp = binnen_temp_oud
-        buiten_temp = buiten_temp_oud
+  for sensor in W1ThermSensor.get_available_sensors()
+      if (binnen_temp == 0):
+         try:
+            binnen_temp = round(sensor.get_temperature(),2)
+         except w1thermsensor.core.SensorNotReadyError:
+            # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
+            binnen_temp = binnen_temp_oud
+      else:
+         try:
+            buiten_temp = round(sensor.get_temperature(),2)
+         except w1thermsensor.core.SensorNotReadyError:
+            # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
+            buiten_temp = buiten_temp_oud
+
               
   regel = "<p> De buitentemperatuur is " + str(buiten_temp) + " </p>"
   log_regel.write(regel)

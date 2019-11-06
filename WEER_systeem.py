@@ -115,12 +115,18 @@ while True:
       if (binnen_temp == 0):
          try:
             binnen_temp = round(sensor.get_temperature(),2)
+            # als temp met meer dan 50 graden afwijkt is er ook een meetfout
+            if (abs(binnen_temp - binnen_temp_oud) > 50):
+               binnen_temp = binnen_temp_oud
          except:
             # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
             binnen_temp = binnen_temp_oud
       else:
          try:
             buiten_temp = round(sensor.get_temperature(),2)
+            # als temp met meer dan 50 graden afwijkt is er ook een meetfout
+            if (abs(buiten_temp - buiten_temp_oud) > 50):
+               buiten_temp = buiten_temp_oud
          except:
             # sensor geeft een meetfout, temperatuur terug zetten naar vorige waarde
             buiten_temp = buiten_temp_oud

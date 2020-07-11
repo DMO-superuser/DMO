@@ -9,8 +9,8 @@ io.pinMode(26,io.INPUT)
 
 while True:
  if (io.digitalRead(26)):
-     print "open"
+     print ("open")
  else:
      # onder de schakelaar
-     print "dicht"
+     print ("dicht")
  sleep(0.05)

@@ -54,7 +54,7 @@ while True:
   #print ("Mars " +  positiestring[9:12])
   #print ("Jupiter " + positiestring[12:15])
   #print ("Saturnus " + positiestring[15:18])
-  #print ("positiestring     " + positiestring)
+  print ("positiestring     " + positiestring)
   #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website

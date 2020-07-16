@@ -1,27 +1,19 @@
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
-   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   planeet_magneet = 346 # begin van het magneetveld van de planeet
-   stappen_per_graad = totaal_stappen / 360
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Jupiter"):
-   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   planeet_magneet = 321 # begin van het magneetveld van de planeet
-   stappen_per_graad = totaal_stappen / 360
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mars"):
-   steppersoort = "buiten"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 2776 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   planeet_magneet = 308 # begin van het magneetveld van de planeet   
-   stappen_per_graad = totaal_stappen / 360   
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
  
+stappen_per_graad = int(totaal_stappen / 360)   
 
 # spullen reedswitch
 import os
@@ -60,7 +52,7 @@ while True:
  # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud):   
       
-    # EERST NAAR SCHAKELAAR RIJDEN 
+    # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
       kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       if (io.digitalRead(26)):  
@@ -72,10 +64,6 @@ while True:
 
     # BEREKENING AANTAL STAPPEN 
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-    if (aantal_graden_planeet > planeet_magneet):
-      aantal_graden_planeet = aantal_graden_planeet - planeet_magneet
-    else:
-      aantal_graden_planeet = (360 - planeet_magneet) + aantal_graden_planeet
     aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
     # NU NAAR POSITIE RIJDEN 

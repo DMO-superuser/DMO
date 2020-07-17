@@ -66,6 +66,11 @@ while True:
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
     aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
+    # VOOR TESTDOELEINDEN om sneller te testen
+    aantal_stappen_te_lopen = 100
+   
+   
+   
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):

@@ -53,21 +53,22 @@ while True:
   if (positiestring != positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
-    while (schakelaar == "open"):
-      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-      if (io.digitalRead(26)):  
-        schakelaar = "open"
-      else:
-        if teller > 500:
-          schakelaar = "dicht"
-      teller +=1
-
+    #while (schakelaar == "open"):
+    #  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+    #  if (io.digitalRead(26)):  
+    #    schakelaar = "open"
+    #  else:
+    #    if teller > 500:
+    #      schakelaar = "dicht"
+    #  teller +=1
+    # VOOR TESTDOELEINDEN om sneller te testen
+    aantal_stappen_te_lopen = 100
+   
     # BEREKENING AANTAL STAPPEN 
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
     aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
-    # VOOR TESTDOELEINDEN om sneller te testen
-    aantal_stappen_te_lopen = 100
+
    
    
    

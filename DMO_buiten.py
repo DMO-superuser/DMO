@@ -46,7 +46,7 @@ while True:
   try:
     r = requests.get(url, timeout=4)
   except requests.exceptions.ConnectionError:
-    r.status_code = 200
+    positiestring = positiestring_oud
 
   positiestring = r.text
   #print ("Aarde " + positiestring[6:9])
@@ -57,7 +57,7 @@ while True:
   #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
-  if (positiestring != positiestring_oud) and (r.status_code != 200):   
+  if (positiestring != positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     #while (schakelaar == "open"):

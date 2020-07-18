@@ -81,8 +81,8 @@ while True:
     # motoren loslaten
     kit.stepper1.release()
    
-  # 5 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
-  sleep (5)
+  # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
+  sleep (10)
   print (testteller)
   testteller +=1
    

@@ -46,8 +46,8 @@ while True:
   #print ("Mars " +  positiestring[9:12])
   #print ("Jupiter " + positiestring[12:15])
   #print ("Saturnus " + positiestring[15:18])
-  print ("positiestring     " + positiestring)
-  print ("positiestring_oud " + positiestring_oud)
+  #print ("positiestring     " + positiestring)
+  #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud) and (r.status_code == 200):   
@@ -67,8 +67,7 @@ while True:
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
     aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
     # VOOR TESTDOELEINDEN om sneller te testen
-    aantal_stappen_te_lopen = 100
-   
+    aantal_stappen_te_lopen = 300
    
    
     # NU NAAR POSITIE RIJDEN 
@@ -76,16 +75,17 @@ while True:
     while (teller < aantal_stappen_te_lopen):
       kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       teller +=1
-   
-    # 5 seconden wachten omdat anders de CURL de boel verstopt
-    sleep (5)
-   
+    
     # motoren loslaten
     kit.stepper1.release()
    
-    positiestring_oud = positiestring
-    schakelaar = "open"
-    teller = 1
+  # 5 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert.
+  sleep (5)
+   
+   
+  positiestring_oud = positiestring
+  schakelaar = "open"
+  teller = 1
 
     
 

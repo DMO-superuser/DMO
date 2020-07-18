@@ -88,7 +88,7 @@ while True:
    
   # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (20)
-  print (testteller)
+  #print (testteller)
   testteller +=1
    
    

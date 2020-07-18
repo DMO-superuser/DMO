@@ -39,6 +39,8 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
 
+testteller = 1
+
 while True:
   r = requests.get(url, timeout=4)
   positiestring = r.text
@@ -81,6 +83,8 @@ while True:
    
   # 5 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (5)
+  print (testteller)
+  testteller +=1
    
    
   positiestring_oud = positiestring

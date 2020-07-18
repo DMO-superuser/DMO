@@ -50,7 +50,7 @@ while True:
   print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
-  if (positiestring != positiestring_oud) and (response.status_code == 200):   
+  if (positiestring != positiestring_oud) and (r.status_code == 200):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     #while (schakelaar == "open"):

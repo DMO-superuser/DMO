@@ -42,7 +42,12 @@ positiestring_oud = "leeg"
 testteller = 1
 
 while True:
-  r = requests.get(url, timeout=4)
+
+  try:
+    r = requests.get(url, timeout=4)
+  except requests.exceptions.ConnectionError:
+    r.status_code = 200
+
   positiestring = r.text
   #print ("Aarde " + positiestring[6:9])
   #print ("Mars " +  positiestring[9:12])
@@ -52,7 +57,7 @@ while True:
   #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
-  if (positiestring != positiestring_oud) and (r.status_code == 200):   
+  if (positiestring != positiestring_oud) and (r.status_code != 200):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     #while (schakelaar == "open"):
@@ -81,8 +86,8 @@ while True:
     # motoren loslaten
     kit.stepper1.release()
    
-  # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
-  sleep (20)
+  # 5 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
+  sleep (5)
   print (testteller)
   testteller +=1
    

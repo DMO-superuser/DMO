@@ -39,8 +39,6 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
 
-testteller = 1
-
 while True:
 
   try:
@@ -60,22 +58,19 @@ while True:
   if (positiestring != positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
-    #while (schakelaar == "open"):
-    #  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    #  if (io.digitalRead(26)):  
-    #    schakelaar = "open"
-    #  else:
-    #    if teller > 500:
-    #      schakelaar = "dicht"
-    #  teller +=1
+    while (schakelaar == "open"):
+      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      if (io.digitalRead(26)):  
+        schakelaar = "open"
+      else:
+        if teller > 500:
+          schakelaar = "dicht"
+      teller +=1
 
    
     # BEREKENING AANTAL STAPPEN 
     aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
     aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
-    # VOOR TESTDOELEINDEN om sneller te testen
-    aantal_stappen_te_lopen = 300
-   
    
     # NU NAAR POSITIE RIJDEN 
     teller = 1
@@ -83,15 +78,14 @@ while True:
       kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       teller +=1
     
+    # DIT WERKT ALLEEN DIRECT VAN DE COMMANDLINE, ALS JE DIT SCRIPT IN rc.local DRAAIT KRIJG JE EEN ERROR
+    # IS EEN BUG VAN ADAFRUIT EN MOET TZT OPGELOST WORDEN (MOTOREN BLIJVEN NU AANSTAAN EN WORDEN WARM
     # motoren loslaten
-    kit.stepper1.release()
+    # kit.stepper1.release()
    
   # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (20)
-  #print (testteller)
-  testteller +=1
-   
-   
+      
   positiestring_oud = positiestring
   schakelaar = "open"
   teller = 1

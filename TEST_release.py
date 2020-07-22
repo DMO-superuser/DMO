@@ -1,9 +1,6 @@
-
 from adafruit_motorkit import MotorKit
-from adafruit_motor import stepper
-from time import sleep
+#from adafruit_motor import stepper
 kit = MotorKit()
-
 
 teller = 1
 while (teller < 50):

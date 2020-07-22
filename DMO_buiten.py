@@ -81,7 +81,7 @@ while True:
     # DIT WERKT ALLEEN DIRECT VAN DE COMMANDLINE, ALS JE DIT SCRIPT IN rc.local DRAAIT KRIJG JE EEN ERROR
     # IS EEN BUG VAN ADAFRUIT EN MOET TZT OPGELOST WORDEN (MOTOREN BLIJVEN NU AANSTAAN EN WORDEN WARM
     # motoren loslaten
-    # kit.stepper1.release()
+    kit.stepper1.release()
    
   # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (20)

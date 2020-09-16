@@ -41,6 +41,7 @@ Seq2[5] = [0,0,1,1]
 Seq2[6] = [0,0,0,1]
 Seq2[7] = [1,0,0,1]
 
+
 # Welke stappenvolgorde gaan we hanteren?
 Seq = Seq2
 StepCount = StepCount2
@@ -135,6 +136,14 @@ while (positiestring_oud != positiestring):
       sleep(.001)
 
     positiestring_oud = positiestring
+
+## Uitzetten spoelen motor
+for pin in list(range(0, 4)):
+   xpin = StepPins[pin]
+   GPIO.output(xpin, False)
+
+    
+    
     
 print ("WE ZIJN ER!")
 print ("de positiestring")

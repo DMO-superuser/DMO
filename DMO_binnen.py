@@ -1,5 +1,15 @@
 import socket
 planeet = socket.gethostname()
+if (planeet == "DMO-Aarde"):
+   steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
+   
+   ##CONTROLEREN  CONTROLEREN totaal_stappen 23 sep 2020##
+   totaal_stappen = 18677 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   planeet_magneet = 100 # begin van het magneetveld van de planeet
+
+   stappen_per_graad = totaal_stappen / 360
+   beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 9 # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Venus"):
    steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 20854 # aantal stappen om een rondje te maken, 1% afwijking per keer
@@ -14,9 +24,6 @@ if (planeet == "DMO-Mercurius"):
    stappen_per_graad = totaal_stappen / 360
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet
-
-print (planeet)   
-
 
 # importeer de GPIO bibliotheek.
 import RPi.GPIO as GPIO

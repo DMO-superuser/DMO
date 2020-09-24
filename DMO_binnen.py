@@ -15,7 +15,7 @@ if (planeet == "DMO-Venus"):
    steppersoort = "binnen"    # er bestaan binnen- en buitensteppers 
    totaal_stappen = 20854 # aantal stappen om een rondje te maken, 1% afwijking per keer
    planeet_magneet = 213 # begin van het magneetveld van de planeet
-   vertraging = .01
+   vertraging = .003
    stappen_per_graad = totaal_stappen / 360
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6 # de eindpositie in de string bij de Curl van deze planeet

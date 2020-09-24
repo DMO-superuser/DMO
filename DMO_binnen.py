@@ -15,6 +15,7 @@ if (planeet == "DMO-Mercurius"):
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet
 
+print (planeet)   
 
 
 # importeer de GPIO bibliotheek.

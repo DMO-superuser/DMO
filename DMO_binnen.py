@@ -95,15 +95,15 @@ while True:
  
   aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
 
-  print ("++++++++++++++++++")
-  print ("aantal stappen te lopen vanaf nulpunt" + str(aantal_stappen_te_lopen))
-  print ("----")
-  print ("Venus in positiestring" + positiestring[3:6])
-  print ("positiestring     " + positiestring)
-  print ("positiestring_oud " + positiestring_oud)
-  print ("+++++++++++++++++++") 
-  print ("      ")
-  print ("      ")  
+  #print ("++++++++++++++++++")
+  #print ("aantal stappen te lopen vanaf nulpunt" + str(aantal_stappen_te_lopen))
+  #print ("----")
+  #print ("Venus in positiestring" + positiestring[3:6])
+  #print ("positiestring     " + positiestring)
+  #print ("positiestring_oud " + positiestring_oud)
+  #print ("+++++++++++++++++++") 
+  #print ("      ")
+  #print ("      ")  
   
   
   # als er een nieuwe positie is ingegeven op de website
@@ -166,7 +166,14 @@ while True:
     positiestring_oud = positiestring
     schakelaar = "open"
     teller = 1
+   
+    # Spoelen uitzetten vanwege hitte en stroom
+    for pin in list(range(0, 4)):
+     xpin = StepPins[pin]
+     GPIO.output(xpin, False)
 
+    # vertraging inbouwen anders loopt alles vol met de requests
+    sleep (1)
 
  
 

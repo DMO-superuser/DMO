@@ -89,7 +89,10 @@ while True:
  # naar het begin rijden, gebeurt elke keer bij een nieuwe positie
  while schakelaar == "open":
   # buitenstepper in actie
-  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+ if planeet == "DMO-Mars":
+    kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)
+ else:
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)   
 
   if (io.digitalRead(26)):
       schakelaar = "open"
@@ -118,7 +121,10 @@ while True:
   # en naar de nieuwe positie toe rijden.
   while (teller <  nieuwe_positie):
    # buitensteppers in actie
-   kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+   if planeet == "DMO-Mars":
+      kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)
+   else:
+      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)   
    teller += 1
   
   # telkens de string opvragen en zolang er geen nieuwe string is hier blijven

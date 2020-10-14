@@ -16,6 +16,10 @@ from time import sleep
 kit = MotorKit()
 
 while True:
-  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  if planeet != "DMO-Mars":
+     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  else:
+     kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+
   sleep (wachttijd)
 

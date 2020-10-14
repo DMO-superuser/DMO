@@ -59,7 +59,10 @@ while True:
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
-      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      if planeet != "DMO-Mars":
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      else:
+         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
       if (io.digitalRead(26)):  
         schakelaar = "open"
       else:
@@ -75,7 +78,11 @@ while True:
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):
-      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      if planeet != "DMO-Mars":
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      else:
+         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+
       teller +=1
     
     # DIT WERKT ALLEEN DIRECT VAN DE COMMANDLINE, ALS JE DIT SCRIPT IN rc.local DRAAIT KRIJG JE EEN ERROR

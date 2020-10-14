@@ -1,4 +1,4 @@
-richting = "stepper.FORWARD"
+richting = "stepper.BACKWARD"
 
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit

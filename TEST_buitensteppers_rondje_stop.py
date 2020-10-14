@@ -7,6 +7,9 @@ sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
 io.pinMode(26,io.INPUT)
 
+import socket
+planeet = socket.gethostname()
+
 schakelaar = "open"
 teller = 1
     
@@ -18,7 +21,10 @@ from time import sleep
 kit = MotorKit()
 
 while (schakelaar == "open"):
-  kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  if planeet != "DMO-Mars":
+     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+  else:
+     kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
   if (io.digitalRead(26)):
     #print ("open")
     schakelaar = "open"

@@ -77,7 +77,7 @@ try:
       # onder de schakelaar
       #print ("dicht")
       #print (teller)
-      if teller > 1500:
+      if teller > 3000:
         schakelaar = "dicht"
           
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw

@@ -88,6 +88,10 @@ try:
     sleep(.0005)
 
   print (teller)
+  ## Uitzetten spoelen motor
+  for pin in list(range(0, 4)):
+      xpin = StepPins[pin]
+      GPIO.output(xpin, False)
     
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

@@ -42,7 +42,7 @@ Seq2[6] = [0,0,0,1]
 Seq2[7] = [1,0,0,1]
 
 # Welke stappenvolgorde gaan we hanteren?
-Seq = Seq1
+Seq = Seq2
 StepCount = StepCount2
 
 try:
@@ -63,7 +63,7 @@ try:
     if (StepCounter<0): StepCounter = StepCount
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
+    # sleep(.001)
 
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

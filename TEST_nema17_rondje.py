@@ -14,4 +14,4 @@ while True:
     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.SINGLE)
  else:
     kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.SINGLE)   
-
+ sleep (0.01)

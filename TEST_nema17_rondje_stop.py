@@ -1,42 +1,26 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # spullen reedswitch
 import os
 import wiringpi
 from time import sleep
-os.system('gpio export 26 in')
+os.system('gpio export 19 in')
 sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
-io.pinMode(26,io.INPUT)
+io.pinMode(19,io.INPUT)
+
 
 import socket
 planeet = socket.gethostname()
 
-schakelaar = "open"
-teller = 1
-    
+
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 from time import sleep
 
 kit = MotorKit()
+
+schakelaar = "open"
+teller = 1
 
 while (schakelaar == "open"):
   if planeet != "DMO-Mars":

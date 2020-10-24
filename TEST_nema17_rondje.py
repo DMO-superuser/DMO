@@ -11,7 +11,7 @@ kit = MotorKit()
 
 while True:
  if planeet != "DMO-Mars":
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.MICROSTEP)
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
  else:
-    kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.MICROSTEP)   
+    kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
  #sleep (0.01)

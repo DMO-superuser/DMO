@@ -41,5 +41,5 @@ while (schakelaar == "open"):
   teller +=1
   sleep (0.001)
 
-    
+kit.stepper1.release()    
 print (teller)

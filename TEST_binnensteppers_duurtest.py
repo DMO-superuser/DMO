@@ -70,7 +70,7 @@ try:
     StepCounter += 1
     teller += 1
     
-    if teller > 500:
+    if teller > 3000:
         teller = 1
         #spoelen uit
         for pin in list(range(0, 4)):

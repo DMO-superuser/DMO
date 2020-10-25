@@ -70,14 +70,7 @@ try:
     StepCounter += 1
     teller += 1
     
-    if (io.digitalRead(26)):
-      #print ("open")
-      schakelaar = "open"
-    else:
-      # onder de schakelaar
-      #print ("dicht")
-      #print (teller)
-      if teller > 1000:
+    if teller > 500:
         schakelaar = "dicht"
         teller = 1
         #spoelen uit

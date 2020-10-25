@@ -71,7 +71,6 @@ try:
     teller += 1
     
     if teller > 500:
-        schakelaar = "dicht"
         teller = 1
         #spoelen uit
         for pin in list(range(0, 4)):

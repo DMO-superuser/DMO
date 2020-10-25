@@ -77,9 +77,16 @@ try:
       # onder de schakelaar
       #print ("dicht")
       #print (teller)
-      if teller > 3000:
+      if teller > 1000:
         schakelaar = "dicht"
-          
+        teller = 1
+        #spoelen uit
+        for pin in list(range(0, 4)):
+          xpin = StepPins[pin]
+          GPIO.output(xpin, False)
+        #ff wachten
+        sleep(5)
+        
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
     if (StepCounter==StepCount): StepCounter = 0
     if (StepCounter<0): StepCounter = StepCount
@@ -91,8 +98,7 @@ try:
     for pin in list(range(0, 4)):
         xpin = StepPins[pin]
         GPIO.output(xpin, False)
-    schakelaar = "open"
-    teller = 1
+
   
     
 except KeyboardInterrupt:

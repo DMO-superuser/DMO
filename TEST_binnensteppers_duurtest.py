@@ -87,14 +87,13 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.0005)
 
- 
-  ## Uitzetten spoelen motor
-  for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      GPIO.output(xpin, False)
-  sleep (5)
-  schakelaar = "open"
-  teller = 1
+    ## Uitzetten spoelen motor
+    for pin in list(range(0, 4)):
+        xpin = StepPins[pin]
+        GPIO.output(xpin, False)
+    sleep (5)
+    schakelaar = "open"
+    teller = 1
   
     
 except KeyboardInterrupt:

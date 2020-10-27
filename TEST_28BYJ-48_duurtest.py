@@ -70,7 +70,7 @@ try:
     StepCounter += 1
     teller += 1
     
-    if (teller > 1000):
+    if (teller > 6000):
        ## Uitzetten spoelen motor
        for pin in list(range(0, 4)):
           xpin = StepPins[pin]

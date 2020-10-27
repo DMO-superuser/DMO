@@ -57,6 +57,7 @@ io.pinMode(26,io.INPUT)
 schakelaar = "open"
 teller = 1
 
+import time
 begintijd = time.perf_counter()
 
 try:

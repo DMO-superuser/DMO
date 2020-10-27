@@ -90,7 +90,9 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.0005)
 
+import time
 eindtijd = time.perf_counter()  
+
 tijd = eindtijd - begintijd
 print (tijd)
 print (teller)

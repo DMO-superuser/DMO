@@ -88,7 +88,7 @@ try:
     if (StepCounter<0): StepCounter = StepCount
 
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.0005)
+    # sleep(.0005)
 
   import time
   eindtijd = time.perf_counter()  

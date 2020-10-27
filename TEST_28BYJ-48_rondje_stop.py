@@ -90,11 +90,14 @@ try:
     # Wacht voor de volgende stap (lager = snellere draaisnelheid)
     sleep(.0005)
 
-    print (teller)
-  ## Uitzetten spoelen motor
-  for pin in list(range(0, 4)):
-      xpin = StepPins[pin]
-      GPIO.output(xpin, False)
+eindtijd = time.perf_counter()  
+tijd = eindtijd - begintijd
+pint (tijd)
+print (teller)
+## Uitzetten spoelen motor
+for pin in list(range(0, 4))
+    xpin = StepPins[pin]
+    GPIO.output(xpin, False)
     
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

@@ -43,7 +43,7 @@ Seq2[7] = [1,0,0,1]
 
 # Welke stappenvolgorde gaan we hanteren?
 Seq = Seq1
-StepCount = StepCount2
+StepCount = StepCount1
 
 # spullen reedswitch
 import os

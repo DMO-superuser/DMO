@@ -37,7 +37,7 @@ while (schakelaar == "open"):
     # onder de schakelaar
     #print ("dicht")
     #print (teller)
-    if teller > 100:
+    if teller > 200:
       schakelaar = "dicht"
 
   teller +=1

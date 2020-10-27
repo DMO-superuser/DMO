@@ -96,10 +96,8 @@ try:
   tijd = eindtijd - begintijd
   print (tijd)
   print (teller)
-  ## Uitzetten spoelen motor
-  for pin in range(0, 4)
-      xpin = StepPins[pin]
-      GPIO.output(xpin, False)
+
+
     
 except KeyboardInterrupt:
   # GPIO netjes afsluiten

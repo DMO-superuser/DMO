@@ -57,6 +57,8 @@ io.pinMode(26,io.INPUT)
 schakelaar = "open"
 teller = 1
 
+begintijd = time.perf_counter()
+
 try:
   while (schakelaar == "open"):
     for pin in range(0, 4):

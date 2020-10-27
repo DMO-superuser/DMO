@@ -92,7 +92,7 @@ try:
 
 eindtijd = time.perf_counter()  
 tijd = eindtijd - begintijd
-pint (tijd)
+print (tijd)
 print (teller)
 ## Uitzetten spoelen motor
 for pin in list(range(0, 4))

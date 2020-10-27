@@ -42,7 +42,7 @@ Seq2[6] = [0,0,0,1]
 Seq2[7] = [1,0,0,1]
 
 # Welke stappenvolgorde gaan we hanteren?
-Seq = Seq2
+Seq = Seq1
 StepCount = StepCount2
 
 # spullen reedswitch

@@ -41,7 +41,7 @@ while (schakelaar == "open"):
       schakelaar = "dicht"
 
   teller +=1
-  sleep (0.001)
+  #sleep (0.001)
 
 kit.stepper1.release()    
 

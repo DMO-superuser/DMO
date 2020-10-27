@@ -22,6 +22,9 @@ kit = MotorKit()
 schakelaar = "open"
 teller = 1
 
+import time
+begintijd = time.perf_counter()
+
 while (schakelaar == "open"):
   if planeet != "DMO-Mars":
      kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
@@ -37,9 +40,14 @@ while (schakelaar == "open"):
     if teller > 100:
       schakelaar = "dicht"
 
-  print (teller)
   teller +=1
   sleep (0.001)
 
 kit.stepper1.release()    
+
 print (teller)
+
+import time
+eindtijd = time.perf_counter()
+tijd = eindtijd - begintijd
+print (tijd)

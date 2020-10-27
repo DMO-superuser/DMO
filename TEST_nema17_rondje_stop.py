@@ -31,7 +31,7 @@ while (schakelaar == "open"):
   else:
      kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
   if (io.digitalRead(19)):
-    #print ("open")
+    print ("open")
     schakelaar = "open"
   else:
     # onder de schakelaar

@@ -42,8 +42,8 @@ Seq2[6] = [0,0,0,1]
 Seq2[7] = [1,0,0,1]
 
 # Welke stappenvolgorde gaan we hanteren?
-Seq = Seq1
-StepCount = StepCount1
+Seq = Seq2
+StepCount = StepCount2
 
 # spullen reedswitch
 import os
@@ -77,7 +77,7 @@ try:
       # onder de schakelaar
       #print ("dicht")
       #print (teller)
-      if teller > 3000:
+      if teller > 1000:
         schakelaar = "dicht"
           
     # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw

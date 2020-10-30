@@ -27,9 +27,9 @@ begintijd = time.perf_counter()
 
 while (schakelaar == "open"):
   if planeet != "DMO-Mars":
-     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+     kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.INTERLEAVE)
   else:
-     kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+     kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.INTERLEAVE)   
   if (io.digitalRead(19)):
     #print ("open")
     schakelaar = "open"

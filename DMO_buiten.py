@@ -12,7 +12,20 @@ if (planeet == "DMO-Mars"):
    totaal_stappen = 2776 # aantal stappen om een rondje te maken, 1% afwijking per keer
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
- 
+if (planeet == "DMO-Aarde"):
+   totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
+if (planeet == "DMO-Venus"):
+   totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
+if (planeet == "DMO-Mercurius"):
+   totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
+   eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
+   
+   
 stappen_per_graad = int(totaal_stappen / 360)   
 
 # spullen reedswitch

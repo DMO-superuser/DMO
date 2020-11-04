@@ -78,9 +78,9 @@ while True:
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):
-      if planeet != "DMO-Mars":
+      #if planeet != "DMO-Mars":
          # kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-      else:
+      #else:
          # kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
 
       teller +=1

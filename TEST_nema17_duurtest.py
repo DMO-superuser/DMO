@@ -19,7 +19,7 @@ while True:
     
     teller +=1
 
-  #kit.stepper1.release()
+  kit.stepper1.release()
 
   sleep(10)
 

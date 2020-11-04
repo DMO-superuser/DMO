@@ -19,10 +19,10 @@ stappen_per_graad = int(totaal_stappen / 360)
 import os
 import wiringpi
 from time import sleep
-os.system('gpio export 26 in')
+os.system('gpio export 19 in')
 sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
-io.pinMode(26,io.INPUT)
+io.pinMode(19,io.INPUT)
 
 # spullen Adafruit
 from adafruit_motorkit import MotorKit
@@ -47,12 +47,12 @@ while True:
     positiestring = positiestring_oud
 
   positiestring = r.text
-  #print ("Aarde " + positiestring[6:9])
-  #print ("Mars " +  positiestring[9:12])
-  #print ("Jupiter " + positiestring[12:15])
-  #print ("Saturnus " + positiestring[15:18])
-  #print ("positiestring     " + positiestring)
-  #print ("positiestring_oud " + positiestring_oud)
+  print ("Aarde " + positiestring[6:9])
+  print ("Mars " +  positiestring[9:12])
+  print ("Jupiter " + positiestring[12:15])
+  print ("Saturnus " + positiestring[15:18])
+  print ("positiestring     " + positiestring)
+  print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud):   
@@ -79,15 +79,12 @@ while True:
     teller = 1
     while (teller < aantal_stappen_te_lopen):
       if planeet != "DMO-Mars":
-         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+         # kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       else:
-         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+         # kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
 
       teller +=1
     
-    # DIT WERKT ALLEEN DIRECT VAN DE COMMANDLINE, ALS JE DIT SCRIPT IN rc.local DRAAIT KRIJG JE EEN ERROR
-    # IS EEN BUG VAN ADAFRUIT EN MOET TZT OPGELOST WORDEN (MOTOREN BLIJVEN NU AANSTAAN EN WORDEN WARM
-    # motoren loslaten
     kit.stepper1.release()
    
   # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert

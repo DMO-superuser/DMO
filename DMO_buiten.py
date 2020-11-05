@@ -99,7 +99,7 @@ while True:
     if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
        aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad
     else:
-       aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneetpositie) * stappen_per_graad 
+       aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
    
   
     # NU NAAR POSITIE RIJDEN 

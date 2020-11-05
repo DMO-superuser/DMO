@@ -120,7 +120,7 @@ while True:
     
     kit.stepper1.release()
    
-  # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
+  # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (10)
       
   positiestring_oud = positiestring

@@ -95,12 +95,12 @@ while True:
    
     # BEREKENING AANTAL STAPPEN 
     nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
-    stappen_per_graad = int(round(totaal_stappen/360),0)
+    stappen_per_graad = totaal_stappen/360
     if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
        aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad
     else:
        aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
-   
+    
     print ("---------------------------------------------")
     print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
     print ("stappen_per_graad " + str(stappen_per_graad))

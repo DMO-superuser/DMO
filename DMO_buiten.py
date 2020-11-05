@@ -118,10 +118,12 @@ while True:
 
       teller +=1
     
-    kit.stepper1.release()
+  
    
   # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (10)
+   
+  kit.stepper1.release() 
       
   positiestring_oud = positiestring
   schakelaar = "open"

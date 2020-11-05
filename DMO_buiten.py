@@ -22,7 +22,7 @@ if (planeet == "DMO-Aarde"):
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 92  # positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 112  # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
 if (planeet == "DMO-Mercurius"):

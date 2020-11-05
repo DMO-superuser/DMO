@@ -85,7 +85,7 @@ while True:
          kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       else:
          kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
-      if (io.digitalRead(26)):  
+      if (io.digitalRead(19)):  
         schakelaar = "open"
       else:
         if teller > 500:

@@ -101,6 +101,7 @@ while True:
     else:
        aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
    
+    print ("----------------------------------------------")
     print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
     print ("stappen_per_graad " + str(stappen_per_graad))
     print ("magneet_positie " + str(magneet_positie))
@@ -119,7 +120,7 @@ while True:
     kit.stepper1.release()
    
   # 20 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
-  sleep (20)
+  sleep (10)
       
   positiestring_oud = positiestring
   schakelaar = "open"

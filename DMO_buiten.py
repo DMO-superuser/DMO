@@ -2,26 +2,32 @@ import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 1  # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Jupiter"):
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 1  # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mars"):
    totaal_stappen = 2776 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 1   # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 19   # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
 if (planeet == "DMO-Venus"):
-   totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 1  # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
 if (planeet == "DMO-Mercurius"):
-   totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
+   magneet_positie = 1   # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    
@@ -88,16 +94,21 @@ while True:
 
    
     # BEREKENING AANTAL STAPPEN 
-    aantal_graden_planeet = 360 - int(positiestring[beginpos_string:eindpos_string])
-    aantal_stappen_te_lopen =  int(aantal_graden_planeet * stappen_per_graad)
+    nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
+    stappen_per_graad = int(totaal_stappen/360)
+    if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
+       aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad
+    else:
+       aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneetpositie) * stappen_per_graad 
    
+  
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):
-      #if planeet != "DMO-Mars":
-         # kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-      #else:
-         # kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+      if planeet != "DMO-Mars":
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      else:
+         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
 
       teller +=1
     

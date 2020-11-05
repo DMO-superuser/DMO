@@ -88,7 +88,7 @@ while True:
       if (io.digitalRead(19)):  
         schakelaar = "open"
       else:
-        if teller > 500:
+        if teller > 100:
           schakelaar = "dicht"
       teller +=1
 

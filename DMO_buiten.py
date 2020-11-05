@@ -67,14 +67,14 @@ while True:
 
   positiestring = r.text
 
-  print ("Mercurius " + positiestring[0:3])
-  print ("Venus " + positiestring[3:6])
-  print ("Aarde " + positiestring[6:9])
-  print ("Mars " +  positiestring[9:12])
-  print ("Jupiter " + positiestring[12:15])
-  print ("Saturnus " + positiestring[15:18])
-  print ("positiestring     " + positiestring)
-  print ("positiestring_oud " + positiestring_oud)
+  #print ("Mercurius " + positiestring[0:3])
+  #print ("Venus " + positiestring[3:6])
+  #print ("Aarde " + positiestring[6:9])
+  #print ("Mars " +  positiestring[9:12])
+  #print ("Jupiter " + positiestring[12:15])
+  #print ("Saturnus " + positiestring[15:18])
+  #print ("positiestring     " + positiestring)
+  #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website
   if (positiestring != positiestring_oud):   

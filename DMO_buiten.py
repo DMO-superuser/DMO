@@ -101,7 +101,11 @@ while True:
     else:
        aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
    
-  
+    print ("nieuwe_positie_planeet " + nieuwe_positie_planeet)
+    print ("stappen_per_graad " + stappen_per_graad)
+    print ("magneet_positie " + magneet_positie)
+    print ("aantal_stappen_te_lopen " + aantal_stappen_te_lopen)      
+   
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):

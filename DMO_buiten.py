@@ -12,7 +12,7 @@ if (planeet == "DMO-Jupiter"):
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Mars"):
    totaal_stappen = 2776 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 1   # positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 92  # positie in graden waar de magneet van de planeet ligt
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
 if (planeet == "DMO-Aarde"):
@@ -70,9 +70,9 @@ while True:
   print ("Mercurius " + positiestring[0:3])
   print ("Venus " + positiestring[3:6])
   print ("Aarde " + positiestring[6:9])
-  #print ("Mars " +  positiestring[9:12])
-  #print ("Jupiter " + positiestring[12:15])
-  #print ("Saturnus " + positiestring[15:18])
+  print ("Mars " +  positiestring[9:12])
+  print ("Jupiter " + positiestring[12:15])
+  print ("Saturnus " + positiestring[15:18])
   #print ("positiestring     " + positiestring)
   #print ("positiestring_oud " + positiestring_oud)
 

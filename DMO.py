@@ -8,7 +8,7 @@ if (planeet == "DMO-Saturnus"):
    wachttijd_simulatie = 0.0748 # de wachtijd als DMO in simulatie gaat   
 if (planeet == "DMO-Jupiter"):
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 350  # positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
    wachttijd_simulatie = 0.0434 # de wachtijd als DMO in simulatie gaat   
@@ -74,8 +74,8 @@ while True:
   #print ("Venus " + positiestring[3:6])
   print ("Aarde " + positiestring[6:9])
   print ("Mars " +  positiestring[9:12])
-  #print ("Jupiter " + positiestring[12:15])
-  #print ("Saturnus " + positiestring[15:18])
+  print ("Jupiter " + positiestring[12:15])
+  print ("Saturnus " + positiestring[15:18])
   #print ("positiestring     " + positiestring)
   #print ("positiestring_oud " + positiestring_oud)
 

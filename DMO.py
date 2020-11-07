@@ -32,7 +32,7 @@ if (planeet == "DMO-Venus"):
    wachttijd_simulatie = 0.01 # de wachtijd als DMO in simulatie gaat
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 175   # positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 187   # 14 juni positie in graden waar de magneet van de planeet ligt
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    wachttijd_simulatie = 0.0198 # de wachtijd als DMO in simulatie gaat   

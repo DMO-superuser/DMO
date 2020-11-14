@@ -1,9 +1,6 @@
 import logging
 logging.basicConfig(filename='/home/pi/DMO/example.log', filemode='w', level=logging.DEBUG)
-logging.debug('This message should go to the log file')
-logging.info('So should this')
-logging.warning('And this, too')
-logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
+
 
 
 import socket
@@ -87,6 +84,13 @@ while True:
   logging.debug( positiestring)
   logging.debug('systeemtijd in seconden')
   logging.debug( time.perf_counter())
+  logging.info()
+  logging.warning()
+  logging.error()
+
+
+
+
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])

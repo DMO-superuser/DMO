@@ -84,9 +84,9 @@ while True:
   logging.debug( positiestring)
   logging.debug('systeemtijd in seconden')
   logging.debug( time.perf_counter())
-  logging.info()
-  logging.warning()
-  logging.error()
+  #logging.info()
+  #logging.warning()
+  #logging.error()
 
 
 

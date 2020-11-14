@@ -83,8 +83,10 @@ while True:
 
   positiestring = r.text
 
-  logging.debug('postiestring', positiestring)
-  logging.debug('systeemtijd in seconden', time.perf_counter())
+  logging.debug('positiestring')
+  logging.debug( positiestring)
+  logging.debug('systeemtijd in seconden')
+  logging.debug( time.perf_counter())
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])

@@ -1,3 +1,11 @@
+import logging
+logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
+logging.debug('This message should go to the log file')
+logging.info('So should this')
+logging.warning('And this, too')
+logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
+
+
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
@@ -62,7 +70,7 @@ positiestring     = ""
 positiestring_oud = "leeg"
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
-sleep (30)
+#sleep (30)
 
 
 while True:

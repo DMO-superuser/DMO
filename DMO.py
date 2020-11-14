@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(filename='example.log', level=logging.DEBUG)
+logging.basicConfig(filename='/home/pi/DMO/example.log', level=logging.DEBUG)
 logging.debug('This message should go to the log file')
 logging.info('So should this')
 logging.warning('And this, too')
@@ -72,6 +72,7 @@ positiestring_oud = "leeg"
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
 #sleep (30)
 
+import time
 
 while True:
 
@@ -83,6 +84,7 @@ while True:
   positiestring = r.text
 
   logging.debug(positiestring)
+  logging.debug(time.perf_counter())
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])

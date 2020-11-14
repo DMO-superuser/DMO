@@ -82,6 +82,7 @@ while True:
 
   positiestring = r.text
 
+  logging.debug('POsitiestring:', positiestring)
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])

@@ -131,14 +131,11 @@ while True:
     
   
    
-    # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
-    sleep (10)
+  # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
+  sleep (10)
    
-    kit.stepper1.release() 
+  kit.stepper1.release() 
       
-    positiestring_oud = positiestring
-    schakelaar = "open"
-    teller = 1
-
-    
-
+  positiestring_oud = positiestring
+  schakelaar = "open"
+  teller = 1

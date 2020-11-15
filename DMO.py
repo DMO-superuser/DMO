@@ -1,8 +1,3 @@
-import logging
-logging.basicConfig(filename='/home/pi/DMO/example.log', filemode='w', level=logging.DEBUG)
-
-
-
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
@@ -65,6 +60,7 @@ schakelaar = "open"
 teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
+internetverbinding = True
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
 #sleep (30)
@@ -75,20 +71,12 @@ while True:
 
   try:
     r = requests.get(url, timeout=4)
+    internetverbinding = True
   except requests.exceptions.ConnectionError:
     positiestring = positiestring_oud
+    internetverbinding = False
 
   positiestring = r.text
-
-  logging.debug('positiestring')
-  logging.debug( positiestring)
-  logging.debug('systeemtijd in seconden')
-  logging.debug( time.perf_counter())
-  #logging.info()
-  #logging.warning()
-  #logging.error()
-
-
 
 
   #print ("Mercurius " + positiestring[0:3])
@@ -100,8 +88,8 @@ while True:
   #print ("positiestring     " + positiestring)
   #print ("positiestring_oud " + positiestring_oud)
 
- # als er een nieuwe positie is ingegeven op de website
-  if (positiestring != positiestring_oud):   
+ # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
+  if (positiestring != positiestring_oud) and (internetverbinding = True):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):

@@ -69,7 +69,6 @@ positiestring_oud = "leeg"
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
 #sleep (30)
 
-import time
 
 while True:
 
@@ -80,10 +79,9 @@ while True:
 
   positiestring = r.text
 
-  logging.debug('positiestring')
-  logging.debug( positiestring)
-  logging.debug('systeemtijd in seconden')
-  logging.debug( time.perf_counter())
+  logging.error('positiestring')
+  logging.error( positiestring)
+
   #logging.info()
   #logging.warning()
   #logging.error()

@@ -102,7 +102,7 @@ while True:
         else:
            if teller > 200:
               schakelaar = "dicht"
-        teller +=1
+           teller +=1
    
         # BEREKENING AANTAL STAPPEN 
         nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])

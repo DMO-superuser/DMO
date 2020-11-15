@@ -1,3 +1,8 @@
+import logging
+logging.basicConfig(filename='/home/pi/DMO/example.log', filemode='w', level=logging.DEBUG)
+
+
+
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
@@ -60,73 +65,82 @@ schakelaar = "open"
 teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
-internetverbinding = True
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
 #sleep (30)
 
+import time
 
 while True:
 
   try:
     r = requests.get(url, timeout=4)
-    internetverbinding = True
   except requests.exceptions.ConnectionError:
     positiestring = positiestring_oud
-    internetverbinding = False
 
   positiestring = r.text
 
-  if internetverbinding:
+  logging.debug('positiestring')
+  logging.debug( positiestring)
+  logging.debug('systeemtijd in seconden')
+  logging.debug( time.perf_counter())
+  #logging.info()
+  #logging.warning()
+  #logging.error()
 
-     #print ("Mercurius " + positiestring[0:3])
-     #print ("Venus " + positiestring[3:6])
-     #print ("Aarde " + positiestring[6:9])
-     #print ("Mars " +  positiestring[9:12])
-     #print ("Jupiter " + positiestring[12:15])
-     #print ("Saturnus " + positiestring[15:18])
-     #print ("positiestring     " + positiestring)
-     #print ("positiestring_oud " + positiestring_oud)
 
-     # als er een nieuwe positie is ingegeven op de website
-     if (positiestring != positiestring_oud):   
+
+
+  #print ("Mercurius " + positiestring[0:3])
+  #print ("Venus " + positiestring[3:6])
+  #print ("Aarde " + positiestring[6:9])
+  #print ("Mars " +  positiestring[9:12])
+  #print ("Jupiter " + positiestring[12:15])
+  #print ("Saturnus " + positiestring[15:18])
+  #print ("positiestring     " + positiestring)
+  #print ("positiestring_oud " + positiestring_oud)
+
+ # als er een nieuwe positie is ingegeven op de website
+  if (positiestring != positiestring_oud):   
       
-        # EERST NAAR MAGNEET RIJDEN, die ligt op 001
-        while (schakelaar == "open"):
-           if planeet != "DMO-Mars":
-              kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-           else:
-              kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
-        if (io.digitalRead(19)):  
-           schakelaar = "open"
-        else:
-           if teller > 200:
-              schakelaar = "dicht"
-           teller +=1
+    # EERST NAAR MAGNEET RIJDEN, die ligt op 001
+    while (schakelaar == "open"):
+      if planeet != "DMO-Mars":
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      else:
+         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+      if (io.digitalRead(19)):  
+        schakelaar = "open"
+      else:
+        if teller > 200:
+          schakelaar = "dicht"
+      teller +=1
+
    
-        # BEREKENING AANTAL STAPPEN 
-        nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
-        stappen_per_graad = totaal_stappen/360
-        if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
-           aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad
-        else:
-           aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
+    # BEREKENING AANTAL STAPPEN 
+    nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
+    stappen_per_graad = totaal_stappen/360
+    if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
+       aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad
+    else:
+       aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
     
-        #print ("---------------------------------------------")
-        #print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
-        #print ("stappen_per_graad " + str(stappen_per_graad))
-        #print ("magneet_positie " + str(magneet_positie))
-        #print ("aantal_stappen_te_lopen " + str(aantal_stappen_te_lopen))      
-        #print ("---------------------einde-------------------------")      
+    #print ("---------------------------------------------")
+    #print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
+    #print ("stappen_per_graad " + str(stappen_per_graad))
+    #print ("magneet_positie " + str(magneet_positie))
+    #print ("aantal_stappen_te_lopen " + str(aantal_stappen_te_lopen))      
+    #print ("---------------------einde-------------------------")      
    
-        # NU NAAR POSITIE RIJDEN 
-        teller = 1
-        while (teller < aantal_stappen_te_lopen):
-          if planeet != "DMO-Mars":
-             kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-          else:
-             kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
-          teller +=1
+    # NU NAAR POSITIE RIJDEN 
+    teller = 1
+    while (teller < aantal_stappen_te_lopen):
+      if planeet != "DMO-Mars":
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+      else:
+         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+
+      teller +=1
     
   
    
@@ -138,3 +152,4 @@ while True:
   positiestring_oud = positiestring
   schakelaar = "open"
   teller = 1
+

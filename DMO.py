@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(filename='/home/pi/DMO/example.log', filemode='w', level=logging.DEBUG)
+logging.basicConfig(filename='/home/pi/DMO/example.log', filemode='w', level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 
 

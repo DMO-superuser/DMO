@@ -89,7 +89,7 @@ while True:
   #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
-  if (positiestring != positiestring_oud) and (internetverbinding = True):   
+  if (positiestring != positiestring_oud) and (internetverbinding == True):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):

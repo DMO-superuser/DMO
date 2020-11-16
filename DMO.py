@@ -1,3 +1,16 @@
+import requests
+internetverbinding = False
+url = 'http://planetarium.chrisdemoor.nl/positions.txt'
+while (internetverbinding == False):
+  try:
+    r = requests.get(url, timeout=4)
+    internetverbinding = True
+  except requests.exceptions.ConnectionError:
+    internetverbinding = False
+
+
+
+
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):

@@ -94,7 +94,7 @@ while True:
        positiestring = positiestring_oud
        f.write(str(totaalteller) + ' ' + dt_string + ' OFFLINE')
 
-  f.write('Planeet' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
+  f.write(' ' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])

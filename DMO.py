@@ -77,26 +77,26 @@ totaalteller = 1
 #sleep (30)
 
 #openen logfile
-f= open("DMO.log","w+")  
+#f= open("DMO.log","w+")  
 
 while True:
 
   #timestamp voor DMO.log
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-  f.write(str(totaalteller) + ' ' + dt_string)
+  #f.write(str(totaalteller) + ' ' + dt_string)
   
   if checkInternetRequests():
      try:
        r = requests.get(url, timeout=4)
        positiestring = r.text
-       f.write(' ONLINE')
+       #f.write(' ONLINE')
      except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
-       f.write(' OFFLINE')
+       #f.write(' OFFLINE')
 
-  f.write(' ' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
-  #print ("Mercurius " + positiestring[0:3])
+  #f.write(' ' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
+  print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])
   #print ("Mars " +  positiestring[9:12])
@@ -154,7 +154,7 @@ while True:
   sleep (10)
   totaalteller +=1
   kit.stepper1.release() 
-  f.write('\r\n')
+  #f.write('\r\n')
 
       
   positiestring_oud = positiestring

@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+from time import sleep
 
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:

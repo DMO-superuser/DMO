@@ -17,10 +17,10 @@ for i in range(10):
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     
   if checkInternetRequests():
-     print (dt_string% ' we hebben verbinding ')
+     print (dt_string, ' we hebben verbinding ')
      f.write(dt_string%  ' online  %d\r\n')
   else:
-     print (dt_string% ' off line ')
+     print (dt_string, ' off line ')
      f.write( dt_string% ' off line  %d\r\n')
 
 f.close()

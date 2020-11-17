@@ -16,7 +16,7 @@ for i in range(1000):
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-#sleep (10)    
+sleep (1)    
     
   if checkInternetRequests():
      print (i,'',dt_string, ' we hebben verbinding ')

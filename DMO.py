@@ -153,6 +153,8 @@ while True:
   sleep (10)
   totaalteller +=1
   kit.stepper1.release() 
+  f.write('\r\n')
+
       
   positiestring_oud = positiestring
   schakelaar = "open"

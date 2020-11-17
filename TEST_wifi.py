@@ -8,8 +8,15 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
     except requests.ConnectionError as ex:
         print(ex)
         return False
-        
-if checkInternetRequests():
-   print (' we hebben verbinding ')
-else:
-   print (' off line ')
+
+f= open("DMO.log","w+")    
+
+for i in range(10):    
+  if checkInternetRequests():
+     print (' we hebben verbinding ')
+     f.write( ' online ')
+  else:
+     print (' off line ')
+     f.write( ' off line ')
+
+f.close()

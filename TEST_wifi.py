@@ -12,15 +12,15 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
 
 f= open("DMO.log","w+")    
 
-for i in range(10):    
+for i in range(100):    
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     
   if checkInternetRequests():
      print (dt_string, ' we hebben verbinding ')
-     f.write(dt_string + ' online  %d\r\n')
+     f.write(dt_string + ' online  \r\n')
   else:
      print (dt_string, ' off line ')
-     f.write( dt_string + ' off line  %d\r\n')
+     f.write( dt_string + ' off line  \r\n')
 
 f.close()

@@ -1,16 +1,3 @@
-import requests
-internetverbinding = False
-url = 'http://planetarium.chrisdemoor.nl/positions.txt'
-while (internetverbinding == False):
-  try:
-    r = requests.get(url, timeout=4)
-    internetverbinding = True
-  except requests.exceptions.ConnectionError:
-    internetverbinding = False
-
-
-
-
 import socket
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
@@ -49,11 +36,24 @@ if (planeet == "DMO-Mercurius"):
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    wachttijd_simulatie = 0.0198 # de wachtijd als DMO in simulatie gaat   
+
+#controle WiFi
+import requests
+from datetime import datetime
+from time import sleep
+def checkInternetRequests(url='http://www.google.com/', timeout=3):
+    try:
+        #r = requests.get(url, timeout=timeout)
+        r = requests.head(url, timeout=timeout)
+        return True
+    except requests.ConnectionError as ex:
+        #print(ex)
+        sleep(1)
+        return False
     
 # spullen reedswitch
 import os
 import wiringpi
-from time import sleep
 os.system('gpio export 19 in')
 sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
@@ -62,36 +62,39 @@ io.pinMode(19,io.INPUT)
 # spullen Adafruit
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
-from time import sleep
 kit = MotorKit()
 
-# spullen op de string van de website in te lezen
-import requests
+# spullen om de string van de website in te lezen
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
 schakelaar = "open"
 teller = 1
 positiestring     = ""
 positiestring_oud = "leeg"
-internetverbinding = True
+totaalteller = 1
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
 #sleep (30)
 
-import time
+#openen logfile
+f= open("DMO.log","w+")  
 
 while True:
 
-  try:
-    r = requests.get(url, timeout=4)
-    internetverbinding = True
-  except requests.exceptions.ConnectionError:
-    positiestring = positiestring_oud
-    internetverbinding = False
+  #timestamp voor DMO.log
+  now = datetime.now()
+  dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+  
+  if checkInternetRequests():
+     try:
+       r = requests.get(url, timeout=4)
+       positiestring = r.text
+       f.write(str(totaalteller) + ' ' + dt_string + ' ONLINE')
+     except requests.exceptions.ConnectionError:
+       positiestring = positiestring_oud
+       f.write(str(totaalteller) + ' ' + dt_string + ' OFFLINE')
 
-  positiestring = r.text
-
-
+  f.write('Planeet' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
   #print ("Mercurius " + positiestring[0:3])
   #print ("Venus " + positiestring[3:6])
   #print ("Aarde " + positiestring[6:9])
@@ -102,7 +105,7 @@ while True:
   #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
-  if (positiestring != positiestring_oud) and (internetverbinding == True):   
+  if (positiestring != positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
@@ -117,6 +120,7 @@ while True:
           schakelaar = "dicht"
       teller +=1
 
+    sleep(1)  
    
     # BEREKENING AANTAL STAPPEN 
     nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
@@ -143,11 +147,11 @@ while True:
 
       teller +=1
     
-  
+    sleep (1)
    
   # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (10)
-   
+  totaalteller +=1
   kit.stepper1.release() 
       
   positiestring_oud = positiestring

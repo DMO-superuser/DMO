@@ -18,9 +18,9 @@ for i in range(10):
     
   if checkInternetRequests():
      print (dt_string, ' we hebben verbinding ')
-     f.write(dt_string, ' online  %d\r\n')
+     f.write(dt_string + ' online  %d\r\n')
   else:
      print (dt_string, ' off line ')
-     f.write( dt_string, ' off line  %d\r\n')
+     f.write( dt_string + ' off line  %d\r\n')
 
 f.close()

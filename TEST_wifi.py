@@ -8,7 +8,8 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         r = requests.head(url, timeout=timeout)
         return True
     except requests.ConnectionError as ex:
-        print(ex)
+        #print(ex)
+        sleep(1)
         return False
 
 f= open("DMO.log","w+")    

@@ -16,13 +16,13 @@ for i in range(1000):
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-sleep (10)    
+#sleep (10)    
     
   if checkInternetRequests():
-     print (dt_string, ' we hebben verbinding ')
-     f.write(dt_string + ' online  \r\n')
+     print (i,' ',dt_string, ' we hebben verbinding ')
+     f.write(str(i) + dt_string + ' online  \r\n')
   else:
-     print (dt_string, ' off line ')
-     f.write( dt_string + ' off line  \r\n')
+     print (i,' ',dt_string, ' off line ')
+     f.write(str(i) + dt_string + ' off line  \r\n')
 
 f.close()

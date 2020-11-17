@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:
@@ -12,11 +13,14 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
 f= open("DMO.log","w+")    
 
 for i in range(10):    
+  now = datetime.now()
+  dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    
   if checkInternetRequests():
-     print (' we hebben verbinding ')
-     f.write( ' online ')
+     print (dt_string% ' we hebben verbinding ')
+     f.write(dt_string%  ' online  %d\r\n')
   else:
-     print (' off line ')
-     f.write( ' off line ')
+     print (dt_string% ' off line ')
+     f.write( dt_string% ' off line  %d\r\n')
 
 f.close()

@@ -12,7 +12,7 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
 
 f= open("DMO.log","w+")    
 
-for i in range(100):    
+for i in range(1000):    
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     

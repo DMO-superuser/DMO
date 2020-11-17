@@ -19,10 +19,10 @@ for i in range(1000):
 #sleep (10)    
     
   if checkInternetRequests():
-     print (i,' ',dt_string, ' we hebben verbinding ')
-     f.write(str(i) + dt_string + ' online  \r\n')
+     print (i,'',dt_string, ' we hebben verbinding ')
+     f.write(str(i) + ' ' + dt_string + ' online  \r\n')
   else:
      print (i,' ',dt_string, ' off line ')
-     f.write(str(i) + dt_string + ' off line  \r\n')
+     f.write(str(i) + ' ' + dt_string + ' off line  \r\n')
 
 f.close()

@@ -45,9 +45,11 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:
         #r = requests.get(url, timeout=timeout)
         r = requests.head(url, timeout=timeout)
+        print ('ONLINE')
         return True
     except requests.ConnectionError as ex:
         #print(ex)
+        print ('OFFLINE')
         sleep(1)
         return False
     
@@ -83,16 +85,15 @@ while True:
   #timestamp voor DMO.log
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-  print (str(totaalteller) + ' ' + dt_string + planeet)
+  print ('-------------------------------')
+  print (str(totaalteller) + ' ' + dt_string + ' ' +planeet)
   
   if checkInternetRequests():
      try:
        r = requests.get(url, timeout=4)
        positiestring = r.text
-       print('ONLINE')
      except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
-       print('OFFLINE')
 
   print ('Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
   #print ("Mercurius " + positiestring[0:3])

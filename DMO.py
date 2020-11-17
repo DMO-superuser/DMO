@@ -84,15 +84,16 @@ while True:
   #timestamp voor DMO.log
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+  f.write(str(totaalteller) + ' ' + dt_string)
   
   if checkInternetRequests():
      try:
        r = requests.get(url, timeout=4)
        positiestring = r.text
-       f.write(str(totaalteller) + ' ' + dt_string + ' ONLINE')
+       f.write(' ONLINE')
      except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
-       f.write(str(totaalteller) + ' ' + dt_string + ' OFFLINE')
+       f.write(' OFFLINE')
 
   f.write(' ' + planeet + ' Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
   #print ("Mercurius " + positiestring[0:3])

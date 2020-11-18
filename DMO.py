@@ -76,7 +76,7 @@ positiestring_oud = "leeg"
 totaalteller = 1
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
-#sleep (30)
+sleep (30)
 
 
 

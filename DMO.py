@@ -72,7 +72,7 @@ url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 schakelaar = "open"
 teller = 1
 positiestring     = ""
-positiestring_oud = "leeg"
+positiestring_oud = "001001001001001001001001001"
 totaalteller = 1
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)

@@ -86,7 +86,7 @@ while True:
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
   print ('-------------------------------')
-  print (str(totaalteller) + ' ' + dt_string + ' ' +planeet)
+  print (totaalteller , ' ' + dt_string + ' ' + planeet)
   
   if checkInternetRequests():
      try:
@@ -95,7 +95,7 @@ while True:
      except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
 
-  print ('Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
+  print ('Mer ',positiestring[0:3],' Ven ',positiestring[3:6],' Aar ',positiestring[6:9],' Mar ',positiestring[9:12],' Jup ',positiestring[12:15],' Sat ',positiestring[15:18])
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
   if (positiestring != positiestring_oud):   
@@ -123,10 +123,10 @@ while True:
     else:
        aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
     
-    print ("nieuwe_positie_planeet " , nieuwe_positie_planeet)
-    print ("stappen_per_graad " , stappen_per_graad)
-    print ("magneet_positie " , magneet_positie)
-    print ("aantal_stappen_te_lopen " , aantal_stappen_te_lopen)      
+    print ('nieuwe_positie_planeet ' , nieuwe_positie_planeet)
+    print ('stappen_per_graad ' , stappen_per_graad)
+    print ('magneet_positie ' , magneet_positie)
+    print ('aantal_stappen_te_lopen ' , aantal_stappen_te_lopen)      
    
     # NU NAAR POSITIE RIJDEN 
     teller = 1

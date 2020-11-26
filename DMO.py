@@ -96,14 +96,6 @@ while True:
        positiestring = positiestring_oud
 
   print ('Mer ' + str(positiestring[0:3]) + ' Ven ' + str(positiestring[3:6]) + ' Aar ' + str(positiestring[6:9]) + ' Mar ' + str(positiestring[9:12]) + ' Jup ' + str(positiestring[12:15]) + ' Sat ' + str(positiestring[15:18]))
-  #print ("Mercurius " + positiestring[0:3])
-  #print ("Venus " + positiestring[3:6])
-  #print ("Aarde " + positiestring[6:9])
-  #print ("Mars " +  positiestring[9:12])
-  #print ("Jupiter " + positiestring[12:15])
-  #print ("Saturnus " + positiestring[15:18])
-  #print ("positiestring     " + positiestring)
-  #print ("positiestring_oud " + positiestring_oud)
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
   if (positiestring != positiestring_oud):   
@@ -131,12 +123,10 @@ while True:
     else:
        aantal_stappen_te_lopen =  ((360- nieuwe_positie_planeet)+ magneet_positie) * stappen_per_graad 
     
-    #print ("---------------------------------------------")
-    #print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
-    #print ("stappen_per_graad " + str(stappen_per_graad))
-    #print ("magneet_positie " + str(magneet_positie))
-    #print ("aantal_stappen_te_lopen " + str(aantal_stappen_te_lopen))      
-    #print ("---------------------einde-------------------------")      
+    print ("nieuwe_positie_planeet " + str(nieuwe_positie_planeet))
+    print ("stappen_per_graad " + str(stappen_per_graad))
+    print ("magneet_positie " + str(magneet_positie))
+    print ("aantal_stappen_te_lopen " + str(aantal_stappen_te_lopen))      
    
     # NU NAAR POSITIE RIJDEN 
     teller = 1

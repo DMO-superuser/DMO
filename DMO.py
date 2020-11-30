@@ -5,43 +5,31 @@ if (planeet == "DMO-Saturnus"):
    magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
-   wachttijd_simulatie = 0.0748 # de wachtijd als DMO in simulatie gaat   
-   wachttijd_constellatie = 0.00 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 if (planeet == "DMO-Jupiter"):
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
-   wachttijd_simulatie = 0.0434 # de wachtijd als DMO in simulatie gaat   
-   wachttijd_constellatie = 0.00 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 if (planeet == "DMO-Mars"):
    totaal_stappen = 2045 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 90  # 23 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
-   wachttijd_simulatie = 0.0157 # de wachtijd als DMO in simulatie gaat   
-   wachttijd_constellatie = 0.00 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 20   # 1 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
-   wachttijd_simulatie = 0.015 # de wachtijd als DMO in simulatie gaat
-   wachttijd_constellatie = 0.01 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 101  # 10 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
-   wachttijd_simulatie = 0.01 # de wachtijd als DMO in simulatie gaat
-   wachttijd_constellatie = 0.02 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 187   # 14 juni, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
-   wachttijd_simulatie = 0.0198 # de wachtijd als DMO in simulatie gaat
-   wachttijd_constellatie = 0.08 # de vertraging om de binnenplaneten iets langzamer te laten lopen
 
 #controle WiFi
 import requests
@@ -104,7 +92,7 @@ while True:
   print ('Mer ',positiestring[0:3],' Ven ',positiestring[3:6],' Aar ',positiestring[6:9],' Mar ',positiestring[9:12],' Jup ',positiestring[12:15],' Sat ',positiestring[15:18])
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
-  if (positiestring != positiestring_oud):   
+  if (str(positiestring) != str(positiestring_oud)):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
@@ -118,7 +106,6 @@ while True:
         if teller > 200:
           schakelaar = "dicht"
       teller +=1
-      sleep(wachttijd_constellatie) 
       
     sleep(1)  
    
@@ -144,7 +131,7 @@ while True:
          kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
 
       teller +=1
-      sleep(wachttijd_constellatie) 
+
     
     sleep (1)
    

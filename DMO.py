@@ -97,7 +97,7 @@ while True:
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
       if planeet != "DMO-Mars":
-         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.MICROSTEP)
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       else:
          kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
       if (io.digitalRead(19)):  
@@ -126,7 +126,7 @@ while True:
     teller = 1
     while (teller < aantal_stappen_te_lopen):
       if planeet != "DMO-Mars":
-         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.MICROSTEP)
+         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
       else:
          kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
 

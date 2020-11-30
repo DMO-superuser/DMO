@@ -4,8 +4,8 @@ planeet = socket.gethostname()
 def rijden (richting, stijl):
    kit.stepper1.onestep(direction=richting, style=stijl)  
 
-richtig = stepper.BACKWARD
-stijl   = stepper.DOUBLE
+richtig = 'stepper.BACKWARD'
+stijl   = 'stepper.DOUBLE'
 
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit

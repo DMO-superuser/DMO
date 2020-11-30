@@ -1,14 +1,22 @@
-import time
+import socket
+planeet = socket.gethostname()
 
-import Adafruit_DHT
+def rijden (richting, stijl):
+   kit.stepper1.onestep(direction=richting, style=stijl)  
 
-from w1thermsensor import W1ThermSensor
+richtig = stepper.BACKWARD
+stijl   = stepper.DOUBLE
 
-for sensor in W1ThermSensor.get_available_sensors():
-    
-    print("Sensor %s has temperature %.2f" % (sensor.id, sensor.get_temperature()))
-    print (sensor)
-    print (sensor.id)
-    print (sensor.get_temperature())
+"""Simple test for using adafruit_motorkit with a stepper motor"""
+from adafruit_motorkit import MotorKit
+from adafruit_motor import stepper
+from time import sleep
 
+kit = MotorKit()
 
+while True:
+ if planeet != "DMO-Mars":
+    rijden (richting, stijl)
+ else:
+    rijden (richting, stijl)
+ #sleep (0.01)

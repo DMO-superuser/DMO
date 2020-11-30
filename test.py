@@ -4,7 +4,7 @@ planeet = socket.gethostname()
 def rijden (richting, stijl):
    print (richting)
    print (stijl)
-   #kit.stepper1.onestep(richting, stijl)  
+   kit.stepper1.onestep(richting, stijl)  
 
 richting = 'direction=stepper.BACKWARD'
 stijl   = 'style=stepper.DOUBLE'

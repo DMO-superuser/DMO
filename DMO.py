@@ -10,6 +10,15 @@ from adafruit_motor import stepper
 # string van de website in te lezen
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
+# indien test_modus is TRUE dan wordt niet de websitestring gebruikt maar de 
+# simulator op TEST_website_string.py die op een aparte RPI draait
+# als planeet_motor is TRUE dan kan er ook gereden worden in test_modus, anders niet
+# en is het uitsluitend om de software te testen
+test_modus = TRUE
+planeet_motor = FALSE
+if test_modus:
+   url = 'http://192.168.178.52/positions.txt'
+
 #welke planeet zijn we?
 planeet = socket.gethostname()
 
@@ -34,7 +43,6 @@ if (planeet == "DMO-Mars"):
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
    richting = stepper.FORWARD
    stijl = stepper.DOUBLE
-   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 20   # 1 december, positie in graden waar de magneet van de planeet ligt
@@ -42,7 +50,6 @@ if (planeet == "DMO-Aarde"):
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
-   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 101  # 10 september, positie in graden waar de magneet van de planeet ligt
@@ -50,7 +57,6 @@ if (planeet == "DMO-Venus"):
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
-   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 187   # 14 juni, positie in graden waar de magneet van de planeet ligt
@@ -58,7 +64,6 @@ if (planeet == "DMO-Mercurius"):
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
-   url = 'http://192.168.178.52/positions.txt'
 
 #controle WiFi
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
@@ -114,7 +119,7 @@ while True:
   if (str(positiestring) != str(positiestring_oud)):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
-    while (schakelaar == "open"):
+    while (schakelaar == "open") and (not test_modus):
       kit.stepper1.onestep(direction=richting, style= stijl)
       if (io.digitalRead(19)):  
         schakelaar = "open"
@@ -140,14 +145,16 @@ while True:
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):
-       kit.stepper1.onestep(direction=richting, style= stijl) 
+       if planeet_motor:
+          kit.stepper1.onestep(direction=richting, style= stijl) 
        teller +=1    
     sleep (1)
    
   # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert
   sleep (10)
   totaalteller +=1
-  kit.stepper1.release() 
+  if planeet_motor:
+     kit.stepper1.release() 
       
   positiestring_oud = positiestring
   schakelaar = "open"

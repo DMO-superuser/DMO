@@ -7,10 +7,12 @@ import wiringpi
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 
-# spullen om de string van de website in te lezen
+# string van de website in te lezen
 url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 
+#welke planeet zijn we?
 planeet = socket.gethostname()
+
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
@@ -53,9 +55,9 @@ if (planeet == "DMO-Mercurius"):
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.MICROSTEP
+   url = 'http://192.168.178.52/positions.txt'
 
 #controle WiFi
-
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:
         #r = requests.get(url, timeout=timeout)
@@ -69,7 +71,6 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         return False
     
 # spullen reedswitch
-
 os.system('gpio export 19 in')
 sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
@@ -77,8 +78,6 @@ io.pinMode(19,io.INPUT)
 
 # spullen Adafruit
 kit = MotorKit()
-
-
 
 schakelaar = "open"
 teller = 1
@@ -113,17 +112,13 @@ while True:
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open"):
-      if planeet != "DMO-Mars":
-         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-      else:
-         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
+      kit.stepper1.onestep(direction=richting, style= stijl)
       if (io.digitalRead(19)):  
         schakelaar = "open"
       else:
         if teller > 200:
           schakelaar = "dicht"
       teller +=1
-      
     sleep(1)  
    
     # BEREKENING AANTAL STAPPEN 
@@ -142,14 +137,8 @@ while True:
     # NU NAAR POSITIE RIJDEN 
     teller = 1
     while (teller < aantal_stappen_te_lopen):
-      if planeet != "DMO-Mars":
-         kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-      else:
-         kit.stepper1.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)   
-
-      teller +=1
-
-    
+       kit.stepper1.onestep(direction=richting, style= stijl) 
+       teller +=1    
     sleep (1)
    
   # 10 seconden wachten omdat anders de GET teveel requests doet naar de server en ons weigert

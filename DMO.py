@@ -14,8 +14,8 @@ url = 'http://planetarium.chrisdemoor.nl/positions.txt'
 # simulator op TEST_website_string.py die op een aparte RPI draait
 # als planeet_motor is TRUE dan kan er ook gereden worden in test_modus, anders niet
 # en is het uitsluitend om de software te testen
-test_modus = True
-planeet_motor = False
+test_modus = False
+planeet_motor = True
 if test_modus:
    url = 'http://192.168.178.52/positions.txt'
 

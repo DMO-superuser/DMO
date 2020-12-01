@@ -16,6 +16,6 @@ from time import sleep
 kit = MotorKit()
 
 while True:
- kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+ kit.stepper1.onestep(allebei) 
 
  #sleep (0.01)

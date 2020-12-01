@@ -34,20 +34,23 @@ if (planeet == "DMO-Mars"):
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
    richting = stepper.FORWARD
    stijl = stepper.DOUBLE
+   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 20   # 1 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
-   stijl = stepper.MICROSTEP
+   stijl = stepper.DOUBLE
+   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 101  # 10 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
-   stijl = stepper.MICROSTEP
+   stijl = stepper.DOUBLE
+   url = 'http://192.168.178.52/positions.txt'
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 187   # 14 juni, positie in graden waar de magneet van de planeet ligt

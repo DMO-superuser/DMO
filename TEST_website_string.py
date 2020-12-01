@@ -16,7 +16,7 @@ for x in range(5):
     afdruk = "0" + str(teller)
     if teller < 10:
        afdruk = "0" + str(teller)
-  else:
+ else:
     afdruk = str(teller)
  afdruk = afdruk + "001001001001001"     
  f.write(afdruk)

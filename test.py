@@ -17,7 +17,8 @@ from time import sleep
 kit = MotorKit()
 
 print (planeet)
-kit.stepper1.onestep(direction=richting, style=stijl) 
+while True:
+ kit.stepper1.onestep(direction=richting, style=stijl) 
 
 while True:
  if planeet != "DMO-Mars":

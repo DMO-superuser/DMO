@@ -6,8 +6,8 @@ planeet = socket.gethostname()
 richting = 'direction=stepper.BACKWARD'
 stijl   = 'style=stepper.DOUBLE'
 allebei = 'direction=stepper.BACKWARD, style=stepper.DOUBLE'
-appel = 'appel'
-peer = 'peer'
+appel = 'stepper.BACKWARD'
+peer = 'stepper.DOUBLE'
 
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit

@@ -15,7 +15,7 @@ from time import sleep
 
 kit = MotorKit()
 richting = stepper.BACKWARD
-stijl   = stepper.DOUBLE
+stijl   = stepper.MICROSTEP
 
 while True:
  kit.stepper1.onestep(direction=richting, style= stijl)

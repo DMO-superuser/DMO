@@ -5,10 +5,11 @@
 # Apachewebserver heeft als file /var/www/html/positions.txt
 # en is dan te benaderen via http://192.168.178.52/positions.txt
 
+import sleep from time
 
 
 
-for x in range(100):
+for x in range(360):
  f = open("/var/www/html/positions.txt", "w")
  afdruk = ""
  teller = x + 1
@@ -21,3 +22,8 @@ for x in range(100):
  afdruk = afdruk + "001001001001001"     
  f.write(afdruk)
  f.close()
+ #wachttijd op planeten positie uit te laten lezen en naar positie te rijden
+ #saturnus duurt het langste
+ sleep (60)
+ 
+ 

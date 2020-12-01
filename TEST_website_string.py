@@ -12,12 +12,12 @@ for x in range(5):
  f = open("/var/www/html/positions.txt", "w")
  afdruk = ""
  teller = x + 1
- if teller < 10:
-    afdruk = "00" + str(teller)
-    if teller < 100:
+ if teller < 100:
+    afdruk = "0" + str(teller)
+    if teller < 10:
        afdruk = "0" + str(teller)
-    else:
-       afdruk = str(teller)
+  else:
+    afdruk = str(teller)
  afdruk = afdruk + "001001001001001"     
  f.write(afdruk)
  f.close()

@@ -5,7 +5,7 @@
 # Apachewebserver heeft als file /var/www/html/positions.txt
 # en is dan te benaderen via http://192.168.178.52/positions.txt
 
-import sleep from time
+from time import sleep
 
 
 

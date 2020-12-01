@@ -8,7 +8,16 @@
 f = open("/var/www/html/positions.txt", "w")
 
 
-for x in range(6):
- f.write(str(x))
+for x in range(360):
+ afdruk = ""
+ teller = x + 1
+ if teller < 10:
+    afdruk = "00" + str(teller)
+    if teller < 100:
+       afdruk = "0" + str(teller)
+    else:
+       afdruk = str(teller)
+ afdruk = afdruk + "001001001001001"     
+ f.write(afdruk)
 
 f.close()

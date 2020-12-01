@@ -3,8 +3,8 @@ planeet = socket.gethostname()
 
 
 
-richting = 'direction=stepper.BACKWARD'
-stijl   = 'style=stepper.DOUBLE'
+richting = 'stepper.BACKWARD'
+stijl   = 'stepper.DOUBLE'
 allebei = 'direction=stepper.BACKWARD, style=stepper.DOUBLE'
 appel = 'stepper.BACKWARD'
 peer = 'stepper.DOUBLE'
@@ -16,11 +16,10 @@ from time import sleep
 
 kit = MotorKit()
 
-kit.stepper1.onestep(direction=appel,style=peer)
 
 while True:
  if planeet != "DMO-Mars":
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+    kit.stepper1.onestep(direction=richting, style=stijl) 
  else:
-    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
+    kit.stepper1.onestep(direction=richting, style=stijl) 
  #sleep (0.01)

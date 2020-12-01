@@ -6,8 +6,7 @@ planeet = socket.gethostname()
 richting = 'stepper.BACKWARD'
 stijl   = 'stepper.DOUBLE'
 allebei = 'direction=stepper.BACKWARD, style=stepper.DOUBLE'
-appel = 'stepper.BACKWARD'
-peer = 'stepper.DOUBLE'
+
 
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit
@@ -16,13 +15,7 @@ from time import sleep
 
 kit = MotorKit()
 
-print (planeet)
 while True:
- kit.stepper1.onestep(direction=richting, style=stijl) 
+ kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
 
-while True:
- if planeet != "DMO-Mars":
-    kit.stepper1.onestep(direction=richting, style=stijl) 
- else:
-    kit.stepper1.onestep(direction=richting, style=stijl) 
  #sleep (0.01)

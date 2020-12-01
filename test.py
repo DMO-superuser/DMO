@@ -6,7 +6,8 @@ planeet = socket.gethostname()
 richting = 'stepper.BACKWARD'
 stijl   = 'stepper.DOUBLE'
 allebei = 'direction=stepper.BACKWARD, style=stepper.DOUBLE'
-
+rich = 'BACKWARD'
+stij = 'DOUBLE'
 
 """Simple test for using adafruit_motorkit with a stepper motor"""
 from adafruit_motorkit import MotorKit
@@ -16,6 +17,6 @@ from time import sleep
 kit = MotorKit()
 
 while True:
- kit.stepper1.onestep(stepper.BACKWARD, stepper.DOUBLE)
+ kit.stepper1.onestep(direction=stepper.rich, style=stepper.stij)
 
  #sleep (0.01)

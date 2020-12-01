@@ -3,8 +3,8 @@ planeet = socket.gethostname()
 
 
 
-richting = 'stepper.BACKWARD'
-stijl   = 'stepper.DOUBLE'
+richting = stepper.BACKWARD
+stijl   = stepper.DOUBLE
 allebei = 'direction=stepper.BACKWARD, style=stepper.DOUBLE'
 rich = 'BACKWARD'
 stij = 'DOUBLE'
@@ -17,6 +17,6 @@ from time import sleep
 kit = MotorKit()
 
 while True:
- kit.stepper1.onestep(stepper.BACKWARD, stepper.DOUBLE)
+ kit.stepper1.onestep(direction=richting, style= stijl)
 
  #sleep (0.01)

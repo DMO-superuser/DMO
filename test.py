@@ -18,7 +18,7 @@ kit.stepper1.throttle = 1.0
 
 while True:
  if planeet != "DMO-Mars":
-    kit.stepper1.onestep(allebei) 
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
  else:
-    kit.stepper1.onestep(allebei) 
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE) 
  #sleep (0.01)

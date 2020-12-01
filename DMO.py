@@ -130,7 +130,7 @@ while True:
     sleep(1)  
    
     # BEREKENING AANTAL STAPPEN 
-    nieuwe_positie_planeet = float(positiestring[beginpos_string:eindpos_string])
+    nieuwe_positie_planeet = int(float(positiestring[beginpos_string:eindpos_string]))
     stappen_per_graad = totaal_stappen/360
     if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):
        aantal_stappen_te_lopen = (magneet_positie - nieuwe_positie_planeet) * stappen_per_graad

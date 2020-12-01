@@ -1,40 +1,61 @@
 import socket
+import requests
+from datetime import datetime
+from time import sleep
+import os
+import wiringpi
+from adafruit_motorkit import MotorKit
+from adafruit_motor import stepper
+
+# spullen om de string van de website in te lezen
+url = 'http://planetarium.chrisdemoor.nl/positions.txt'
+
 planeet = socket.gethostname()
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
+   richting = stepper.BACKWARD
+   stijl = stepper.DOUBLE
 if (planeet == "DMO-Jupiter"):
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
+   richting = stepper.BACKWARD
+   stijl = stepper.DOUBLE
 if (planeet == "DMO-Mars"):
    totaal_stappen = 2045 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 90  # 23 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
+   richting = stepper.FORWARD
+   stijl = stepper.DOUBLE
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 20   # 1 december, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
+   richting = stepper.BACKWARD
+   stijl = stepper.MICROSTEP
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 101  # 10 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
+   richting = stepper.BACKWARD
+   stijl = stepper.MICROSTEP
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 187   # 14 juni, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
+   richting = stepper.BACKWARD
+   stijl = stepper.MICROSTEP
 
 #controle WiFi
-import requests
-from datetime import datetime
-from time import sleep
+
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:
         #r = requests.get(url, timeout=timeout)
@@ -48,20 +69,16 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         return False
     
 # spullen reedswitch
-import os
-import wiringpi
+
 os.system('gpio export 19 in')
 sleep(0.5)
 io = wiringpi.GPIO(wiringpi.GPIO.WPI_MODE_GPIO_SYS)
 io.pinMode(19,io.INPUT)
 
 # spullen Adafruit
-from adafruit_motorkit import MotorKit
-from adafruit_motor import stepper
 kit = MotorKit()
 
-# spullen om de string van de website in te lezen
-url = 'http://planetarium.chrisdemoor.nl/positions.txt'
+
 
 schakelaar = "open"
 teller = 1

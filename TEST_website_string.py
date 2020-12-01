@@ -15,7 +15,7 @@ for x in range(5):
  if teller < 100:
     afdruk = "0" + str(teller)
     if teller < 10:
-       afdruk = "0" + str(teller)
+       afdruk = "0" + afdruk
  else:
     afdruk = str(teller)
  afdruk = afdruk + "001001001001001"     

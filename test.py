@@ -14,7 +14,7 @@ from time import sleep
 
 kit = MotorKit()
 
-kit.stepper1.setSpeed(12)
+kit.motor1.throttle = 1.0
 
 while True:
  if planeet != "DMO-Mars":

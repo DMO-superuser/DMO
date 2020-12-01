@@ -16,6 +16,7 @@ from time import sleep
 
 kit = MotorKit()
 
+print (planeet)
 
 while True:
  if planeet != "DMO-Mars":

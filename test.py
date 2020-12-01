@@ -14,7 +14,7 @@ from time import sleep
 
 kit = MotorKit()
 
-kit.stepper1.onestep(direction=1,style=2)
+kit.stepper1.onestep(direction=appel,style=peer)
 
 while True:
  if planeet != "DMO-Mars":

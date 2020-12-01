@@ -1,10 +1,7 @@
 import socket
 planeet = socket.gethostname()
 
-def rijden (richting, stijl):
-   print (richting)
-   print (stijl)
-   kit.stepper1.onestep(richting, stijl)  
+
 
 richting = 'direction=stepper.BACKWARD'
 stijl   = 'style=stepper.DOUBLE'
@@ -18,7 +15,7 @@ kit = MotorKit()
 
 while True:
  if planeet != "DMO-Mars":
-    rijden (richting, stijl)
+    kit.stepper1.onestep(richting, stijl) 
  else:
-    rijden (richting, stijl)
+    kit.stepper1.onestep(richting, stijl) 
  #sleep (0.01)

@@ -8,7 +8,7 @@
 
 
 
-for x in range(99):
+for x in range(100):
  f = open("/var/www/html/positions.txt", "w")
  afdruk = ""
  teller = x + 1

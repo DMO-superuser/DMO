@@ -9,6 +9,6 @@ f = open("/var/www/html/positions.txt", "w")
 
 
 for x in range(6):
- f.write(x)
+ f.write(str(x))
 
 f.close()

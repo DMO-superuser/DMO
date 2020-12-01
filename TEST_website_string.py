@@ -19,7 +19,7 @@ for x in range(360):
        afdruk = "0" + afdruk
  else:
     afdruk = str(teller)
- afdruk = afdruk + "001001001001001"     
+ afdruk = afdruk + afdruk + afdruk + afdruk + afdruk + afdruk  
  f.write(afdruk)
  f.close()
  #wachttijd op planeten positie uit te laten lezen en naar positie te rijden

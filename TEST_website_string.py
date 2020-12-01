@@ -5,10 +5,11 @@
 # Apachewebserver heeft als file /var/www/html/positions.txt
 # en is dan te benaderen via http://192.168.178.52/positions.txt
 
-f = open("/var/www/html/positions.txt", "w")
+
 
 
 for x in range(360):
+ f = open("/var/www/html/positions.txt", "w")
  afdruk = ""
  teller = x + 1
  if teller < 10:
@@ -19,5 +20,4 @@ for x in range(360):
        afdruk = str(teller)
  afdruk = afdruk + "001001001001001"     
  f.write(afdruk)
-
-f.close()
+ f.close()

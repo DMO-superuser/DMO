@@ -24,6 +24,7 @@ for x in range(360):
  f.close()
  #wachttijd op planeten positie uit te laten lezen en naar positie te rijden
  #saturnus duurt het langste
+ print (teller)
  sleep (60)
  
  

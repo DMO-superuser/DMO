@@ -75,6 +75,9 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
     except requests.ConnectionError as ex:
         #print(ex)
         print ('OFFLINE')
+        offline_teller +=1
+        if offline_teller > 10:
+           os.system('sudo shutdown -r now')
         sleep(1)
         return False
     
@@ -92,8 +95,10 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "001001001001001001001001001"
 totaalteller = 1
+offline_teller = 1
 
-# bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper tijdens het rijden)
+
+# bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper in het begin tijdens het rijden)
 sleep (30)
 
 

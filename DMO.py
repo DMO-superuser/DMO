@@ -52,14 +52,14 @@ if (planeet == "DMO-Aarde"):
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 221  # +120
+   magneet_positie = 281  # +120 + 60
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 113   # -75
+   magneet_positie = 83   # -75 - 30
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
@@ -77,6 +77,9 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         print ('OFFLINE')
         offline_teller +=1
         if offline_teller > 10:
+           bestand = open("/home/pi/DMO/DMO.wifi","a")
+           bestand.write (dt_string + " WiFi verbroken \n" 
+           bestand.close()
            os.system('sudo shutdown -r now')
         sleep(1)
         return False

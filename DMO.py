@@ -69,7 +69,7 @@ if (planeet == "DMO-Mercurius"):
 def checkInternetRequests(url='http://www.google.com/', timeout=3):
     try:
         #r = requests.get(url, timeout=timeout)
-        r = requests.head(url, timeout=timeout)
+        r = requests.head(url, timeout=3)
         print ('ONLINE')
         return True
     except requests.ConnectionError as ex:

@@ -24,21 +24,21 @@ planeet = socket.gethostname()
 
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 2  # +12
    beginpos_string = 15  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 18  # de eindpositie in de string bij de Curl van deze planeet
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Jupiter"):
    totaal_stappen = 4326 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 350  # 14 december, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 5  # +15
    beginpos_string = 12  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 15  # de eindpositie in de string bij de Curl van deze planeet
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Mars"):
    totaal_stappen = 2045 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 90  # 23 september, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 88  # -2
    beginpos_string = 9  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 12  # de eindpositie in de string bij de Curl van deze planeet
    richting = stepper.FORWARD
@@ -52,14 +52,14 @@ if (planeet == "DMO-Aarde"):
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Venus"):
    totaal_stappen = 1019 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 101  # 10 september, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 221  # +120
    beginpos_string = 3  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 6  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Mercurius"):
    totaal_stappen = 202 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 187   # 14 juni, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 113   # -75
    beginpos_string = 0  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD

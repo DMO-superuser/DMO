@@ -117,6 +117,9 @@ while True:
        positiestring = r.text
      except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
+  
+  # om te ijken, alle planeten op 228 (is op de aarde 1 mei)
+  positiestring = "228228228228228228228228228"
 
   print ('Mer ',positiestring[0:3],' Ven ',positiestring[3:6],' Aar ',positiestring[6:9],' Mar ',positiestring[9:12],' Jup ',positiestring[12:15],' Sat ',positiestring[15:18])
 

@@ -78,7 +78,7 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         offline_teller +=1
         if offline_teller > 10:
            bestand = open("/home/pi/DMO/DMO.wifi","a")
-           bestand.write (dt_string + " WiFi verbroken \n" 
+           bestand.write (dt_string + " WiFi verbroken \n")
            bestand.close()
            os.system('sudo shutdown -r now')
         sleep(1)

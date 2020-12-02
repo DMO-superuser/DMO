@@ -45,7 +45,7 @@ if (planeet == "DMO-Mars"):
    stijl = stepper.DOUBLE
 if (planeet == "DMO-Aarde"):
    totaal_stappen = 1107 # aantal stappen om een rondje te maken, 1% afwijking per keer
-   magneet_positie = 20   # 1 december, positie in graden waar de magneet van de planeet ligt
+   magneet_positie = 106   # 6 september, positie in graden waar de magneet van de planeet ligt
    beginpos_string = 6  # de beginpositie in de string bij de Curl van deze planeet
    eindpos_string  = 9  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD

@@ -133,7 +133,7 @@ while True:
     try:
        nieuwe_positie_planeet = int(positiestring[beginpos_string:eindpos_string])
     except:
-       print ('FOUT in conversie van: ',  positiestring[beginpos_string:eindpos_string]
+       print ('FOUT in conversie van: ',  positiestring[beginpos_string:eindpos_string])
        nieuwe_positie_planeet = 1
     stappen_per_graad = totaal_stappen/360
     if (nieuwe_positie_planeet < magneet_positie) and (nieuwe_positie_planeet > 0):

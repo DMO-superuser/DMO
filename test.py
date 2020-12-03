@@ -1,4 +1,5 @@
 import os
+import time
 teller = 1
 bestand = open("/home/pi/DMO/DMO.wifi","a")
 
@@ -16,6 +17,8 @@ while True:
      bestand.write (str(teller)  + " down \n")
      bestand.close()
      os.system('sudo shutdown -r now')
+      
+  sleep (5)
 
   teller +=1
   

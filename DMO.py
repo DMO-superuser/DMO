@@ -22,6 +22,8 @@ if test_modus:
 #welke planeet zijn we?
 planeet = socket.gethostname()
 
+offline_teller = 1
+
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 2  # +12
@@ -96,7 +98,7 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "001001001001001001001001001"
 totaalteller = 1
-offline_teller = 1
+
 
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper in het begin tijdens het rijden)

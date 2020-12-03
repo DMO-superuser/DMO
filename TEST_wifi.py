@@ -12,7 +12,7 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         sleep(1)
         return False
 
-f= open("DMO.log","w+")    
+f= open("DMO.log","a")    
 
 for i in range(1000):    
   now = datetime.now()

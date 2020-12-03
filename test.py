@@ -1,6 +1,22 @@
 import os
-dt_string = "12:00"
+teller = 1
 bestand = open("/home/pi/DMO/DMO.wifi","a")
-bestand.write (dt_string + " WiFi verbroken \n")
-bestand.close()
-os.system('sudo shutdown -r now')
+
+
+
+while True:
+
+  hostname = "google.com" #example
+  response = os.system("ping -c 1 " + hostname)
+
+  #and then check the response...
+  if response == 0:
+     bestand.write (str(teller)  + " up \n")
+  else:
+     bestand.write (str(teller)  + " down \n")
+     bestand.close()
+     os.system('sudo shutdown -r now')
+
+  teller +=1
+  
+  

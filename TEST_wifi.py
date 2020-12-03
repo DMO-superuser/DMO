@@ -1,3 +1,4 @@
+import system
 import requests
 from datetime import datetime
 from time import sleep
@@ -12,9 +13,9 @@ def checkInternetRequests(url='http://www.google.com/', timeout=3):
         sleep(1)
         return False
 
-f= open("DMO.log","a")    
+f= open("DMO.wifi","a")    
 
-for i in range(1000):    
+for i in range(100000):    
   now = datetime.now()
   dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
@@ -25,6 +26,8 @@ for i in range(1000):
      f.write(str(i) + ' ' + dt_string + ' online  \r\n')
   else:
      print (i,' ',dt_string, ' off line ')
-     f.write(str(i) + ' ' + dt_string + ' off line  \r\n')
+     f.write(str(i) + ' ' + dt_string + ' off line en REBOOT \r\n')
+     f.close()
+     os.system('sudo shutdown -r now')
 
 f.close()

@@ -22,8 +22,6 @@ if test_modus:
 #welke planeet zijn we?
 planeet = socket.gethostname()
 
-offline_teller = 1
-
 if (planeet == "DMO-Saturnus"):
    totaal_stappen = 6683 # aantal stappen om een rondje te maken, 1% afwijking per keer
    magneet_positie = 2  # +12
@@ -66,23 +64,6 @@ if (planeet == "DMO-Mercurius"):
    eindpos_string  = 3  # de eindpositie in de string bij de Curl van deze planeet 
    richting = stepper.BACKWARD
    stijl = stepper.DOUBLE
-
-#controle WiFi
-def checkInternetRequests(url='http://www.google.com/', timeout=3):
-    try:
-        #r = requests.get(url, timeout=timeout)
-        r = requests.head(url, timeout=3)
-        print ('ONLINE')
-        return True
-    except requests.ConnectionError as ex:
-        #print(ex)
-        print ('OFFLINE')
-        offline_teller +=1
-        if offline_teller > 10:
-           print ('RESTART ' + dt_string)
-           os.system('sudo shutdown -r now')
-        sleep(1)
-        return False
     
 # spullen reedswitch
 os.system('gpio export 19 in')
@@ -98,13 +79,10 @@ teller = 1
 positiestring     = ""
 positiestring_oud = "001001001001001001001001001"
 totaalteller = 1
-
-
+offline_teller = 1
 
 # bij de eerste keer opstarten wachten totdat alle processen in de Pi zijn opgestart (anders hapert de stepper in het begin tijdens het rijden)
 sleep (30)
-
-
 
 while True:
 
@@ -118,10 +96,16 @@ while True:
        r = requests.get(url, timeout=4)
        positiestring = r.text
        print ('ONLINE')
+       offline_teller = 1
   except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
        offline_teller +=1
        print ('OFFLINE ', offline_teller)
+       if offline_teller > 10:
+          print ('RESTART ' + dt_string)
+          os.system('sudo cp DMO.error DMOerror.old') 
+          os.system('sudo cp DMO.log DMOlog.old')
+          os.system('sudo shutdown -r now')
          
   # om te ijken, alle planeten op 228 (is op de aarde 1 mei)
   # positiestring = "228228228228228228228228228"

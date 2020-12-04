@@ -127,7 +127,7 @@ while True:
   print ('Mer ',positiestring[0:3],' Ven ',positiestring[3:6],' Aar ',positiestring[6:9],' Mar ',positiestring[9:12],' Jup ',positiestring[12:15],' Sat ',positiestring[15:18])
 
  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
-  if (str(positiestring) != str(positiestring_oud)) and checkInternetRequests():   
+  if str(positiestring) != str(positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001
     while (schakelaar == "open") and (not test_modus):

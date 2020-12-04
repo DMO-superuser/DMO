@@ -103,8 +103,8 @@ while True:
        offline_teller +=1
        if offline_teller > 10:
           print ('RESTART ' + dt_string)
-          os.system('sudo cp DMO.error DMOerror.old') 
-          os.system('sudo cp DMO.log DMOlog.old')
+          os.system('sudo cp /home/pi/DMO/DMO.error /home/pi/DMO/DMOerror.old') 
+          os.system('sudo cp /home/pi/DMO/DMO.log /home/pi/DMO/DMOlog.old')
           os.system('sudo shutdown -r now')
          
   # om te ijken, alle planeten op 228 (is op de aarde 1 mei)

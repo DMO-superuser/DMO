@@ -114,19 +114,21 @@ while True:
   print ('-------------------------------')
   print (totaalteller , ' ' + dt_string + ' ' + planeet)
   
-  if checkInternetRequests():
-     try:
+  try:
        r = requests.get(url, timeout=4)
        positiestring = r.text
-     except requests.exceptions.ConnectionError:
+       print ('ONLINE')
+  except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
-  
+       offline_teller +=1
+       print ('OFFLINE ', offline_teller)
+         
   # om te ijken, alle planeten op 228 (is op de aarde 1 mei)
   # positiestring = "228228228228228228228228228"
 
   print ('Mer ',positiestring[0:3],' Ven ',positiestring[3:6],' Aar ',positiestring[6:9],' Mar ',positiestring[9:12],' Jup ',positiestring[12:15],' Sat ',positiestring[15:18])
 
- # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
+  # als er een nieuwe positie is ingegeven op de website en er is een internetverbinding
   if str(positiestring) != str(positiestring_oud):   
       
     # EERST NAAR MAGNEET RIJDEN, die ligt op 001

@@ -99,8 +99,8 @@ while True:
        offline_teller = 1
   except requests.exceptions.ConnectionError:
        positiestring = positiestring_oud
-       offline_teller +=1
        print ('OFFLINE ', offline_teller)
+       offline_teller +=1
        if offline_teller > 10:
           print ('RESTART ' + dt_string)
           os.system('sudo cp DMO.error DMOerror.old') 

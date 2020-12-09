@@ -2,7 +2,7 @@
 
 import requests
 
-url = 'https://www.estdigital.nl'
+url = 'https://www.bdsmzaken.nl'
 
 
 #while True:

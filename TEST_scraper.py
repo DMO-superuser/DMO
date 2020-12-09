@@ -2,7 +2,7 @@
 
 import requests
 
-url = 'https://fetlife.com/p/netherlands/zuid-holland/kinksters?page=2'
+url = 'https://www.estdigital.nl'
 
 
 #while True:

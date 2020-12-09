@@ -13,4 +13,4 @@ browser.form['Prodeo123'] = password
 browser.submit()
 
 response = browser.open(internal_url)
-print response.read()
+print (response.read())
